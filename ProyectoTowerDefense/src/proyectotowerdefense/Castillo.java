@@ -13,9 +13,9 @@ public class Castillo {
     
         private int id;
         private double vida;
-        private boolean tipo;
+        private int tipo;
 
-    public Castillo(int id, double vida, boolean tipo) {
+    public Castillo(int id, double vida, int tipo) {
         this.id = id;
         this.vida = vida;
         this.tipo = tipo;
@@ -37,11 +37,11 @@ public class Castillo {
         this.vida = vida;
     }
 
-    public boolean isTipo() {
+    public int getTipo() {
         return tipo;
     }
 
-    public void setTipo(boolean tipo) {
+    public void setTipo(int tipo) {
         this.tipo = tipo;
     }
 

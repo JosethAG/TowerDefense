@@ -9,23 +9,23 @@ package proyectotowerdefense;
  * @author Usuario
  */
 public class Lista {
-    private Nodo cabeza;
+    private NodoCastillo cabeza;
     
-    public void inserta(Persona p){
+    public void inserta(Castillo c){
         if(cabeza==null){
-            cabeza = new Nodo(p);
-        }else if (p.getId()<cabeza.getDato.getId()){
-            Nodo aux = new Nodo(p);
+            cabeza = new NodoCastillo(c);
+        }else if (c.getId() < cabeza.getDato().getId()){
+            NodoCastillo aux = new NodoCastillo(c);
             aux.setNext(cabeza);
             cabeza = aux;
         }else if(cabeza.getNext()==null){
-            cabeza.setNext(new Nodo(p));
+            cabeza.setNext(new NodoCastillo(c));
         }else{
-            Nodo aux = cabeza;
-            while(aux.getNext() != null && aux.getNext().getDato().getId() < p.getId()){
+            NodoCastillo aux = cabeza;
+            while(aux.getNext() != null && aux.getNext().getDato().getId() < c.getId()){
                 aux=aux.getNext();
         }
-            Nodo temp = new Nodo(p);
+            NodoCastillo temp = new NodoCastillo(c);
             temp.setNext(aux.getNext());
             aux.setNext(temp);
         }
@@ -33,23 +33,23 @@ public class Lista {
     public boolean existe(int id){
         boolean esta = false;
         if(cabeza != null){
-            Nodo aux = cabeza;
+            NodoCastillo aux = cabeza;
             
             while(aux != null && aux.getDato().getId() < id){
                 aux = aux.getNext();
             }
-            esta = (aux != null && aux:getDato().getId()==id);
+            esta = (aux != null && aux.getDato().getId()==id);
         }
         return esta;
     }
-    public void modifica(persona p){
+    public void modifica(Castillo c){
         if(cabeza != null){
-            Nodo aux = cabeza;
-            while(aux != null && aux.getDato().getId() < p.getId()){
+            NodoCastillo aux = cabeza;
+            while(aux != null && aux.getDato().getId() < c.getId()){
             aux = aux.getNext();
         }
-            if(aux != null && aux.getDato().getId()==p.getId()){
-                aux.getDato().setNombre(p.getNombre());
+            if(aux != null && aux.getDato().getId()==c.getId()){
+                aux.getDato().setVida(c.getVida());
             }
         }
     }
@@ -60,7 +60,7 @@ public class Lista {
                 cabeza = cabeza.getNext();
             }
             else{
-                Nodo aux = cabeza;
+                NodoCastillo aux = cabeza;
                 while(aux.getNext() != null && 
                         aux.getNext().getDato().getId() < id){
                     aux = aux.getNext();
@@ -72,22 +72,22 @@ public class Lista {
             }
         }
     }
-    public Persona extrae(int id){
-        Persona p = null;
+    public Castillo extrae(int id){
+        Castillo c = null;
         if(cabeza != null){
             if(cabeza.getDato().getId()==id){
                 cabeza = cabeza.getNext();
             }else{
-                Nodo aux = cabeza;
+                NodoCastillo aux = cabeza;
                 while(aux.getNext() != null && aux.getNext().getDato().getId() < id){
                     aux = aux.getNext();
                 }
                 if (aux.getNext() != null && aux.getNext().getDato().getId()==id){
-                    p = aux.getNext().getDato();
+                    c = aux.getNext().getDato();
                     aux.setNext(aux.getNext().getNext());
                 }
             }
         }
-        return p;
+        return c;
     }
 }

@@ -9,8 +9,8 @@ package proyectotowerdefense;
  * @author josep
  */
 public class InteraccionesTropa {
-    private Nodo place;
-    public static void Mago (int tipo1, int tipo2, Nodo place){
+    private NodoPila place;
+    public static void Mago (int tipo1, int tipo2, NodoPila place){
         if (tipo1 == 1 && tipo2 == 1) { //mago vs mago
         place = null;
     } else if (tipo1 == 1 && tipo2 == 2){ //mago vs arquero

@@ -1,40 +1,40 @@
 package proyectotowerdefense;
 
 public class Tropa {
-    private String tipo;
-    private String debilidad;
-    private String ventaja;
-    private int danho;
+    private int tipo;
+    private int debilidad;
+    private int ventaja;
+    private double danho;
 
-    public String getTipo() {
+    public int getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(int tipo) {
         this.tipo = tipo;
     }
 
-    public String getDebilidad() {
+    public int getDebilidad() {
         return debilidad;
     }
 
-    public void setDebilidad(String debilidad) {
+    public void setDebilidad(int debilidad) {
         this.debilidad = debilidad;
     }
 
-    public String getVentaja() {
+    public int getVentaja() {
         return ventaja;
     }
 
-    public void setVentaja(String ventaja) {
+    public void setVentaja(int ventaja) {
         this.ventaja = ventaja;
     }
 
-    public int getDanho() {
+    public double getDanho() {
         return danho;
     }
 
-    public void setDanho(int danho) {
+    public void setDanho(double danho) {
         this.danho = danho;
     }
 }

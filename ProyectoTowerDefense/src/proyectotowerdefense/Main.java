@@ -15,6 +15,11 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Pila Camino1cpu = new Pila();
+        Pila Camino1player = new Pila();
+        InteraccionesTropa interaccion = new InteraccionesTropa();
+        interaccion.CombateMago(Camino1cpu, Camino1player);
+
     }
     
 }

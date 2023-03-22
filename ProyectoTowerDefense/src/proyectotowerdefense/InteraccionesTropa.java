@@ -9,18 +9,42 @@ package proyectotowerdefense;
  * @author josep
  */
 public class InteraccionesTropa {
-    private NodoPila place;
-    public static void Mago (int tipo1, int tipo2, NodoPila place){
-        if (tipo1 == 1 && tipo2 == 1) { //mago vs mago
-        place = null;
-    } else if (tipo1 == 1 && tipo2 == 2){ //mago vs arquero
-        place = tipo2;
-    } else if (tipo1 == 2 && tipo2 == 1){ //arquero vs mago
-        place = tipo1;
-    } else if (tipo1 == 1 && tipo2 == 3){ //mago vs caballero
-        place = tipo1;
-    } else if (tipo1 == 3 && tipo2 == 1){ //caballero vs mago
-        place = tipo2;
+    public void CombateMago (Pila pilaCPU, Pila pilaPlayer){
+        if (pilaCPU.getCima().getValor().getTipo() == 1 && pilaPlayer.getCima().getValor().getTipo() == 1) { //mago vs mago
+            pilaCPU.pop();
+            pilaPlayer.pop();
+        } else if (pilaCPU.getCima().getValor().getTipo() == 1 && pilaPlayer.getCima().getValor().getTipo() == 2){ //mago vs arquero
+            pilaCPU.pop();
+        } else if (pilaCPU.getCima().getValor().getTipo() == 1 && pilaPlayer.getCima().getValor().getTipo() == 3){ //mago vs caballero
+            pilaPlayer.pop();
+        } else {
+            System.out.println("avanza al castillo");
+        }
     }
+
+    public void CombateArquero (Pila pilaCPU, Pila pilaPlayer){
+        if (pilaCPU.getCima().getValor().getTipo() == 2 && pilaPlayer.getCima().getValor().getTipo() == 2) { //Arquero vs Arquero
+            pilaCPU.pop();
+            pilaPlayer.pop();
+        } else if (pilaCPU.getCima().getValor().getTipo() == 2 && pilaPlayer.getCima().getValor().getTipo() == 1){ //Arquero vs Mago
+            pilaPlayer.pop();
+        } else if (pilaCPU.getCima().getValor().getTipo() == 2 && pilaPlayer.getCima().getValor().getTipo() == 3){ //Arquero vs caballero
+            pilaCPU.pop();
+        } else {
+            System.out.println("avanza al castillo");
+        }
+    }
+
+    public void CombateCaballero (Pila pilaCPU, Pila pilaPlayer){
+        if (pilaCPU.getCima().getValor().getTipo() == 3 && pilaPlayer.getCima().getValor().getTipo() == 3) { //Caballero vs Caballero
+            pilaCPU.pop();
+            pilaPlayer.pop();
+        } else if (pilaCPU.getCima().getValor().getTipo() == 3 && pilaPlayer.getCima().getValor().getTipo() == 1){ //Callero vs Mago
+            pilaCPU.pop();
+        } else if (pilaCPU.getCima().getValor().getTipo() == 3 && pilaPlayer.getCima().getValor().getTipo() == 2){ //Caballero vs Arquero
+            pilaPlayer.pop();
+        } else {
+            System.out.println("avanza al castillo");
+        }
     }
 }

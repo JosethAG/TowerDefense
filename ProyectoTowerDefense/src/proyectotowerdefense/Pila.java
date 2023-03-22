@@ -35,4 +35,8 @@ public class Pila {
             this.largo--;
         }
     }
+
+    public NodoPila getCima() {
+        return cima;
+    }
 }

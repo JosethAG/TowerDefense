@@ -8,16 +8,16 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Usuario
+ * @author Equipo4
  */
+
 public class Validacion {
     private int cantTropas;
+    private int cantTropasCPU;
 
-    public Validacion(int cantTropas) {
+    public Validacion(int cantTropas, int cantTropasCPU) {
         this.cantTropas = cantTropas;
-    }
-    public Validacion() {
-        this.cantTropas = 0;
+        this.cantTropasCPU = cantTropasCPU;
     }
 
     public int getCantTropas() {
@@ -27,11 +27,28 @@ public class Validacion {
     public void setCantTropas(int cantTropas) {
         this.cantTropas = cantTropas;
     }
-    public void validacion(){
-    if (cantTropas > 4){
-         JOptionPane.showMessageDialog(null, "Ha alcanzado el máximo de tropas permitidas");
-}else if(cantTropas <= 4){
-        JOptionPane.showMessageDialog(null, "Tropas seleccionadas exitosamente");
+
+    public int getCantTropasCPU() {
+        return cantTropasCPU;
     }
-}
+
+    public void setCantTropasCPU(int cantTropasCPU) {
+        this.cantTropasCPU = cantTropasCPU;
+    }
+
+    public void validacion(){
+        if(){
+
+        }
+    }
+
+    /*
+    public void validacion() {
+        if (cantTropas > 4) {
+            JOptionPane.showMessageDialog(null, "Ha alcanzado el máximo de tropas permitidas");
+        } else if (cantTropas <= 4) {
+            JOptionPane.showMessageDialog(null, "Tropas seleccionadas exitosamente");
+        }
+    }
+    */
 }

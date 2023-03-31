@@ -4,9 +4,6 @@
  */
 package proyectotowerdefense;
 
-import javax.swing.JOptionPane;
-
-
 /**
  *
  * @author Equipo4
@@ -18,50 +15,53 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Pila Camino1cpu = new Pila();
-        Pila Camino1player = new Pila();
-        Pila Camino2cpu = new Pila();
-        Pila Camino2player = new Pila();
-        InteraccionesTropa interaccion = new InteraccionesTropa();
+        Pila caminoCpu1 = new Pila();
+        Pila caminoPlayer1 = new Pila();
+        Pila caminoCpu2 = new Pila();
+        Pila caminoPlayer2 = new Pila();
         Castillo castilloCPU = new Castillo(1, 10, 1);
         Castillo castilloPlayer = new Castillo(2, 10, 2);
+        InteraccionesTropa interaccion = new InteraccionesTropa();
         int ronda = 1;
         boolean repetir = true;
         //Ciclo Principal
-        while(repetir){
+        while (repetir) {
             //Menu
             //Ciclo juego
-            while(castilloCPU.getVida() > 0 || castilloPlayer.getVida() > 0){
+            while (castilloCPU.getVida() > 0 || castilloPlayer.getVida() > 0) {
                 //preparacion
-                interaccion.Seleccion(Camino1player, Camino2player, ronda);
-                
+                interaccion.Seleccion(caminoPlayer1, caminoPlayer2, ronda);
 
                 //inicio
                 //interacciones
+                while (castilloCPU.getVida() > 0 || castilloPlayer.getVida() > 0 && (caminoCpu1.getCima() != null
+                        && caminoCpu2.getCima() != null && caminoPlayer1.getCima() != null
+                        && caminoPlayer1.getCima() != null)) {
+
+                    //Validacion para interaccion entre Camino1 CPU y Player
+                    if (caminoCpu1.getCima().getValor().getTipo() == 1) {
+                        interaccion.CombateMago(caminoCpu1, caminoPlayer1);
+                    }
+                    if (caminoCpu1.getCima().getValor().getTipo() == 2) {
+                        interaccion.CombateArquero(caminoCpu1, caminoPlayer1);
+                    }
+                    if (caminoCpu1.getCima().getValor().getTipo() == 3) {
+                        interaccion.CombateCaballero(caminoCpu1, caminoPlayer1);
+                    }
+                    //Validacion para interaccion entre Camino2 CPU y Player
+                    if (caminoCpu2.getCima().getValor().getTipo() == 1) {
+                        interaccion.CombateMago(caminoCpu2, caminoPlayer2);
+                    }
+                    if (caminoCpu2.getCima().getValor().getTipo() == 2) {
+                        interaccion.CombateArquero(caminoCpu2, caminoPlayer2);
+                    }
+                    if (caminoCpu2.getCima().getValor().getTipo() == 3) {
+                        interaccion.CombateCaballero(caminoCpu2, caminoPlayer2);
+                    }
+
+                }
                 ronda++;
             }
-        }
-        
-        //Validacion para interaccion entre Camino1 CPU y Player
-        if (Camino1cpu.getCima().getValor().getTipo() == 1) {
-            interaccion.CombateMago(Camino1cpu, Camino1player);
-        }
-        if (Camino1cpu.getCima().getValor().getTipo() == 2) {
-            interaccion.CombateArquero(Camino1cpu, Camino1player);
-        }
-        if (Camino1cpu.getCima().getValor().getTipo() == 3) {
-            interaccion.CombateCaballero(Camino1cpu, Camino1player);
-        }
-
-        //Validacion para interaccion entre Camino2 CPU y Player
-        if (Camino2cpu.getCima().getValor().getTipo() == 1) {
-            interaccion.CombateMago(Camino2cpu, Camino2player);
-        }
-        if (Camino2cpu.getCima().getValor().getTipo() == 2) {
-            interaccion.CombateArquero(Camino2cpu, Camino2player);
-        }
-        if (Camino2cpu.getCima().getValor().getTipo() == 3) {
-            interaccion.CombateCaballero(Camino2cpu, Camino2player);
         }
 
     }

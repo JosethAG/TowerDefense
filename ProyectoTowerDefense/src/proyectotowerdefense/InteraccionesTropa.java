@@ -4,6 +4,7 @@
  */
 package proyectotowerdefense;
 
+import java.util.Random;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,9 +29,30 @@ public class InteraccionesTropa {
             }
         }
     }
-    
-    public void RandomCPU(){
-        
+
+    public void RandomCPU(Pila pila1, Pila pila2, int ronda) {
+        Random azar = new Random();
+        int numTropas = ronda + 4;
+        int numPush = 0;
+        int camino;
+        while (ronda < numPush) {
+            numPush++;
+            camino = (azar.nextInt(2) + 1);
+            JOptionPane.showMessageDialog(null, "Se seleccionó el camino  número " + camino);
+
+            if (camino == 1) {
+                int tropa = (azar.nextInt(3) + 1);
+                JOptionPane.showMessageDialog(null, "Se seleccionó la tropa numero " + tropa);
+                pila1.push(new Tropa(tropa));
+            } else {
+                int tropa = (azar.nextInt(3) + 1);
+                JOptionPane.showMessageDialog(null, "Se seleccionó la tropa numero " + tropa);
+                pila2.push(new Tropa(tropa));
+            }
+
+        }
+
+
     }
     
     public void CombateMago (Pila pilaCPU, Pila pilaPlayer){

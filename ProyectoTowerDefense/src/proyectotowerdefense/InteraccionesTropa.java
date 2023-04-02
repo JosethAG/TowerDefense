@@ -32,7 +32,7 @@ public class InteraccionesTropa {
 
     public void RandomCPU(Pila pila1, Pila pila2, int ronda) {
         Random azar = new Random();
-        ronda = (azar.nextInt(4) + 1);
+        int numTropas = ronda + 4;
         int numPush = 0;
         int camino;
         while (ronda < numPush) {

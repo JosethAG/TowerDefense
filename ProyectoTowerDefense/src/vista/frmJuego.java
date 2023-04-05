@@ -16,6 +16,7 @@ public class frmJuego extends javax.swing.JFrame {
      * Creates new form frmJuego
      */
     public frmJuego() {
+        Preparacion.lblNumRondaP.setText(lblNumRonda.getText());
         initComponents();
          setSize(1920, 1080); //Tamaño del frame
         setResizable(false); //Para no poder extender al frame
@@ -77,6 +78,8 @@ public class frmJuego extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblNRonda = new javax.swing.JLabel();
+        lblNumRonda = new javax.swing.JLabel();
         lblCastilloCPU = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblTropa1CPU = new javax.swing.JLabel();
@@ -87,6 +90,12 @@ public class frmJuego extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblNRonda.setText("N° Ronda");
+        getContentPane().add(lblNRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        lblNumRonda.setText(".");
+        getContentPane().add(lblNumRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
 
         lblCastilloCPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Castillo-rojo-x307.png"))); // NOI18N
         getContentPane().add(lblCastilloCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
@@ -151,6 +160,8 @@ public class frmJuego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCastilloCPU;
     private javax.swing.JLabel lblMapa;
+    private javax.swing.JLabel lblNRonda;
+    private javax.swing.JLabel lblNumRonda;
     private javax.swing.JLabel lblTropa1CPU;
     private javax.swing.JLabel lblTropa2CPU;
     private javax.swing.JLabel lblTropaPlayer1;

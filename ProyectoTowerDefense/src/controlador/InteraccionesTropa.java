@@ -2,59 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyectotowerdefense;
+package controlador;
 
 import java.util.Random;
 import javax.swing.JOptionPane;
+import proyectotowerdefense.Pila;
+import proyectotowerdefense.Pila;
+import proyectotowerdefense.Tropa;
+import proyectotowerdefense.Tropa;
 
 /**
  *
  * @author Equipo4
  */
 public class InteraccionesTropa {
-    
-    public void Seleccion(Pila pila1, Pila pila2, int ronda){
-        int numTropas = ronda + 4;
-        int numPush = 0;
-        int camino;
-        while(numTropas < numPush){
-            numPush++;
-            camino = Integer.valueOf(JOptionPane.showInputDialog("Camino al que desea ingresar la tropa [1] o [2]"));
-            if(camino == 1){
-                int tropa = Integer.valueOf(JOptionPane.showInputDialog("Cual tropa desea colocar [1] Mago [2] Arquero [3] Caballero"));
-                pila1.push(new Tropa(tropa));
-            } else {
-                int tropa = Integer.valueOf(JOptionPane.showInputDialog("Cual tropa desea colocar [1] Mago [2] Arquero [3] Caballero"));
-                pila2.push(new Tropa(tropa));
-            }
-        }
-    }
 
-    public void RandomCPU(Pila pila1, Pila pila2, int ronda) {
-        Random azar = new Random();
-        int numTropas = ronda + 4;
-        int numPush = 0;
-        int camino;
-        while (ronda < numPush) {
-            numPush++;
-            camino = (azar.nextInt(2) + 1);
-            JOptionPane.showMessageDialog(null, "Se seleccionó el camino  número " + camino);
-
-            if (camino == 1) {
-                int tropa = (azar.nextInt(3) + 1);
-                JOptionPane.showMessageDialog(null, "Se seleccionó la tropa numero " + tropa);
-                pila1.push(new Tropa(tropa));
-            } else {
-                int tropa = (azar.nextInt(3) + 1);
-                JOptionPane.showMessageDialog(null, "Se seleccionó la tropa numero " + tropa);
-                pila2.push(new Tropa(tropa));
-            }
-
-        }
-
-
-    }
-    
     public void CombateMago (Pila pilaCPU, Pila pilaPlayer){
         if (pilaCPU.getCima().getValor().getTipo() == 1 && pilaPlayer.getCima().getValor().getTipo() == 1) { //mago vs mago
             pilaCPU.pop();

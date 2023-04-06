@@ -1,4 +1,4 @@
-package proyectotowerdefense;
+package modelo;
 
 public class Pila {
     private NodoPila cima;
@@ -46,7 +46,7 @@ public class Pila {
 
         // Recorre la pila hasta el ultimo node.
         while (aux != null) {
-            System.out.println("|\t" + aux.getValor().getTipo() + "\t|");
+            System.out.println("|\t" + aux.getValor().getTipo() + "\n" + aux.getValor().getDanho() + "\n" + aux.getValor().getUrl() + "\t|");
             System.out.println("-----------------");
             aux = aux.getSiguiente();
         }

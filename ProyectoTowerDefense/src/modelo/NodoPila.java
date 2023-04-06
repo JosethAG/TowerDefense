@@ -1,4 +1,4 @@
-package proyectotowerdefense;
+package modelo;
 
 public class NodoPila {
     private Tropa valor;

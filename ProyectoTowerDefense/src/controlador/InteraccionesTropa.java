@@ -4,12 +4,7 @@
  */
 package controlador;
 
-import java.util.Random;
-import javax.swing.JOptionPane;
-import proyectotowerdefense.Pila;
-import proyectotowerdefense.Pila;
-import proyectotowerdefense.Tropa;
-import proyectotowerdefense.Tropa;
+import modelo.Pila;
 
 /**
  *

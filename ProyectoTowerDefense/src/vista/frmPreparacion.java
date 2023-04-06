@@ -4,6 +4,7 @@
  */
 package vista;
 
+import controlador.Hilo;
 import controlador.PreparacionJuego;
 
 /**
@@ -16,10 +17,13 @@ public class frmPreparacion extends javax.swing.JFrame {
      * Creates new form frmPreparacion2
      */
     PreparacionJuego prepjuego = new PreparacionJuego();
-    
+
     public frmPreparacion() {
         initComponents();
         setLocationRelativeTo(null); //Para que se muestre centrado
+        prepjuego.RandomCPU(Integer.valueOf(lblNumRondaP.getText()));
+
+
     }
 
     /**
@@ -31,7 +35,6 @@ public class frmPreparacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         lblMago = new javax.swing.JLabel();
         lblArquera = new javax.swing.JLabel();
         lblCaballero = new javax.swing.JLabel();
@@ -46,18 +49,26 @@ public class frmPreparacion extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         lblNumRondaP = new javax.swing.JLabel();
         cmbCamino = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        btnIniciar = new javax.swing.JButton();
+        lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(22, 50, 91));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        lblMago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Mago-Verde-x54.png"))); // NOI18N
+        getContentPane().add(lblMago, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
 
-        lblMago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Mago-Verde-x54.png"))); // NOI18N
-
-        lblArquera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Arquera-Verde-x59.png"))); // NOI18N
+        lblArquera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Arquera-Verde-x59.png"))); // NOI18N
         lblArquera.setAlignmentX(0.5F);
+        getContentPane().add(lblArquera, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, -1, -1));
 
-        lblCaballero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/caballero-Verde-85x90.png"))); // NOI18N
+        lblCaballero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/caballero-Verde-85x90.png"))); // NOI18N
+        getContentPane().add(lblCaballero, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
 
         btnAgregarM.setBackground(new java.awt.Color(0, 0, 0));
         btnAgregarM.setForeground(new java.awt.Color(255, 255, 255));
@@ -67,19 +78,24 @@ public class frmPreparacion extends javax.swing.JFrame {
                 btnAgregarMActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAgregarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Elija la tropa que desea agregar");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Tropas restantes");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 33, -1, -1));
 
         lblCantidadTropas.setForeground(new java.awt.Color(255, 255, 255));
         lblCantidadTropas.setText("1");
+        getContentPane().add(lblCantidadTropas, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 53, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Preparación");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 7, -1, -1));
 
         btnAgregarA.setBackground(new java.awt.Color(0, 0, 0));
         btnAgregarA.setForeground(new java.awt.Color(255, 255, 255));
@@ -89,6 +105,7 @@ public class frmPreparacion extends javax.swing.JFrame {
                 btnAgregarAActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAgregarA, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, -1, -1));
 
         btnAgregarC.setBackground(new java.awt.Color(0, 0, 0));
         btnAgregarC.setForeground(new java.awt.Color(255, 255, 255));
@@ -98,150 +115,86 @@ public class frmPreparacion extends javax.swing.JFrame {
                 btnAgregarCActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAgregarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, -1, -1));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Elija el camino");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("N° Ronda");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 31, -1, -1));
 
         lblNumRondaP.setForeground(new java.awt.Color(255, 255, 255));
         lblNumRondaP.setText("1");
+        getContentPane().add(lblNumRondaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 53, -1, -1));
 
         cmbCamino.setBackground(new java.awt.Color(0, 0, 0));
         cmbCamino.setForeground(new java.awt.Color(255, 255, 255));
         cmbCamino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
+        getContentPane().add(cmbCamino, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 163, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addComponent(lblNumRondaP))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel8)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(lblMago))
-                            .addComponent(btnAgregarM))
-                        .addGap(74, 74, 74)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblArquera)
-                            .addComponent(btnAgregarA))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(25, 25, 25))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblCantidadTropas)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblCaballero)
-                                .addComponent(btnAgregarC)))
-                        .addGap(67, 67, 67))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(206, 206, 206))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(175, 175, 175)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmbCamino, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCantidadTropas)
-                            .addComponent(lblNumRondaP)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5))))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbCamino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(lblArquera)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAgregarA))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblMago)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAgregarM))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblCaballero)
-                                .addGap(23, 23, 23)
-                                .addComponent(btnAgregarC)))))
-                .addGap(110, 110, 110))
-        );
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 503, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 419, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel2.setText("jLabel1");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, -1, -1));
+
+        jLabel3.setText("jLabel1");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+
+        jLabel9.setText("jLabel1");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
+
+        btnIniciar.setBackground(new java.awt.Color(0, 102, 0));
+        btnIniciar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
+        btnIniciar.setText("INICIAR");
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 110, 50));
+
+        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/FondoPreparacion.png"))); // NOI18N
+        lblFondo.setMaximumSize(new java.awt.Dimension(500, 420));
+        lblFondo.setMinimumSize(new java.awt.Dimension(500, 420));
+        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMActionPerformed
+    private void btnAgregarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCActionPerformed
         // TODO add your handling code here:
-        prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()), 
-                Integer.valueOf(lblNumRondaP.getText()), 
-                String.valueOf(cmbCamino.getSelectedItem()), 1);
-    }//GEN-LAST:event_btnAgregarMActionPerformed
+        prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
+                Integer.valueOf(lblNumRondaP.getText()),
+                String.valueOf(cmbCamino.getSelectedItem()), 3, 2, "/img/caballero-Verde-85x90.png");
+    }//GEN-LAST:event_btnAgregarCActionPerformed
 
     private void btnAgregarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAActionPerformed
         // TODO add your handling code here:
-        prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()), 
-                Integer.valueOf(lblNumRondaP.getText()), 
-                String.valueOf(cmbCamino.getSelectedItem()), 2);
+        prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
+                Integer.valueOf(lblNumRondaP.getText()),
+                String.valueOf(cmbCamino.getSelectedItem()), 2, 1, "/img/Arquera-Verde-x59.png");
     }//GEN-LAST:event_btnAgregarAActionPerformed
 
-    private void btnAgregarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCActionPerformed
+    private void btnAgregarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMActionPerformed
         // TODO add your handling code here:
-        prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()), 
-                Integer.valueOf(lblNumRondaP.getText()), 
-                String.valueOf(cmbCamino.getSelectedItem()), 3);
-    }//GEN-LAST:event_btnAgregarCActionPerformed
+        prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
+                Integer.valueOf(lblNumRondaP.getText()),
+                String.valueOf(cmbCamino.getSelectedItem()), 1, 1.5, "/img/Mago-Verde-x54.png");
+    }//GEN-LAST:event_btnAgregarMActionPerformed
+
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        // TODO add your handling code here:
+        prepjuego.ActualizarIconoCam1(); //Actualiza inconos iniciales
+        prepjuego.ActualizarIconoCam2(); //Actualiza inconos iniciales
+
+        prepjuego.IniciaJuego(); //Incia Juego
+        this.setVisible(false);
+
+    }//GEN-LAST:event_btnIniciarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,16 +236,21 @@ public class frmPreparacion extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarA;
     private javax.swing.JButton btnAgregarC;
     private javax.swing.JButton btnAgregarM;
+    private javax.swing.JButton btnIniciar;
     private javax.swing.JComboBox<String> cmbCamino;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblArquera;
     private javax.swing.JLabel lblCaballero;
     private javax.swing.JLabel lblCantidadTropas;
+    private javax.swing.JLabel lblFondo;
     private javax.swing.JLabel lblMago;
     public static javax.swing.JLabel lblNumRondaP;
     // End of variables declaration//GEN-END:variables

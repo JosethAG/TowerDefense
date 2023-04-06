@@ -3,8 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
-
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import controlador.Hilo;
+
 
 /**
  *
@@ -21,10 +24,14 @@ public class frmJuego extends javax.swing.JFrame {
         setSize(1920, 1080); //Tamaño del frame
         setResizable(false); //Para no poder extender al frame
         setLocationRelativeTo(null); //Para que se muestre centrado
-        Hilo hilo = new Hilo(this); //Se hace la instancia con la clase hilo y se le pasa un this
-        hilo.start(); //Es un metodo que pertenece a la clase Thread de la cual hilo esta heredando y se usa para llamar al metodo ejecutar de la clase hilo e iniciar el hilo
+        
+       // PreparacionJuego prepJuego = new PreparacionJuego(this); //Se hace la instancia con la clase hilo y se le pasa un this
+    
     }
 
+    
+    
+    
     public void moverTropas(){
         //Lo que me permite es que cada vez que se llame en el hilo toma las posiciones de las tropas y las mueve
         lblTropa1CPU.setLocation(lblTropa1CPU.getX() + 5, lblTropa1CPU.getY());
@@ -89,31 +96,36 @@ public class frmJuego extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblNRonda.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblNRonda.setForeground(new java.awt.Color(0, 0, 0));
         lblNRonda.setText("N° Ronda");
-        getContentPane().add(lblNRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(lblNRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 30));
 
-        lblNumRonda.setText(".");
-        getContentPane().add(lblNumRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        lblNumRonda.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblNumRonda.setForeground(new java.awt.Color(0, 0, 0));
+        lblNumRonda.setText("1");
+        getContentPane().add(lblNumRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 80, -1));
+        lblNumRonda.getAccessibleContext().setAccessibleName("1");
 
-        lblCastilloCPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Castillo-rojo-x307.png"))); // NOI18N
+        lblCastilloCPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Castillo-rojo-x307.png"))); // NOI18N
         getContentPane().add(lblCastilloCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Castillo-verde-x307.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Castillo-verde-x307.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1560, 360, -1, -1));
 
-        lblTropa1CPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Arquera Roja x59.png"))); // NOI18N
-        getContentPane().add(lblTropa1CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, -1, -1));
+        lblTropa1CPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Arquera-Roja-x59.png"))); // NOI18N
+        getContentPane().add(lblTropa1CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, -1, -1));
 
-        lblTropa2CPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/caballero-Rojo-x59.png"))); // NOI18N
+        lblTropa2CPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/caballero-Rojo-x59.png"))); // NOI18N
         getContentPane().add(lblTropa2CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 560, -1, -1));
 
-        lblTropaPlayer1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Mago-Verde-x54.png"))); // NOI18N
-        getContentPane().add(lblTropaPlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 450, -1, -1));
+        lblTropaPlayer1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Mago-Verde-x54.png"))); // NOI18N
+        getContentPane().add(lblTropaPlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 440, -1, -1));
 
-        lblTropaPlayer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Arquera-Verde-x59.png"))); // NOI18N
+        lblTropaPlayer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Arquera-Verde-x59.png"))); // NOI18N
         getContentPane().add(lblTropaPlayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 570, -1, -1));
 
-        lblMapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/TowerDefence.jpg"))); // NOI18N
+        lblMapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/TowerDefence.jpg"))); // NOI18N
         getContentPane().add(lblMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -160,9 +172,9 @@ public class frmJuego extends javax.swing.JFrame {
     private javax.swing.JLabel lblMapa;
     private javax.swing.JLabel lblNRonda;
     private javax.swing.JLabel lblNumRonda;
-    private javax.swing.JLabel lblTropa1CPU;
-    private javax.swing.JLabel lblTropa2CPU;
-    private javax.swing.JLabel lblTropaPlayer1;
-    private javax.swing.JLabel lblTropaPlayer2;
+    public static javax.swing.JLabel lblTropa1CPU;
+    public static javax.swing.JLabel lblTropa2CPU;
+    public static javax.swing.JLabel lblTropaPlayer1;
+    public static javax.swing.JLabel lblTropaPlayer2;
     // End of variables declaration//GEN-END:variables
 }

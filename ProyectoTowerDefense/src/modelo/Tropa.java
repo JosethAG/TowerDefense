@@ -1,11 +1,14 @@
-package proyectotowerdefense;
+package modelo;
 
 public class Tropa {
     private int tipo;
     private double danho;
+    private String url;
 
-    public Tropa(int tipo) {
+    public Tropa(int tipo,double danho,String url) {
         this.tipo = tipo;
+        this.danho = danho;
+        this.url = url;
     }
     
     public int getTipo() {
@@ -22,5 +25,13 @@ public class Tropa {
 
     public void setDanho(double danho) {
         this.danho = danho;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

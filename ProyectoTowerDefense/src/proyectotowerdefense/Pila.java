@@ -39,4 +39,16 @@ public class Pila {
     public NodoPila getCima() {
         return cima;
     }
+    
+    public void listar() {
+        // Crea una copia de la pila.
+        NodoPila aux = cima; //Se llama a la clase nodo y se le pone un nombre al objeto que es aux y se le dice que ese abojeto va a ser igual a la cima 
+
+        // Recorre la pila hasta el ultimo node.
+        while (aux != null) {
+            System.out.println("|\t" + aux.getValor().getTipo() + "\t|");
+            System.out.println("-----------------");
+            aux = aux.getSiguiente();
+        }
+    }
 }

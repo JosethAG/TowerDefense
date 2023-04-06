@@ -4,6 +4,8 @@
  */
 package proyectotowerdefense;
 
+import controlador.InteraccionesTropa;
+
 /**
  *
  * @author Equipo4
@@ -30,7 +32,7 @@ public class Main {
             //Ciclo juego
             while (castilloCPU.getVida() > 0 || castilloPlayer.getVida() > 0) {
                 //preparacion
-                interaccion.Seleccion(caminoPlayer1, caminoPlayer2, ronda);
+                //interaccion.Seleccion(caminoPlayer1, caminoPlayer2, ronda);
 
                 //inicio
                 //interacciones

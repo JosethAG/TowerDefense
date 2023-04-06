@@ -16,18 +16,17 @@ public class frmJuego extends javax.swing.JFrame {
      * Creates new form frmJuego
      */
     public frmJuego() {
-        Preparacion.lblNumRondaP.setText(lblNumRonda.getText());
+        //Preparacion.lblNumRondaP.setText(lblNumRonda.getText());
         initComponents();
-         setSize(1920, 1080); //Tamaño del frame
+        setSize(1920, 1080); //Tamaño del frame
         setResizable(false); //Para no poder extender al frame
         setLocationRelativeTo(null); //Para que se muestre centrado
         Hilo hilo = new Hilo(this); //Se hace la instancia con la clase hilo y se le pasa un this
         hilo.start(); //Es un metodo que pertenece a la clase Thread de la cual hilo esta heredando y se usa para llamar al metodo ejecutar de la clase hilo e iniciar el hilo
     }
-    
-    
-    public void moverTropas() //Lo que me permite es que cada vez que se llame en el hilo toma las posiciones de las tropas y las mueve
-    {
+
+    public void moverTropas(){
+        //Lo que me permite es que cada vez que se llame en el hilo toma las posiciones de las tropas y las mueve
         lblTropa1CPU.setLocation(lblTropa1CPU.getX() + 5, lblTropa1CPU.getY());
         lblTropaPlayer1.setLocation(lblTropaPlayer1.getX() - 5, lblTropaPlayer1.getY());
 
@@ -67,7 +66,6 @@ public class frmJuego extends javax.swing.JFrame {
         }
 
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -110,10 +108,10 @@ public class frmJuego extends javax.swing.JFrame {
         getContentPane().add(lblTropa2CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 560, -1, -1));
 
         lblTropaPlayer1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Mago-Verde-x54.png"))); // NOI18N
-        getContentPane().add(lblTropaPlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1430, 450, -1, -1));
+        getContentPane().add(lblTropaPlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 450, -1, -1));
 
         lblTropaPlayer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Arquera-Verde-x59.png"))); // NOI18N
-        getContentPane().add(lblTropaPlayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1440, 570, -1, -1));
+        getContentPane().add(lblTropaPlayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 570, -1, -1));
 
         lblMapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/TowerDefence.jpg"))); // NOI18N
         getContentPane().add(lblMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

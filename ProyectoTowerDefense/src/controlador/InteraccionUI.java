@@ -4,14 +4,17 @@
  */
 package controlador;
 
+import vista.frmPreparacion;
+
 /**
  *
  * @author Administrador
  */
 public class InteraccionUI {
+    frmPreparacion frmPreparacion;
     
-    public String ActualizarCantidadUI(String cantTropaUI){
-        return cantTropaUI;
+    public void ActualizarCantidadUI(String cantidadActual){
+        frmPreparacion.lblCantidadTropas.setText(cantidadActual);
     }
     
     public String ActualizarCantidadUI(int ronda){

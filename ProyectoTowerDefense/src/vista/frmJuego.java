@@ -3,10 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
-import java.awt.Image;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import controlador.Hilo;
+
 
 
 /**
@@ -105,24 +102,15 @@ public class frmJuego extends javax.swing.JFrame {
         lblNumRonda.setForeground(new java.awt.Color(0, 0, 0));
         lblNumRonda.setText("1");
         getContentPane().add(lblNumRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 80, -1));
-        lblNumRonda.getAccessibleContext().setAccessibleName("1");
 
         lblCastilloCPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Castillo-rojo-x307.png"))); // NOI18N
         getContentPane().add(lblCastilloCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Castillo-verde-x307.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1560, 360, -1, -1));
-
-        lblTropa1CPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Arquera-Roja-x59.png"))); // NOI18N
         getContentPane().add(lblTropa1CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, -1, -1));
-
-        lblTropa2CPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/caballero-Rojo-x59.png"))); // NOI18N
         getContentPane().add(lblTropa2CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 560, -1, -1));
-
-        lblTropaPlayer1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Mago-Verde-x54.png"))); // NOI18N
         getContentPane().add(lblTropaPlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 440, -1, -1));
-
-        lblTropaPlayer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Arquera-Verde-x59.png"))); // NOI18N
         getContentPane().add(lblTropaPlayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 570, -1, -1));
 
         lblMapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/TowerDefence.jpg"))); // NOI18N
@@ -171,7 +159,7 @@ public class frmJuego extends javax.swing.JFrame {
     private javax.swing.JLabel lblCastilloCPU;
     private javax.swing.JLabel lblMapa;
     private javax.swing.JLabel lblNRonda;
-    private javax.swing.JLabel lblNumRonda;
+    public static javax.swing.JLabel lblNumRonda;
     public static javax.swing.JLabel lblTropa1CPU;
     public static javax.swing.JLabel lblTropa2CPU;
     public static javax.swing.JLabel lblTropaPlayer1;

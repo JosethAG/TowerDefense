@@ -21,8 +21,11 @@ public class frmPreparacion extends javax.swing.JFrame {
     public frmPreparacion() {
         initComponents();
         setLocationRelativeTo(null); //Para que se muestre centrado
+        lblNumRondaP.setText(frmJuego.lblNumRonda.getText());
+        lblCantidadTropas.setText(String.valueOf(Integer.parseInt(lblNumRondaP.getText())+4));
         prepjuego.RandomCPU(Integer.valueOf(lblNumRondaP.getText()));
-
+        prepjuego.lista();
+        //btnIniciar.setEnabled(lblCantidadTropas.getText().equals("0"));
 
     }
 
@@ -49,11 +52,12 @@ public class frmPreparacion extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         lblNumRondaP = new javax.swing.JLabel();
         cmbCamino = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblTropa2 = new javax.swing.JLabel();
+        lblTropa1 = new javax.swing.JLabel();
+        lblTropa3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         btnIniciar = new javax.swing.JButton();
+        lblTropasCPU = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -95,7 +99,7 @@ public class frmPreparacion extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Preparación");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 7, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
         btnAgregarA.setBackground(new java.awt.Color(0, 0, 0));
         btnAgregarA.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,18 +137,15 @@ public class frmPreparacion extends javax.swing.JFrame {
         cmbCamino.setForeground(new java.awt.Color(255, 255, 255));
         cmbCamino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
         getContentPane().add(cmbCamino, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 163, -1));
+        getContentPane().add(lblTropa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
+        getContentPane().add(lblTropa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, -1, -1));
+        getContentPane().add(lblTropa3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
 
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, -1, -1));
-
-        jLabel2.setText("jLabel1");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, -1, -1));
-
-        jLabel3.setText("jLabel1");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
-
-        jLabel9.setText("jLabel1");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
+        jLabel9.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("PRIMERAS TROPAS ENEMIGAS");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
 
         btnIniciar.setBackground(new java.awt.Color(0, 102, 0));
         btnIniciar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -156,6 +157,17 @@ public class frmPreparacion extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 110, 50));
+
+        lblTropasCPU.setBackground(new java.awt.Color(51, 0, 0));
+        lblTropasCPU.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTropasCPU.setForeground(new java.awt.Color(255, 255, 255));
+        lblTropasCPU.setText("Mostrar");
+        lblTropasCPU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblTropasCPUActionPerformed(evt);
+            }
+        });
+        getContentPane().add(lblTropasCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, -1, 30));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/FondoPreparacion.png"))); // NOI18N
         lblFondo.setMaximumSize(new java.awt.Dimension(500, 420));
@@ -188,13 +200,19 @@ public class frmPreparacion extends javax.swing.JFrame {
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         // TODO add your handling code here:
-        prepjuego.ActualizarIconoCam1(); //Actualiza inconos iniciales
-        prepjuego.ActualizarIconoCam2(); //Actualiza inconos iniciales
-
-        prepjuego.IniciaJuego(); //Incia Juego
+        prepjuego.ActualizarIconoCam(); //Actualiza inconos iniciales
+        //prepjuego.ActualizarIconoCam1();//Actualiza inconos iniciales
+        //prepjuego.IniciaJuego(); //Incia Juego
         this.setVisible(false);
 
+
     }//GEN-LAST:event_btnIniciarActionPerformed
+
+    private void lblTropasCPUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblTropasCPUActionPerformed
+        // TODO add your handling code here:
+        prepjuego.MostrarTropasCPU();
+        prepjuego.lista();
+    }//GEN-LAST:event_lblTropasCPUActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,6 +242,7 @@ public class frmPreparacion extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -236,11 +255,8 @@ public class frmPreparacion extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarA;
     private javax.swing.JButton btnAgregarC;
     private javax.swing.JButton btnAgregarM;
-    private javax.swing.JButton btnIniciar;
+    public static javax.swing.JButton btnIniciar;
     private javax.swing.JComboBox<String> cmbCamino;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -249,9 +265,13 @@ public class frmPreparacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblArquera;
     private javax.swing.JLabel lblCaballero;
-    private javax.swing.JLabel lblCantidadTropas;
+    public static javax.swing.JLabel lblCantidadTropas;
     private javax.swing.JLabel lblFondo;
     private javax.swing.JLabel lblMago;
     public static javax.swing.JLabel lblNumRondaP;
+    public static javax.swing.JLabel lblTropa1;
+    public static javax.swing.JLabel lblTropa2;
+    public static javax.swing.JLabel lblTropa3;
+    private javax.swing.JButton lblTropasCPU;
     // End of variables declaration//GEN-END:variables
 }

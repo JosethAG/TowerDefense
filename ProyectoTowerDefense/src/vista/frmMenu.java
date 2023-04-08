@@ -24,7 +24,7 @@ public class frmMenu extends javax.swing.JFrame {
         this.setContentPane(fondo);
 
         setResizable(false);
-        this.setTitle("TOWER DEFENSE INICIO");
+        this.setTitle(" INICIO");
         initComponents();
         this.setLocationRelativeTo(null);
 

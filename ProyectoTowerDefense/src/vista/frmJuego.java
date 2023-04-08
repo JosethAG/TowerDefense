@@ -93,15 +93,15 @@ public class frmJuego extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblNRonda.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblNRonda.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblNRonda.setForeground(new java.awt.Color(0, 0, 0));
         lblNRonda.setText("N° Ronda");
-        getContentPane().add(lblNRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 30));
+        getContentPane().add(lblNRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 4, 170, 30));
 
-        lblNumRonda.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblNumRonda.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblNumRonda.setForeground(new java.awt.Color(0, 0, 0));
         lblNumRonda.setText("1");
-        getContentPane().add(lblNumRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 80, -1));
+        getContentPane().add(lblNumRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(172, 0, 40, 40));
 
         lblCastilloCPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Castillo-rojo-x307.png"))); // NOI18N
         getContentPane().add(lblCastilloCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));

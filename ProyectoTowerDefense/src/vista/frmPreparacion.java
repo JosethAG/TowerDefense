@@ -6,6 +6,7 @@ package vista;
 
 import controlador.Hilo;
 import controlador.PreparacionJuego;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,10 +23,10 @@ public class frmPreparacion extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //Para que se muestre centrado
         lblNumRondaP.setText(frmJuego.lblNumRonda.getText());
-        lblCantidadTropas.setText(String.valueOf(Integer.parseInt(lblNumRondaP.getText())+4));
+        lblCantidadTropas.setText(String.valueOf(Integer.parseInt(lblNumRondaP.getText()) + 4));
         prepjuego.RandomCPU(Integer.valueOf(lblNumRondaP.getText()));
         prepjuego.lista();
-        //btnIniciar.setEnabled(lblCantidadTropas.getText().equals("0"));
+        btnIniciar.setEnabled(lblCantidadTropas.getText().equals("0"));
 
     }
 
@@ -58,6 +59,7 @@ public class frmPreparacion extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         btnIniciar = new javax.swing.JButton();
         lblTropasCPU = new javax.swing.JButton();
+        btnOcultarTropas = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -90,16 +92,28 @@ public class frmPreparacion extends javax.swing.JFrame {
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Tropas restantes");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 33, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 31, -1, -1));
 
         lblCantidadTropas.setForeground(new java.awt.Color(255, 255, 255));
         lblCantidadTropas.setText("1");
+        lblCantidadTropas.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                lblCantidadTropasInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
+        lblCantidadTropas.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblCantidadTropasPropertyChange(evt);
+            }
+        });
         getContentPane().add(lblCantidadTropas, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 53, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Preparación");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 10, -1, -1));
 
         btnAgregarA.setBackground(new java.awt.Color(0, 0, 0));
         btnAgregarA.setForeground(new java.awt.Color(255, 255, 255));
@@ -126,12 +140,12 @@ public class frmPreparacion extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("N° Ronda");
+        jLabel8.setText("Número Ronda");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 31, -1, -1));
 
         lblNumRondaP.setForeground(new java.awt.Color(255, 255, 255));
         lblNumRondaP.setText("1");
-        getContentPane().add(lblNumRondaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 53, -1, -1));
+        getContentPane().add(lblNumRondaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
 
         cmbCamino.setBackground(new java.awt.Color(0, 0, 0));
         cmbCamino.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,7 +181,18 @@ public class frmPreparacion extends javax.swing.JFrame {
                 lblTropasCPUActionPerformed(evt);
             }
         });
-        getContentPane().add(lblTropasCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, -1, 30));
+        getContentPane().add(lblTropasCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, -1, 30));
+
+        btnOcultarTropas.setBackground(new java.awt.Color(51, 0, 0));
+        btnOcultarTropas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnOcultarTropas.setForeground(new java.awt.Color(255, 255, 255));
+        btnOcultarTropas.setText("Ocultar");
+        btnOcultarTropas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOcultarTropasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnOcultarTropas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, -1, 30));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/FondoPreparacion.png"))); // NOI18N
         lblFondo.setMaximumSize(new java.awt.Dimension(500, 420));
@@ -179,23 +204,38 @@ public class frmPreparacion extends javax.swing.JFrame {
 
     private void btnAgregarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCActionPerformed
         // TODO add your handling code here:
-        prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
-                Integer.valueOf(lblNumRondaP.getText()),
-                String.valueOf(cmbCamino.getSelectedItem()), 3, 2, "/img/caballero-Verde-85x90.png");
+
+        if (!lblCantidadTropas.getText().equals("0"))
+            prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
+                    Integer.valueOf(lblNumRondaP.getText()),
+                    String.valueOf(cmbCamino.getSelectedItem()), 3, 2, "/img/caballero-Verde-85x90.png");
+        else {
+            JOptionPane.showMessageDialog(null, "Ha alcanzado el máximo de tropas por ronda", "ALERTA", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnAgregarCActionPerformed
 
     private void btnAgregarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAActionPerformed
         // TODO add your handling code here:
-        prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
-                Integer.valueOf(lblNumRondaP.getText()),
-                String.valueOf(cmbCamino.getSelectedItem()), 2, 1, "/img/Arquera-Verde-x59.png");
+        if (!lblCantidadTropas.getText().equals("0")) {
+            prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
+                    Integer.valueOf(lblNumRondaP.getText()),
+                    String.valueOf(cmbCamino.getSelectedItem()), 2, 1, "/img/Arquera-Verde-x59.png");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Ha alcanzado el máximo de tropas por ronda", "ALERTA", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnAgregarAActionPerformed
 
     private void btnAgregarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMActionPerformed
         // TODO add your handling code here:
-        prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
-                Integer.valueOf(lblNumRondaP.getText()),
-                String.valueOf(cmbCamino.getSelectedItem()), 1, 1.5, "/img/Mago-Verde-x54.png");
+        if (!lblCantidadTropas.getText().equals("0")) {
+            prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
+                    Integer.valueOf(lblNumRondaP.getText()),
+                    String.valueOf(cmbCamino.getSelectedItem()), 1, 1.5, "/img/Mago-Verde-x54.png");
+        } else {
+            JOptionPane.showMessageDialog(null, "Ha alcanzado el máximo de tropas por ronda", "ALERTA", JOptionPane.WARNING_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnAgregarMActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
@@ -203,7 +243,6 @@ public class frmPreparacion extends javax.swing.JFrame {
         prepjuego.ActualizarIconoCam(); //Actualiza inconos iniciales
         //prepjuego.ActualizarIconoCam1();//Actualiza inconos iniciales
         //prepjuego.IniciaJuego(); //Incia Juego
-        this.setVisible(false);
 
 
     }//GEN-LAST:event_btnIniciarActionPerformed
@@ -212,7 +251,33 @@ public class frmPreparacion extends javax.swing.JFrame {
         // TODO add your handling code here:
         prepjuego.MostrarTropasCPU();
         prepjuego.lista();
+        lblTropasCPU.setVisible(false);
+        btnOcultarTropas.setVisible(true);
+        lblTropa1.setVisible(true);
+        lblTropa2.setVisible(true);
+        lblTropa3.setVisible(true);
     }//GEN-LAST:event_lblTropasCPUActionPerformed
+
+    private void lblCantidadTropasInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_lblCantidadTropasInputMethodTextChanged
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_lblCantidadTropasInputMethodTextChanged
+
+    private void lblCantidadTropasPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblCantidadTropasPropertyChange
+        // TODO add your handling code here:
+        if (lblCantidadTropas.getText().equals("0")) {
+            btnIniciar.setEnabled(true);
+        }
+    }//GEN-LAST:event_lblCantidadTropasPropertyChange
+
+    private void btnOcultarTropasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOcultarTropasActionPerformed
+        // TODO add your handling code here:
+        btnOcultarTropas.setVisible(false);
+        lblTropa1.setVisible(false);
+        lblTropa2.setVisible(false);
+        lblTropa3.setVisible(false);
+        lblTropasCPU.setVisible(true);
+    }//GEN-LAST:event_btnOcultarTropasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,6 +321,7 @@ public class frmPreparacion extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarC;
     private javax.swing.JButton btnAgregarM;
     public static javax.swing.JButton btnIniciar;
+    private javax.swing.JButton btnOcultarTropas;
     private javax.swing.JComboBox<String> cmbCamino;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

@@ -36,6 +36,10 @@ public class Hilo extends Thread {
                
 
                 sleep(100); //El tiempo en que se va a dormir el hilo en milisegundos
+                frmJuego j = new frmJuego();
+                if(j.incrementaRonda()==true){
+                    sleep(100);
+                }
             }
         } catch (Exception e) { //Captura y muestra el error
             System.out.println("Error en la ejecucion del proceso: " + e);

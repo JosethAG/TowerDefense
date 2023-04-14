@@ -4,6 +4,8 @@
  */
 package vista;
 
+import modelo.Pila;
+
 
 
 /**
@@ -68,7 +70,27 @@ public class frmJuego extends javax.swing.JFrame {
         } else if (verificaDuelo() == 2) {
             lblTropaPlayer1.setLocation(1460, 560);
         }
+    }
 
+public boolean incrementaRonda() {
+        int sumador = 1;
+        frmPreparacion frmPreparacion = new frmPreparacion();
+
+        Pila p = new Pila();
+        int pilaCPU = p.tamanio();
+        int pilaPlayer = p.tamanio();
+
+        while (true) {
+            if (pilaCPU == 0 && pilaPlayer == 0) {
+                sumador = sumador + 1;
+                lblNumRonda.setText(String.valueOf(sumador));
+                return true;
+
+                //frmPreparacion.setVisible(true);
+
+            }
+            return false;
+        }
     }
 
     /**

@@ -8,6 +8,7 @@ import controlador.Hilo;
 import controlador.PreparacionJuego;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author araya
@@ -17,7 +18,12 @@ public class frmPreparacion extends javax.swing.JFrame {
     /**
      * Creates new form frmPreparacion2
      */
+    
     PreparacionJuego prepjuego = new PreparacionJuego();
+    
+    
+    
+    
 
     public frmPreparacion() {
         initComponents();
@@ -27,6 +33,7 @@ public class frmPreparacion extends javax.swing.JFrame {
         prepjuego.RandomCPU(Integer.valueOf(lblNumRondaP.getText()));
         prepjuego.lista();
         btnIniciar.setEnabled(lblCantidadTropas.getText().equals("0"));
+      
 
     }
 
@@ -62,7 +69,7 @@ public class frmPreparacion extends javax.swing.JFrame {
         btnOcultarTropas = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -97,10 +104,10 @@ public class frmPreparacion extends javax.swing.JFrame {
         lblCantidadTropas.setForeground(new java.awt.Color(255, 255, 255));
         lblCantidadTropas.setText("1");
         lblCantidadTropas.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 lblCantidadTropasInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         lblCantidadTropas.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -240,10 +247,12 @@ public class frmPreparacion extends javax.swing.JFrame {
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         // TODO add your handling code here:
-        prepjuego.ActualizarIconoCam(); //Actualiza inconos iniciales
+        //prepjuego.ActualizarIconoCam(); //Actualiza inconos iniciales
         //prepjuego.ActualizarIconoCam1();//Actualiza inconos iniciales
         //prepjuego.IniciaJuego(); //Incia Juego
-
+        this.dispose();
+        
+        
 
     }//GEN-LAST:event_btnIniciarActionPerformed
 
@@ -312,6 +321,8 @@ public class frmPreparacion extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new frmPreparacion().setVisible(true);
+                
+                
             }
         });
     }

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package vista;
 
 import controlador.Hilo;
@@ -17,6 +14,8 @@ public class frmJuego extends javax.swing.JFrame {
     /**
      * Creates new form frmJuego
      */
+    
+    
     public frmJuego() {
         //Preparacion.lblNumRondaP.setText(lblNumRonda.getText());
         initComponents();
@@ -27,7 +26,10 @@ public class frmJuego extends javax.swing.JFrame {
          hilo.start(); //Es un metodo que pertenece a la clase Thread de la cual hilo esta heredando y se usa para llamar al metodo ejecutar de la clase hilo e iniciar el hilo
 
         //PreparacionJuego prepJuego = new PreparacionJuego(this); //Se hace la instancia con la clase hilo y se le pasa un this
-  
+        
+        
+        
+        
     
     }
 
@@ -129,16 +131,14 @@ public class frmJuego extends javax.swing.JFrame {
         lblCorazonPlayer = new javax.swing.JLabel();
         lblMapa = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNRonda.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        lblNRonda.setForeground(new java.awt.Color(0, 0, 0));
         lblNRonda.setText("N° Ronda");
         getContentPane().add(lblNRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 4, 170, 30));
 
         lblNumRonda.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        lblNumRonda.setForeground(new java.awt.Color(0, 0, 0));
         lblNumRonda.setText("1");
         getContentPane().add(lblNumRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(172, 0, 40, 40));
 
@@ -209,6 +209,8 @@ public class frmJuego extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new frmJuego().setVisible(true);
+                
+                
             }
         });
     }

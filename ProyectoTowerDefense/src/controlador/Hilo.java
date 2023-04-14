@@ -13,6 +13,8 @@ import vista.frmJuego;
 public class Hilo extends Thread {
 
     frmJuego frmJuego; //Se crea la referncia global 
+    InteraccionesTropa interaccionesT = new InteraccionesTropa();
+    PreparacionJuego prepJuego = new PreparacionJuego();
 
     public Hilo(frmJuego frmJuego) { //Metodo constructor que recibe la referencia que se le envia por parametro en el frmJuego
         this.frmJuego = frmJuego;
@@ -27,15 +29,24 @@ public class Hilo extends Thread {
             {
 
                 frmJuego.moverTropas();
-                
-                if (frmJuego.verificaDuelo() == 1 ||  frmJuego.verificaDuelo() == 2)
-                {
-                  sleep(100);
-                  frmJuego.interaccionTropas();
-                }
-               
 
-                sleep(100); //El tiempo en que se va a dormir el hilo en milisegundos
+//                if (frmJuego.verificaDuelo() == 1 ||  frmJuego.verificaDuelo() == 2)
+//                {
+//                  sleep(100);
+//                  frmJuego.interaccionTropas();
+//                }
+//                if (interaccionesT.verificaDueloCastillo() == 1 || interaccionesT.verificaDueloCastillo() == 2) {
+//                    interaccionesT.interaccionCastillo(prepJuego.caminoCpu1, prepJuego.caminoPlayer1);
+//                     sleep(4000);
+//                    
+//                } else if (interaccionesT.verificaDueloCastillo() == 3 || interaccionesT.verificaDueloCastillo() == 4) {
+//                   interaccionesT.interaccionCastillo(prepJuego.caminoCpu2, prepJuego.caminoPlayer2);
+//                    sleep(4000);
+//
+//                }
+//                interaccionesT.verificaDueloCastillo();
+
+                sleep(50); //El tiempo en que se va a dormir el hilo en milisegundos
             }
         } catch (Exception e) { //Captura y muestra el error
             System.out.println("Error en la ejecucion del proceso: " + e);

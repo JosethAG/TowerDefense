@@ -4,6 +4,8 @@
  */
 package vista;
 
+import controlador.Hilo;
+
 
 
 /**
@@ -21,8 +23,11 @@ public class frmJuego extends javax.swing.JFrame {
         setSize(1920, 1080); //Tamaño del frame
         setResizable(false); //Para no poder extender al frame
         setLocationRelativeTo(null); //Para que se muestre centrado
-        
-       // PreparacionJuego prepJuego = new PreparacionJuego(this); //Se hace la instancia con la clase hilo y se le pasa un this
+         Hilo hilo = new Hilo(this); //Se hace la instancia con la clase hilo y se le pasa un this
+         hilo.start(); //Es un metodo que pertenece a la clase Thread de la cual hilo esta heredando y se usa para llamar al metodo ejecutar de la clase hilo e iniciar el hilo
+
+        //PreparacionJuego prepJuego = new PreparacionJuego(this); //Se hace la instancia con la clase hilo y se le pasa un this
+  
     
     }
 
@@ -31,7 +36,7 @@ public class frmJuego extends javax.swing.JFrame {
     
     public void moverTropas(){
         //Lo que me permite es que cada vez que se llame en el hilo toma las posiciones de las tropas y las mueve
-        lblTropa1CPU.setLocation(lblTropa1CPU.getX() + 5, lblTropa1CPU.getY());
+      //  lblTropa1CPU.setLocation(lblTropa1CPU.getX() + 5, lblTropa1CPU.getY());
         lblTropaPlayer1.setLocation(lblTropaPlayer1.getX() - 5, lblTropaPlayer1.getY());
 
 //          lblTropa2CPU.setLocation(lblTropa2CPU.getX() + 5, lblTropa2CPU.getY());
@@ -70,6 +75,36 @@ public class frmJuego extends javax.swing.JFrame {
         }
 
     }
+//    
+//        public int verificaDueloCastillo() {
+//        //Choque castillo Player en camino 1 
+//        if (lblTropa1CPU.getX() >= lblCastilloPlayer.getX() - 40) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
+//        {
+//            System.out.println("Choco Castillo Player Camino 1");
+//            return 1; //Retorna 1 si hubo un choque en el castillo del Player en el camino 1
+//        }
+//        // Choque entre camino 1 castillo CPU
+//        else if (lblTropaPlayer1.getX() <= (lblCastilloCPU.getX() + 40)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
+//        {
+//            System.out.println("Choco Castillo CPU Camino 1");
+//            return 2; //Retorna 2 si hubo un choque en el castillo del CPU en el camino 1
+//        }
+//            //Choque castillo Player en camino 2
+//        if (lblTropa2CPU.getX() >= lblCastilloPlayer.getX() - 40) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
+//        {
+//            System.out.println("Choco Castillo Player Camino 2");
+//            return 3; //Retorna 3 si hubo un choque en el castillo del Player en el camino 2
+//        }
+//        // Choque entre camino 2 castillo CPU
+//        else if (lblTropaPlayer2.getX() <= (lblCastilloCPU.getX() + 40)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
+//        {
+//            System.out.println("Choco Castillo CPU Camino 2");
+//            return 4;  //Retorna 2 si hubo un choque en el castillo del CPU en el camino 2
+//        }
+//        
+//        return 0;
+//
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,11 +118,15 @@ public class frmJuego extends javax.swing.JFrame {
         lblNRonda = new javax.swing.JLabel();
         lblNumRonda = new javax.swing.JLabel();
         lblCastilloCPU = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblCastilloPlayer = new javax.swing.JLabel();
         lblTropa1CPU = new javax.swing.JLabel();
         lblTropa2CPU = new javax.swing.JLabel();
         lblTropaPlayer1 = new javax.swing.JLabel();
         lblTropaPlayer2 = new javax.swing.JLabel();
+        lblVidasCpu = new javax.swing.JLabel();
+        lblVidasPlayer = new javax.swing.JLabel();
+        lblCorazonCpu = new javax.swing.JLabel();
+        lblCorazonPlayer = new javax.swing.JLabel();
         lblMapa = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -106,12 +145,32 @@ public class frmJuego extends javax.swing.JFrame {
         lblCastilloCPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Castillo-rojo-x307.png"))); // NOI18N
         getContentPane().add(lblCastilloCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Castillo-verde-x307.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1560, 360, -1, -1));
-        getContentPane().add(lblTropa1CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, -1, -1));
+        lblCastilloPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Castillo-verde-x307.png"))); // NOI18N
+        getContentPane().add(lblCastilloPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(1560, 360, -1, -1));
+        getContentPane().add(lblTropa1CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, -1, -1));
         getContentPane().add(lblTropa2CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 560, -1, -1));
+
+        lblTropaPlayer1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Arquera-Verde-x59.png"))); // NOI18N
         getContentPane().add(lblTropaPlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 440, -1, -1));
         getContentPane().add(lblTropaPlayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 570, -1, -1));
+
+        lblVidasCpu.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblVidasCpu.setForeground(new java.awt.Color(255, 255, 255));
+        lblVidasCpu.setText("10");
+        getContentPane().add(lblVidasCpu, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 314, -1, -1));
+
+        lblVidasPlayer.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblVidasPlayer.setForeground(new java.awt.Color(255, 255, 255));
+        lblVidasPlayer.setText("10");
+        getContentPane().add(lblVidasPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(1695, 314, -1, -1));
+
+        lblCorazonCpu.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblCorazonCpu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Corazon.png"))); // NOI18N
+        lblCorazonCpu.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(lblCorazonCpu, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 300, -1, -1));
+
+        lblCorazonPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Corazon.png"))); // NOI18N
+        getContentPane().add(lblCorazonPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(1674, 300, -1, -1));
 
         lblMapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/TowerDefence.jpg"))); // NOI18N
         getContentPane().add(lblMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -155,8 +214,10 @@ public class frmJuego extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblCastilloCPU;
+    public static javax.swing.JLabel lblCastilloCPU;
+    public static javax.swing.JLabel lblCastilloPlayer;
+    private javax.swing.JLabel lblCorazonCpu;
+    private javax.swing.JLabel lblCorazonPlayer;
     private javax.swing.JLabel lblMapa;
     private javax.swing.JLabel lblNRonda;
     public static javax.swing.JLabel lblNumRonda;
@@ -164,5 +225,7 @@ public class frmJuego extends javax.swing.JFrame {
     public static javax.swing.JLabel lblTropa2CPU;
     public static javax.swing.JLabel lblTropaPlayer1;
     public static javax.swing.JLabel lblTropaPlayer2;
+    public static javax.swing.JLabel lblVidasCpu;
+    public static javax.swing.JLabel lblVidasPlayer;
     // End of variables declaration//GEN-END:variables
 }

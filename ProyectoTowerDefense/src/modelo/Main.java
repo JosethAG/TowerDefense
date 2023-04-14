@@ -27,44 +27,44 @@ public class Main {
         int ronda = 1;
         boolean repetir = true;
         //Ciclo Principal
-        while (repetir) {
-            //Menu
-            //Ciclo juego
-            while (castilloCPU.getVida() > 0 || castilloPlayer.getVida() > 0) {
-                //preparacion
-                //interaccion.Seleccion(caminoPlayer1, caminoPlayer2, ronda);
-
-                //inicio
-                //interacciones
-                while (castilloCPU.getVida() > 0 || castilloPlayer.getVida() > 0 && (caminoCpu1.getCima() != null
-                        && caminoCpu2.getCima() != null && caminoPlayer1.getCima() != null
-                        && caminoPlayer1.getCima() != null)) {
-
-                    //Validacion para interaccion entre Camino1 CPU y Player
-                    if (caminoCpu1.getCima().getValor().getTipo() == 1) {
-                        interaccion.CombateMago(caminoCpu1, caminoPlayer1);
-                    }
-                    if (caminoCpu1.getCima().getValor().getTipo() == 2) {
-                        interaccion.CombateArquero(caminoCpu1, caminoPlayer1);
-                    }
-                    if (caminoCpu1.getCima().getValor().getTipo() == 3) {
-                        interaccion.CombateCaballero(caminoCpu1, caminoPlayer1);
-                    }
-                    //Validacion para interaccion entre Camino2 CPU y Player
-                    if (caminoCpu2.getCima().getValor().getTipo() == 1) {
-                        interaccion.CombateMago(caminoCpu2, caminoPlayer2);
-                    }
-                    if (caminoCpu2.getCima().getValor().getTipo() == 2) {
-                        interaccion.CombateArquero(caminoCpu2, caminoPlayer2);
-                    }
-                    if (caminoCpu2.getCima().getValor().getTipo() == 3) {
-                        interaccion.CombateCaballero(caminoCpu2, caminoPlayer2);
-                    }
-
-                }
-                ronda++;
-            }
-        }
+//        while (repetir) {
+//            //Menu
+//            //Ciclo juego
+//            while (castilloCPU.getVida() > 0 || castilloPlayer.getVida() > 0) {
+//                //preparacion
+//                //interaccion.Seleccion(caminoPlayer1, caminoPlayer2, ronda);
+//
+//                //inicio
+//                //interacciones
+//                while (castilloCPU.getVida() > 0 || castilloPlayer.getVida() > 0 && (caminoCpu1.getCima() != null
+//                        && caminoCpu2.getCima() != null && caminoPlayer1.getCima() != null
+//                        && caminoPlayer1.getCima() != null)) {
+//
+//                    //Validacion para interaccion entre Camino1 CPU y Player
+//                    if (caminoCpu1.getCima().getValor().getTipo() == 1) {
+//                        interaccion.CombateMago(caminoCpu1, caminoPlayer1);
+//                    }
+//                    if (caminoCpu1.getCima().getValor().getTipo() == 2) {
+//                        interaccion.CombateArquero(caminoCpu1, caminoPlayer1);
+//                    }
+//                    if (caminoCpu1.getCima().getValor().getTipo() == 3) {
+//                        interaccion.CombateCaballero(caminoCpu1, caminoPlayer1);
+//                    }
+//                    //Validacion para interaccion entre Camino2 CPU y Player
+//                    if (caminoCpu2.getCima().getValor().getTipo() == 1) {
+//                        interaccion.CombateMago(caminoCpu2, caminoPlayer2);
+//                    }
+//                    if (caminoCpu2.getCima().getValor().getTipo() == 2) {
+//                        interaccion.CombateArquero(caminoCpu2, caminoPlayer2);
+//                    }
+//                    if (caminoCpu2.getCima().getValor().getTipo() == 3) {
+//                        interaccion.CombateCaballero(caminoCpu2, caminoPlayer2);
+//                    }
+//
+//                }
+//                ronda++;
+//            }
+//        }
 
     }
 

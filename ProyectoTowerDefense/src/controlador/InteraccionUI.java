@@ -4,6 +4,7 @@
  */
 package controlador;
 
+import vista.frmJuego;
 import vista.frmPreparacion;
 
 /**
@@ -11,16 +12,28 @@ import vista.frmPreparacion;
  * @author Administrador
  */
 public class InteraccionUI {
+
     frmPreparacion frmPreparacion;
-    
-    public void ActualizarCantidadUI(String cantidadActual){
+    frmJuego frmJuego;
+
+    public void ActualizarCantidadUI(String cantidadActual) {
         frmPreparacion.lblCantidadTropas.setText(cantidadActual);
     }
-    
-    public String ActualizarCantidadUI(int ronda){
+
+    public String ActualizarCantidadUI(int ronda) {
         return String.valueOf(ronda);
     }
-    
 
-    
+    public void ActualizaVidaCastillos(int castillo, double vida) {
+
+        if (castillo == 1) {
+
+            frmJuego.lblVidasPlayer.setText(String.valueOf(vida));
+
+        } else {
+
+            frmJuego.lblVidasCpu.setText(String.valueOf(vida));
+        }
+    }
+
 }

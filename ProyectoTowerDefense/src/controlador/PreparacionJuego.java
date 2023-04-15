@@ -126,7 +126,9 @@ public class PreparacionJuego {
         frmJuego.lblTropa2CPU.setIcon(iconoCPU2);
         
         frmJuego.repaint();
-
+        
+        
+        
     }
 
     public void MostrarTropasCPU() {
@@ -173,5 +175,10 @@ public class PreparacionJuego {
         System.out.println("------------------------");
         caminoCpu2.listar();
     }
+    
+    
+    
+    
+    
 
 }

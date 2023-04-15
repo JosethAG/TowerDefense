@@ -24,6 +24,9 @@ public class frmPreparacion extends javax.swing.JFrame {
     
     
     
+    
+    
+    
 
     public frmPreparacion() {
         initComponents();
@@ -247,10 +250,22 @@ public class frmPreparacion extends javax.swing.JFrame {
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         // TODO add your handling code here:
-        //prepjuego.ActualizarIconoCam(); //Actualiza inconos iniciales
+        
+       
+       
         //prepjuego.ActualizarIconoCam1();//Actualiza inconos iniciales
-        //prepjuego.IniciaJuego(); //Incia Juego
+       // prepjuego.IniciaJuego(); //Incia Juego
+        frmJuego newFramJuego = new frmJuego();
+        Hilo hilo = new Hilo(newFramJuego);
+        hilo.start();
+        newFramJuego.setVisible(true);
+        prepjuego.ActualizarIconoCam(); //Actualiza inconos iniciales
         this.dispose();
+
+        
+        
+        
+        
         
         
 

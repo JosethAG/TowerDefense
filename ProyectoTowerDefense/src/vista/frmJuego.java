@@ -22,8 +22,8 @@ public class frmJuego extends javax.swing.JFrame {
         setSize(1920, 1080); //Tamaño del frame
         setResizable(false); //Para no poder extender al frame
         setLocationRelativeTo(null); //Para que se muestre centrado
-         Hilo hilo = new Hilo(this); //Se hace la instancia con la clase hilo y se le pasa un this
-         hilo.start(); //Es un metodo que pertenece a la clase Thread de la cual hilo esta heredando y se usa para llamar al metodo ejecutar de la clase hilo e iniciar el hilo
+        //Hilo hilo = new Hilo(this); //Se hace la instancia con la clase hilo y se le pasa un this
+        //hilo.start(); //Es un metodo que pertenece a la clase Thread de la cual hilo esta heredando y se usa para llamar al metodo ejecutar de la clase hilo e iniciar el hilo
 
         //PreparacionJuego prepJuego = new PreparacionJuego(this); //Se hace la instancia con la clase hilo y se le pasa un this
         
@@ -149,8 +149,6 @@ public class frmJuego extends javax.swing.JFrame {
         getContentPane().add(lblCastilloPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(1560, 360, -1, -1));
         getContentPane().add(lblTropa1CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, -1, -1));
         getContentPane().add(lblTropa2CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 560, -1, -1));
-
-        lblTropaPlayer1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Arquera-Verde-x59.png"))); // NOI18N
         getContentPane().add(lblTropaPlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 440, -1, -1));
         getContentPane().add(lblTropaPlayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 570, -1, -1));
 

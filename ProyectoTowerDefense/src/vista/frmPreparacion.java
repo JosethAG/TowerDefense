@@ -8,7 +8,6 @@ import controlador.Hilo;
 import controlador.PreparacionJuego;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author araya
@@ -18,15 +17,7 @@ public class frmPreparacion extends javax.swing.JFrame {
     /**
      * Creates new form frmPreparacion2
      */
-    
     PreparacionJuego prepjuego = new PreparacionJuego();
-    
-    
-    
-    
-    
-    
-    
 
     public frmPreparacion() {
         initComponents();
@@ -36,7 +27,6 @@ public class frmPreparacion extends javax.swing.JFrame {
         prepjuego.RandomCPU(Integer.valueOf(lblNumRondaP.getText()));
         prepjuego.lista();
         btnIniciar.setEnabled(lblCantidadTropas.getText().equals("0"));
-      
 
     }
 
@@ -218,7 +208,7 @@ public class frmPreparacion extends javax.swing.JFrame {
         if (!lblCantidadTropas.getText().equals("0"))
             prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
                     Integer.valueOf(lblNumRondaP.getText()),
-                    String.valueOf(cmbCamino.getSelectedItem()), 3, 2, "/img/caballero-Verde-85x90.png");
+                    String.valueOf(cmbCamino.getSelectedItem()), 3, 2.0, "/img/caballero-Verde-85x90.png");
         else {
             JOptionPane.showMessageDialog(null, "Ha alcanzado el máximo de tropas por ronda", "ALERTA", JOptionPane.WARNING_MESSAGE);
         }
@@ -229,7 +219,7 @@ public class frmPreparacion extends javax.swing.JFrame {
         if (!lblCantidadTropas.getText().equals("0")) {
             prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
                     Integer.valueOf(lblNumRondaP.getText()),
-                    String.valueOf(cmbCamino.getSelectedItem()), 2, 1, "/img/Arquera-Verde-x59.png");
+                    String.valueOf(cmbCamino.getSelectedItem()), 2, 1.0, "/img/Arquera-Verde-x59.png");
 
         } else {
             JOptionPane.showMessageDialog(null, "Ha alcanzado el máximo de tropas por ronda", "ALERTA", JOptionPane.WARNING_MESSAGE);
@@ -250,31 +240,23 @@ public class frmPreparacion extends javax.swing.JFrame {
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         // TODO add your handling code here:
-        
-       
-       
+
         //prepjuego.ActualizarIconoCam1();//Actualiza inconos iniciales
-       // prepjuego.IniciaJuego(); //Incia Juego
-        frmJuego newFramJuego = new frmJuego();
-        Hilo hilo = new Hilo(newFramJuego);
+        // prepjuego.IniciaJuego(); //Incia Juego
+        frmJuego frmJuego = new frmJuego();
+        Hilo hilo = new Hilo(frmJuego);
         hilo.start();
-        newFramJuego.setVisible(true);
+        frmJuego.setVisible(true);
         prepjuego.ActualizarIconoCam(); //Actualiza inconos iniciales
         this.dispose();
 
-        
-        
-        
-        
-        
-        
 
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void lblTropasCPUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblTropasCPUActionPerformed
         // TODO add your handling code here:
         prepjuego.MostrarTropasCPU();
-        prepjuego.lista();
+        //   prepjuego.lista();
         lblTropasCPU.setVisible(false);
         btnOcultarTropas.setVisible(true);
         lblTropa1.setVisible(true);
@@ -336,8 +318,7 @@ public class frmPreparacion extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new frmPreparacion().setVisible(true);
-                
-                
+
             }
         });
     }

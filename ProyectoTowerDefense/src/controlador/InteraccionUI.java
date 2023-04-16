@@ -27,7 +27,7 @@ public class InteraccionUI {
     public void ActualizaVidaCastillos(int castillo, double vida) {
 
         if (castillo == 1) {
-
+        
             frmJuego.lblVidasPlayer.setText(String.valueOf(vida));
 
         } else {

@@ -175,10 +175,5 @@ public class PreparacionJuego {
         System.out.println("------------------------");
         caminoCpu2.listar();
     }
-    
-    
-    
-    
-    
 
 }

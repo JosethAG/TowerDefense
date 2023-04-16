@@ -16,7 +16,6 @@ public class InteraccionesTropa {
     double vidaCastilloPlayer;
     double vidaCastilloCPU;
     frmJuego frmJuego;
-    //PreparacionJuego prepJuego = new PreparacionJuego();
     InteraccionUI InteraccionUI = new InteraccionUI();
 
     public void Combate(Pila pilaCPU, Pila pilaPlayer) {
@@ -80,50 +79,78 @@ public class InteraccionesTropa {
         return 0;
 
     }
+    
+    public int verificaCastilloDestruido(){
+        if(vidaCastilloPlayer  <= 0){
+          return 1;
+        
+        }else if (vidaCastilloCPU <= 0){
+        return 2;
+        }
+        return 0;
+    }
+
+    public void vidaCastillos() {
+
+        PreparacionJuego prepJuego = new PreparacionJuego();
+
+        if (verificaDueloCastillo() == 1) {
+            //En caso 1 es porque hubo interaccion en el camino 1 en el castillo del Player            
+            vidaCastilloPlayer = Double.valueOf(frmJuego.lblCastilloPlayer.getText());
+            vidaCastilloPlayer = vidaCastilloPlayer - 1;
+            //vidaCastilloPlayer = vidaCastilloPlayer - prepJuego.caminoCpu1.getCima().getValor().getDanho();
+            InteraccionUI.ActualizaVidaCastillos(1, vidaCastilloPlayer);
+        } else if (verificaDueloCastillo() == 2) {
+            //En caso 2 es porque hubo interaccion en el camino 1 en el castillo del CPU            
+            vidaCastilloCPU = Double.valueOf(frmJuego.lblVidasCpu.getText());
+            vidaCastilloCPU = vidaCastilloCPU - 1.5;
+            //vidaCastilloCPU = vidaCastilloCPU - test;//prepJuego.caminoPlayer1.getCima().getValor().getDanho();
+            InteraccionUI.ActualizaVidaCastillos(2, vidaCastilloCPU);
+        } else if (verificaDueloCastillo() == 3) {
+            //En caso 3 es porque hubo interaccion en el camino 2 en el castillo del Player     
+            vidaCastilloPlayer = Double.valueOf(frmJuego.lblVidasCpu.getText());
+            vidaCastilloPlayer = vidaCastilloPlayer - 1;
+           // vidaCastilloPlayer = vidaCastilloPlayer - prepJuego.caminoCpu2.getCima().getValor().getDanho();
+            InteraccionUI.ActualizaVidaCastillos(1, vidaCastilloPlayer);
+        } else if (verificaDueloCastillo() == 4) {
+            //En caso 2 es porque hubo interaccion en el camino 1 en el castillo del CPU            
+            vidaCastilloCPU = Double.valueOf(frmJuego.lblVidasCpu.getText());
+            vidaCastilloCPU = vidaCastilloCPU - 1.5;
+            //vidaCastilloCPU = vidaCastilloCPU - prepJuego.caminoPlayer2.getCima().getValor().getDanho();
+            InteraccionUI.ActualizaVidaCastillos(2, vidaCastilloCPU);
+        } else {
+    
+
+        }
+
+    }
 
     public void reiniciaPosiciones() {
         if (verificaDueloCastillo() == 1 || verificaDueloCastillo() == 2) {
-            frmJuego.lblTropa1CPU.setLocation(390, 390);
+            frmJuego.lblTropa1CPU.setLocation(400, 440);
             frmJuego.lblTropaPlayer1.setLocation(1450, 440);
 
         } else if (verificaDueloCastillo() == 3 || verificaDueloCastillo() == 4) {
             frmJuego.lblTropa2CPU.setLocation(410, 560);
             frmJuego.lblTropaPlayer2.setLocation(1460, 560);
+
         }
 
     }
-//
-//    public void vidaCastillos() {
-//
-//        switch (verificaDueloCastillo()) {
-//            case 1:  //En caso 1 es porque hubo interaccion en el camino 1 en el castillo del Player            
-//                vidaCastilloPlayer = Double.valueOf(frmJuego.lblCastilloPlayer.getText());
-//                vidaCastilloPlayer = vidaCastilloPlayer - prepJuego.caminoCpu1.getCima().getValor().getDanho();
-//                InteraccionUI.ActualizaVidaCastillos(1, vidaCastilloPlayer);
-//                break;
-//            case 2:  //En caso 2 es porque hubo interaccion en el camino 1 en el castillo del CPU            
-//                vidaCastilloCPU = Double.valueOf(frmJuego.lblVidasCpu.getText());
-//                vidaCastilloCPU = vidaCastilloCPU - prepJuego.caminoPlayer1.getCima().getValor().getDanho();
-//                InteraccionUI.ActualizaVidaCastillos(2, vidaCastilloCPU);
-//                break;
-//            case 3:  //En caso 3 es porque hubo interaccion en el camino 2 en el castillo del Player     
-//                vidaCastilloPlayer = Double.valueOf(frmJuego.lblVidasCpu.getText());
-//                vidaCastilloPlayer = vidaCastilloPlayer - prepJuego.caminoCpu2.getCima().getValor().getDanho();
-//                InteraccionUI.ActualizaVidaCastillos(1, vidaCastilloPlayer);
-//                break;
-//            case 4:  //En caso 2 es porque hubo interaccion en el camino 1 en el castillo del CPU            
-//                vidaCastilloCPU = Double.valueOf(frmJuego.lblVidasCpu.getText());
-//                vidaCastilloCPU = vidaCastilloCPU - prepJuego.caminoPlayer2.getCima().getValor().getDanho();
-//                InteraccionUI.ActualizaVidaCastillos(2, vidaCastilloCPU);
-//                break;
-//        }
-//
-//    }
 
-    public void interaccionCastillo(Pila pilaCPU, Pila pilaPlayer) {
+    public void lista() {
 
-        Combate(pilaCPU, pilaPlayer);
-      //  vidaCastillos();
+        PreparacionJuego prepJuego = new PreparacionJuego();
+        prepJuego.caminoCpu1.listar();
+        System.out.println("------------------------");
+        prepJuego.caminoPlayer1.listar();
+    }
+
+    public void interaccionCastillo() {
+
+        //  Combate(pilaCPU, pilaPlayer);
+        vidaCastillos();
+        lista();
         reiniciaPosiciones();
 
     }

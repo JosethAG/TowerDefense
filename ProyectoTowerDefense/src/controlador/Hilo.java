@@ -14,9 +14,13 @@ public class Hilo extends Thread {
 
     frmJuego frmJuego; //Se crea la referncia global 
     InteraccionesTropa interaccionesT = new InteraccionesTropa();
+    boolean ejecutar = true;
 
     public Hilo(frmJuego frmJuego) { //Metodo constructor que recibe la referencia que se le envia por parametro en el frmJuego
         this.frmJuego = frmJuego;
+    }
+    public void detieneHilo(){
+     ejecutar = false;
     }
 
     public void run()//Metodo que nos va a permitir que el hilo inicie cuando le demos la instruccion    
@@ -24,7 +28,7 @@ public class Hilo extends Thread {
         try //Try catch para capturar el error en caso de que se caiga 
         {
 
-            while (true) //Se crea un ciclo infinito porque el proceso siempre va a estar corriendo
+            while (ejecutar) //Se crea un ciclo infinito porque el proceso siempre va a estar corriendo
             {
 
                 frmJuego.moverTropas();
@@ -52,5 +56,6 @@ public class Hilo extends Thread {
         }
 
     }
+    
 
 }

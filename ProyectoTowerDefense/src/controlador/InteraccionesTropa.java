@@ -166,4 +166,13 @@ public class InteraccionesTropa {
         verificaCastilloDestruido();
 
     }
+   
+    
+    
+    
+    
+    
+    
+    
+    
 }

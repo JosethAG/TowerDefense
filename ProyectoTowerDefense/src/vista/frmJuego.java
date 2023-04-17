@@ -1,9 +1,7 @@
-
 package vista;
 
 import controlador.Hilo;
-
-
+import vista.frmPreparacion;
 
 /**
  *
@@ -14,8 +12,8 @@ public class frmJuego extends javax.swing.JFrame {
     /**
      * Creates new form frmJuego
      */
-    
-    
+    frmPreparacion frmPreparacion;
+
     public frmJuego() {
         //Preparacion.lblNumRondaP.setText(lblNumRonda.getText());
         initComponents();
@@ -26,57 +24,49 @@ public class frmJuego extends javax.swing.JFrame {
         //hilo.start(); //Es un metodo que pertenece a la clase Thread de la cual hilo esta heredando y se usa para llamar al metodo ejecutar de la clase hilo e iniciar el hilo
 
         //PreparacionJuego prepJuego = new PreparacionJuego(this); //Se hace la instancia con la clase hilo y se le pasa un this
-        
-        
-        
-        
-    
     }
 
-    
-    
-    
-    public void moverTropas(){
+    public void moverTropas() {
         //Lo que me permite es que cada vez que se llame en el hilo toma las posiciones de las tropas y las mueve
       //  lblTropa1CPU.setLocation(lblTropa1CPU.getX() + 5, lblTropa1CPU.getY());
-        lblTropaPlayer1.setLocation(lblTropaPlayer1.getX() - 5, lblTropaPlayer1.getY());
+       // lblTropaPlayer1.setLocation(lblTropaPlayer1.getX() - 5, lblTropaPlayer1.getY());
 
-//          lblTropa2CPU.setLocation(lblTropa2CPU.getX() + 5, lblTropa2CPU.getY());
-//         lblTropaPlayer2.setLocation(lblTropaPlayer2.getX() -5, lblTropaPlayer2.getY());    
-//    
-    }
-
-    public int verificaDuelo() {
-        //Choque entre camino 1
-        if (lblTropaPlayer1.getX() <= (lblTropa1CPU.getX() + 134)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
-        {
-            System.out.println("Chocaron");
-            return 1;
-
-        }
-
-        // Choque entre camino 2
-        if (lblTropaPlayer1.getX() < (lblTropa2CPU.getX() + 61)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
-        {
-            System.out.println("Chocaron");
-            return 2;
-
-        }
-        return 0;
+        lblTropa2CPU.setLocation(lblTropa2CPU.getX() + 5, lblTropa2CPU.getY());
+        //lblTropaPlayer2.setLocation(lblTropaPlayer2.getX() - 2, lblTropaPlayer2.getY());
 
     }
 
-    public void interaccionTropas() {
+//    public int verificaDuelo() {
+//        //Choque entre camino 1
+//        if (lblTropaPlayer1.getX() <= (lblTropa1CPU.getX() + 134)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
+//        {
+//            System.out.println("Chocaron");
+//            return 1;
+//
+//        }
+//
+//        // Choque entre camino 2
+//        if (lblTropaPlayer1.getX() < (lblTropa2CPU.getX() + 61)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
+//        {
+//            System.out.println("Chocaron");
+//            return 2;
+//
+//        }
+//        return 0;
+//
+//    }
 
-        if (verificaDuelo() == 1) {
-
-            lblTropa1CPU.setLocation(390, 390);
-            lblTropaPlayer1.setLocation(1450, 440);
-        } else if (verificaDuelo() == 2) {
-            lblTropaPlayer1.setLocation(1460, 560);
-        }
-
-    }
+//    public void interaccionTropas() {
+//
+//        if (verificaDuelo() == 1) {
+//
+//            lblTropa1CPU.setLocation(390, 390);
+//            lblTropaPlayer1.setLocation(1450, 440);
+//        } else if (verificaDuelo() == 2) {
+//            lblTropaPlayer1.setLocation(1460, 560);
+//        }
+//
+//    }
 //    
 //        public int verificaDueloCastillo() {
 //        //Choque castillo Player en camino 1 
@@ -155,6 +145,11 @@ public class frmJuego extends javax.swing.JFrame {
         lblVidasCpu.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblVidasCpu.setForeground(new java.awt.Color(255, 255, 255));
         lblVidasCpu.setText("10");
+        lblVidasCpu.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblVidasCpuPropertyChange(evt);
+            }
+        });
         getContentPane().add(lblVidasCpu, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 314, -1, -1));
 
         lblVidasPlayer.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -175,6 +170,11 @@ public class frmJuego extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblVidasCpuPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblVidasCpuPropertyChange
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_lblVidasCpuPropertyChange
 
     /**
      * @param args the command line arguments
@@ -207,8 +207,7 @@ public class frmJuego extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new frmJuego().setVisible(true);
-                
-                
+
             }
         });
     }

@@ -14,9 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class frmPreparacion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmPreparacion2
-     */
+    frmJuego frmJuego;
+    Hilo hilo;
     PreparacionJuego prepjuego = new PreparacionJuego();
 
     public frmPreparacion() {
@@ -27,8 +26,11 @@ public class frmPreparacion extends javax.swing.JFrame {
         prepjuego.RandomCPU(Integer.valueOf(lblNumRondaP.getText()));
         prepjuego.lista();
         btnIniciar.setEnabled(lblCantidadTropas.getText().equals("0"));
+        frmJuego = new frmJuego();
+        hilo = new Hilo(frmJuego);
 
     }
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -243,8 +245,6 @@ public class frmPreparacion extends javax.swing.JFrame {
 
         //prepjuego.ActualizarIconoCam1();//Actualiza inconos iniciales
         // prepjuego.IniciaJuego(); //Incia Juego
-        frmJuego frmJuego = new frmJuego();
-        Hilo hilo = new Hilo(frmJuego);
         hilo.start();
         frmJuego.setVisible(true);
         prepjuego.ActualizarIconoCam(); //Actualiza inconos iniciales
@@ -253,6 +253,11 @@ public class frmPreparacion extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnIniciarActionPerformed
 
+    public void apagaHilo(){
+        
+        hilo.detieneHilo();        
+}
+    
     private void lblTropasCPUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblTropasCPUActionPerformed
         // TODO add your handling code here:
         prepjuego.MostrarTropasCPU();

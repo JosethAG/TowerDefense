@@ -4,8 +4,10 @@
  */
 package controlador;
 
+import javax.swing.JOptionPane;
 import modelo.Pila;
 import vista.frmJuego;
+import vista.frmPreparacion;
 
 /**
  *
@@ -13,9 +15,10 @@ import vista.frmJuego;
  */
 public class InteraccionesTropa {
 
-    double vidaCastilloPlayer;
-    double vidaCastilloCPU;
+    double vidaCastilloPlayer = 10;
+    double vidaCastilloCPU = 10;
     frmJuego frmJuego;
+    frmPreparacion frmPreparacion;
     InteraccionUI InteraccionUI = new InteraccionUI();
 
     public void Combate(Pila pilaCPU, Pila pilaPlayer) {
@@ -52,7 +55,7 @@ public class InteraccionesTropa {
         }
     }
 
-    public int verificaDueloCastillo() {
+    public int verificaDueloCastillo() { //Validacion para verificar si hubo algun enfrentamiento contra el castillo
         //Choque castillo Player en camino 1 
         if (frmJuego.lblTropa1CPU.getX() >= frmJuego.lblCastilloPlayer.getX() - 40) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
         {
@@ -79,25 +82,27 @@ public class InteraccionesTropa {
         return 0;
 
     }
-    
-    public int verificaCastilloDestruido(){
-        if(vidaCastilloPlayer  <= 0){
-          return 1;
-        
-        }else if (vidaCastilloCPU <= 0){
-        return 2;
+
+    public void verificaCastilloDestruido() {
+        if (vidaCastilloPlayer <= 0) {
+            InteraccionUI.ActualizaVidaCastillos(1, 0);
+            frmPreparacion.apagaHilo();
+
+        } else if (vidaCastilloCPU <= 0) {
+            InteraccionUI.ActualizaVidaCastillos(2, 0);
+            frmPreparacion.apagaHilo();
+
         }
-        return 0;
+
     }
 
     public void vidaCastillos() {
 
-        PreparacionJuego prepJuego = new PreparacionJuego();
-
+        //    PreparacionJuego prepJuego = new PreparacionJuego();
         if (verificaDueloCastillo() == 1) {
             //En caso 1 es porque hubo interaccion en el camino 1 en el castillo del Player            
-            vidaCastilloPlayer = Double.valueOf(frmJuego.lblCastilloPlayer.getText());
-            vidaCastilloPlayer = vidaCastilloPlayer - 1;
+            vidaCastilloPlayer = Double.valueOf(frmJuego.lblVidasPlayer.getText());
+            vidaCastilloPlayer = vidaCastilloPlayer - 1.0;
             //vidaCastilloPlayer = vidaCastilloPlayer - prepJuego.caminoCpu1.getCima().getValor().getDanho();
             InteraccionUI.ActualizaVidaCastillos(1, vidaCastilloPlayer);
         } else if (verificaDueloCastillo() == 2) {
@@ -108,9 +113,9 @@ public class InteraccionesTropa {
             InteraccionUI.ActualizaVidaCastillos(2, vidaCastilloCPU);
         } else if (verificaDueloCastillo() == 3) {
             //En caso 3 es porque hubo interaccion en el camino 2 en el castillo del Player     
-            vidaCastilloPlayer = Double.valueOf(frmJuego.lblVidasCpu.getText());
-            vidaCastilloPlayer = vidaCastilloPlayer - 1;
-           // vidaCastilloPlayer = vidaCastilloPlayer - prepJuego.caminoCpu2.getCima().getValor().getDanho();
+            vidaCastilloPlayer = Double.valueOf(frmJuego.lblVidasPlayer.getText());
+            vidaCastilloPlayer = vidaCastilloPlayer - 1.0;
+            // vidaCastilloPlayer = vidaCastilloPlayer - prepJuego.caminoCpu2.getCima().getValor().getDanho();
             InteraccionUI.ActualizaVidaCastillos(1, vidaCastilloPlayer);
         } else if (verificaDueloCastillo() == 4) {
             //En caso 2 es porque hubo interaccion en el camino 1 en el castillo del CPU            
@@ -119,13 +124,12 @@ public class InteraccionesTropa {
             //vidaCastilloCPU = vidaCastilloCPU - prepJuego.caminoPlayer2.getCima().getValor().getDanho();
             InteraccionUI.ActualizaVidaCastillos(2, vidaCastilloCPU);
         } else {
-    
 
         }
 
     }
 
-    public void reiniciaPosiciones() {
+    public void reiniciaPosiciones() { //Reinicia la posiciones en caso que se de un enfrentamiento en el camino 1 o 2
         if (verificaDueloCastillo() == 1 || verificaDueloCastillo() == 2) {
             frmJuego.lblTropa1CPU.setLocation(400, 440);
             frmJuego.lblTropaPlayer1.setLocation(1450, 440);
@@ -150,8 +154,16 @@ public class InteraccionesTropa {
 
         //  Combate(pilaCPU, pilaPlayer);
         vidaCastillos();
-        lista();
         reiniciaPosiciones();
+
+        if (vidaCastilloPlayer <= 0) {
+            JOptionPane.showMessageDialog(frmJuego, "GANADOR CPU", "WIN", 0);
+
+        } else if (vidaCastilloCPU <= 0) {
+            JOptionPane.showMessageDialog(frmJuego, "GANADOR PLAYER", "WIN", 0);
+
+        }
+        verificaCastilloDestruido();
 
     }
 }

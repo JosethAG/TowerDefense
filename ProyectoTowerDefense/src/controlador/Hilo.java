@@ -48,6 +48,11 @@ public class Hilo extends Thread {
                 }
 
                 sleep(10); //El tiempo en que se va a dormir el hilo en milisegundos
+                
+                frmJuego j = new frmJuego();
+                if(j.incrementaRonda()==true){
+                    sleep(100);
+                }
 
             }
 

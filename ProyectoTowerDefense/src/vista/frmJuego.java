@@ -1,6 +1,7 @@
 package vista;
 
 import controlador.Hilo;
+import modelo.Pila;
 import vista.frmPreparacion;
 
 /**
@@ -97,7 +98,26 @@ public class frmJuego extends javax.swing.JFrame {
 //        return 0;
 //
 //    }
+    public boolean incrementaRonda() {
+        int sumador = 1;
+        frmPreparacion frmPreparacion = new frmPreparacion();
 
+        Pila p = new Pila();
+        int pilaCPU = p.tamanio();
+        int pilaPlayer = p.tamanio();
+
+        while (true) {
+            if (pilaCPU == 0 && pilaPlayer == 0) {
+                sumador = sumador + 1;
+                lblNumRonda.setText(String.valueOf(sumador));
+                return true;
+
+                //frmPreparacion.setVisible(true);
+
+            }
+            return false;
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

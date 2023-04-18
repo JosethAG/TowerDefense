@@ -31,28 +31,21 @@ public class Hilo extends Thread {
             while (ejecutar) //Se crea un ciclo infinito porque el proceso siempre va a estar corriendo
             {
 
-                frmJuego.moverTropas();
-
-//                if (frmJuego.verificaDuelo() == 1 ||  frmJuego.verificaDuelo() == 2)
+                interaccionesT.moverTropas();
+//
+//                if (interaccionesT.verificaDueloTropas() == 1 ||  interaccionesT.verificaDueloTropas() == 2)
 //                {
 //                  sleep(100);
-//                  frmJuego.interaccionTropas();
+//                  interaccionesT.combate();
 //                }
-                if (interaccionesT.verificaDueloCastillo() == 1 || interaccionesT.verificaDueloCastillo() == 2) {
+                if (interaccionesT.verificaDueloCastillo() == 1 || interaccionesT.verificaDueloCastillo() == 2 || 
+                        interaccionesT.verificaDueloCastillo() == 3 || interaccionesT.verificaDueloCastillo() == 4) {
 
-                    interaccionesT.interaccionCastillo();                  
-
-                } else if (interaccionesT.verificaDueloCastillo() == 3 || interaccionesT.verificaDueloCastillo() == 4) {
-
-                    interaccionesT.interaccionCastillo();
-                }
+                    interaccionesT.interaccionCastillo();                 
+            }
 
                 sleep(10); //El tiempo en que se va a dormir el hilo en milisegundos
-                
-                frmJuego j = new frmJuego();
-                if(j.incrementaRonda()==true){
-                    sleep(100);
-                }
+
 
             }
 

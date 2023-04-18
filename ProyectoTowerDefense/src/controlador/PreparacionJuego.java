@@ -124,11 +124,9 @@ public class PreparacionJuego {
         iconoCPU2 = new ImageIcon(getClass().getResource(
                 caminoCpu2.getCima().getValor().getUrl()));
         frmJuego.lblTropa2CPU.setIcon(iconoCPU2);
-        
+
         frmJuego.repaint();
-        
-        
-        
+
     }
 
     public void MostrarTropasCPU() {
@@ -149,7 +147,7 @@ public class PreparacionJuego {
             iconoCPU = new ImageIcon(getClass().getResource(
                     caminoCpu1.getCima().getSiguiente().getSiguiente().getValor().getUrl()));
             frmPreparacion.lblTropa3.setIcon(iconoCPU);
-        } else{
+        } else {
             iconoCPU = new ImageIcon(getClass().getResource(
                     caminoCpu2.getCima().getValor().getUrl()));
             frmPreparacion.lblTropa1.setIcon(iconoCPU);

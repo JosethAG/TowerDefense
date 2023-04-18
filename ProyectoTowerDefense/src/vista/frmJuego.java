@@ -1,9 +1,5 @@
 package vista;
 
-import controlador.Hilo;
-import modelo.Pila;
-import vista.frmPreparacion;
-
 /**
  *
  * @author Angelo
@@ -13,111 +9,15 @@ public class frmJuego extends javax.swing.JFrame {
     /**
      * Creates new form frmJuego
      */
-    frmPreparacion frmPreparacion;
-
     public frmJuego() {
         //Preparacion.lblNumRondaP.setText(lblNumRonda.getText());
         initComponents();
         setSize(1920, 1080); //Tamaño del frame
         setResizable(false); //Para no poder extender al frame
         setLocationRelativeTo(null); //Para que se muestre centrado
-        //Hilo hilo = new Hilo(this); //Se hace la instancia con la clase hilo y se le pasa un this
-        //hilo.start(); //Es un metodo que pertenece a la clase Thread de la cual hilo esta heredando y se usa para llamar al metodo ejecutar de la clase hilo e iniciar el hilo
-
-        //PreparacionJuego prepJuego = new PreparacionJuego(this); //Se hace la instancia con la clase hilo y se le pasa un this
-    }
-
-    public void moverTropas() {
-        //Lo que me permite es que cada vez que se llame en el hilo toma las posiciones de las tropas y las mueve
-      //  lblTropa1CPU.setLocation(lblTropa1CPU.getX() + 5, lblTropa1CPU.getY());
-       // lblTropaPlayer1.setLocation(lblTropaPlayer1.getX() - 5, lblTropaPlayer1.getY());
-
-        lblTropa2CPU.setLocation(lblTropa2CPU.getX() + 5, lblTropa2CPU.getY());
-        //lblTropaPlayer2.setLocation(lblTropaPlayer2.getX() - 2, lblTropaPlayer2.getY());
 
     }
 
-//    public int verificaDuelo() {
-//        //Choque entre camino 1
-//        if (lblTropaPlayer1.getX() <= (lblTropa1CPU.getX() + 134)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
-//        {
-//            System.out.println("Chocaron");
-//            return 1;
-//
-//        }
-//
-//        // Choque entre camino 2
-//        if (lblTropaPlayer1.getX() < (lblTropa2CPU.getX() + 61)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
-//        {
-//            System.out.println("Chocaron");
-//            return 2;
-//
-//        }
-//        return 0;
-//
-//    }
-
-//    public void interaccionTropas() {
-//
-//        if (verificaDuelo() == 1) {
-//
-//            lblTropa1CPU.setLocation(390, 390);
-//            lblTropaPlayer1.setLocation(1450, 440);
-//        } else if (verificaDuelo() == 2) {
-//            lblTropaPlayer1.setLocation(1460, 560);
-//        }
-//
-//    }
-//    
-//        public int verificaDueloCastillo() {
-//        //Choque castillo Player en camino 1 
-//        if (lblTropa1CPU.getX() >= lblCastilloPlayer.getX() - 40) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
-//        {
-//            System.out.println("Choco Castillo Player Camino 1");
-//            return 1; //Retorna 1 si hubo un choque en el castillo del Player en el camino 1
-//        }
-//        // Choque entre camino 1 castillo CPU
-//        else if (lblTropaPlayer1.getX() <= (lblCastilloCPU.getX() + 40)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
-//        {
-//            System.out.println("Choco Castillo CPU Camino 1");
-//            return 2; //Retorna 2 si hubo un choque en el castillo del CPU en el camino 1
-//        }
-//            //Choque castillo Player en camino 2
-//        if (lblTropa2CPU.getX() >= lblCastilloPlayer.getX() - 40) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
-//        {
-//            System.out.println("Choco Castillo Player Camino 2");
-//            return 3; //Retorna 3 si hubo un choque en el castillo del Player en el camino 2
-//        }
-//        // Choque entre camino 2 castillo CPU
-//        else if (lblTropaPlayer2.getX() <= (lblCastilloCPU.getX() + 40)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
-//        {
-//            System.out.println("Choco Castillo CPU Camino 2");
-//            return 4;  //Retorna 2 si hubo un choque en el castillo del CPU en el camino 2
-//        }
-//        
-//        return 0;
-//
-//    }
-    public boolean incrementaRonda() {
-        int sumador = 1;
-        frmPreparacion frmPreparacion = new frmPreparacion();
-
-        Pila p = new Pila();
-        int pilaCPU = p.tamanio();
-        int pilaPlayer = p.tamanio();
-
-        while (true) {
-            if (pilaCPU == 0 && pilaPlayer == 0) {
-                sumador = sumador + 1;
-                lblNumRonda.setText(String.valueOf(sumador));
-                return true;
-
-                //frmPreparacion.setVisible(true);
-
-            }
-            return false;
-        }
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

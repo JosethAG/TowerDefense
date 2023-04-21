@@ -247,6 +247,7 @@ public class frmPreparacion extends javax.swing.JFrame {
         // prepjuego.IniciaJuego(); //Incia Juego
         hilo.start();
         frmJuego.setVisible(true);
+        this.setVisible(false);
         prepjuego.ActualizarIconoCam(); //Actualiza inconos iniciales
         this.dispose();
 

@@ -166,24 +166,24 @@ public class InteraccionesTropa {
 
     public void reiniciaPosiciones() { //Reinicia la posiciones en caso que se de un enfrentamiento en el camino 1 o 2
         if (verificaDueloCastillo() == 1 || verificaDueloCastillo() == 2) {
-            frmJuego.lblTropa1CPU.setLocation(400, 440);
-            frmJuego.lblTropaPlayer1.setLocation(1450, 440);
+            frmJuego.lblTropa1CPU.setLocation(360, 460);
+            frmJuego.lblTropaPlayer1.setLocation(1210, 460);
 
         } else if (verificaDueloCastillo() == 3 || verificaDueloCastillo() == 4) {
-            frmJuego.lblTropa2CPU.setLocation(410, 560);
-            frmJuego.lblTropaPlayer2.setLocation(1460, 560);
+            frmJuego.lblTropa2CPU.setLocation(360, 570);
+            frmJuego.lblTropaPlayer2.setLocation(1210, 570);
 
         }
 
     }
 
-    public void lista() {
-
-        PreparacionJuego prepJuego = new PreparacionJuego();
-        prepJuego.caminoCpu1.listar();
-        System.out.println("------------------------");
-        prepJuego.caminoPlayer1.listar();
-    }
+//    public void lista() {
+//
+//        PreparacionJuego prepJuego = new PreparacionJuego();
+//        prepJuego.caminoCpu1.listar();
+//        System.out.println("------------------------");
+//        prepJuego.caminoPlayer1.listar();
+//    }
 
     public void interaccionCastillo() {
 

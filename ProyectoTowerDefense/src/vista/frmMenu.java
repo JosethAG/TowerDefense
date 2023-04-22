@@ -17,7 +17,7 @@ public class frmMenu extends javax.swing.JFrame {
 
     FondoPanel fondo = new frmMenu.FondoPanel();
     frmJuego frmJuego = new frmJuego();
-    frmPreparacion frmPreparacion = new frmPreparacion();
+
 
     public frmMenu() {
 
@@ -75,8 +75,7 @@ public class frmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     //   frmJuego.setVisible(true);
-        frmPreparacion.setVisible(true);
+      frmJuego.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

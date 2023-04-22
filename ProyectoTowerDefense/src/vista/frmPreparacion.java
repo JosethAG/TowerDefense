@@ -183,7 +183,7 @@ public class frmPreparacion extends javax.swing.JFrame {
                 lblTropasCPUActionPerformed(evt);
             }
         });
-        getContentPane().add(lblTropasCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, -1, 30));
+        getContentPane().add(lblTropasCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, 30));
 
         btnOcultarTropas.setBackground(new java.awt.Color(51, 0, 0));
         btnOcultarTropas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

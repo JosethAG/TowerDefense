@@ -11,7 +11,6 @@ import modelo.Castillo;
 import modelo.Pila;
 import modelo.Tropa;
 import vista.frmJuego;
-import vista.frmPreparacion;
 
 /**
  *
@@ -30,7 +29,6 @@ public class PreparacionJuego {
     InteraccionesTropa interaccion = new InteraccionesTropa();
     InteraccionUI introUI = new InteraccionUI();
     frmJuego frmJuego; //Se crea la referencia global 
-    frmPreparacion frmPreparacion; //Se crea la referencia global 
 
     public void AgregarTropaUI(int cantTropaUI, int ronda, String camino, int tropa, double danho, String url) {
         cantidadActual = cantTropaUI;
@@ -125,40 +123,39 @@ public class PreparacionJuego {
                 caminoCpu2.getCima().getValor().getUrl()));
         frmJuego.lblTropa2CPU.setIcon(iconoCPU2);
 
-        frmJuego.repaint();
-
+        //   frmJuego.repaint();
     }
 
     public void MostrarTropasCPU() {
         Icon iconoCPU;
         iconoCPU = new ImageIcon(getClass().getResource(
                 caminoCpu1.getCima().getValor().getUrl()));
-        frmPreparacion.lblTropa1.setIcon(iconoCPU);
+        frmJuego.lblCPU1.setIcon(iconoCPU);
 
         if (caminoCpu1.tamanio() >= 3) {
             iconoCPU = new ImageIcon(getClass().getResource(
                     caminoCpu1.getCima().getValor().getUrl()));
-            frmPreparacion.lblTropa1.setIcon(iconoCPU);
+            frmJuego.lblCPU1.setIcon(iconoCPU);
 
             iconoCPU = new ImageIcon(getClass().getResource(
                     caminoCpu1.getCima().getSiguiente().getValor().getUrl()));
-            frmPreparacion.lblTropa2.setIcon(iconoCPU);
+            frmJuego.lblCPU2.setIcon(iconoCPU);
 
             iconoCPU = new ImageIcon(getClass().getResource(
                     caminoCpu1.getCima().getSiguiente().getSiguiente().getValor().getUrl()));
-            frmPreparacion.lblTropa3.setIcon(iconoCPU);
+            frmJuego.lblCPU3.setIcon(iconoCPU);
         } else {
             iconoCPU = new ImageIcon(getClass().getResource(
                     caminoCpu2.getCima().getValor().getUrl()));
-            frmPreparacion.lblTropa1.setIcon(iconoCPU);
+            frmJuego.lblCPU1.setIcon(iconoCPU);
 
             iconoCPU = new ImageIcon(getClass().getResource(
                     caminoCpu2.getCima().getSiguiente().getValor().getUrl()));
-            frmPreparacion.lblTropa2.setIcon(iconoCPU);
+            frmJuego.lblCPU2.setIcon(iconoCPU);
 
             iconoCPU = new ImageIcon(getClass().getResource(
                     caminoCpu2.getCima().getSiguiente().getSiguiente().getValor().getUrl()));
-            frmPreparacion.lblTropa3.setIcon(iconoCPU);
+            frmJuego.lblCPU3.setIcon(iconoCPU);
         }
     }
 

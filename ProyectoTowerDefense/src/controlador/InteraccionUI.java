@@ -5,7 +5,7 @@
 package controlador;
 
 import vista.frmJuego;
-import vista.frmPreparacion;
+
 
 /**
  *
@@ -13,12 +13,12 @@ import vista.frmPreparacion;
  */
 public class InteraccionUI {
 
-    frmPreparacion frmPreparacion;
+ 
     frmJuego frmJuego;
     PreparacionJuego prepJuego;
 
     public void ActualizarCantidadUI(String cantidadActual) {
-        frmPreparacion.lblCantidadTropas.setText(cantidadActual);
+        frmJuego.lblCantidadTropas.setText(cantidadActual);
     }
 
     public String ActualizarCantidadUI(int ronda) {

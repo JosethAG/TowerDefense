@@ -15,12 +15,14 @@ public class Hilo extends Thread {
     frmJuego frmJuego; //Se crea la referncia global 
     InteraccionesTropa interaccionesT = new InteraccionesTropa();
     boolean ejecutar = true;
+    PreparacionJuego prepJuego = new PreparacionJuego();
 
     public Hilo(frmJuego frmJuego) { //Metodo constructor que recibe la referencia que se le envia por parametro en el frmJuego
         this.frmJuego = frmJuego;
     }
-    public void detieneHilo(){
-     ejecutar = false;
+
+    public void detieneHilo() {
+        ejecutar = false;
     }
 
     public void run()//Metodo que nos va a permitir que el hilo inicie cuando le demos la instruccion    
@@ -38,6 +40,7 @@ public class Hilo extends Thread {
 //                  sleep(100);
 //                  frmJuego.interaccionTropas();
 //                }
+<<<<<<< Updated upstream
                 if (interaccionesT.verificaDueloCastillo() == 1 || interaccionesT.verificaDueloCastillo() == 2) {
 
                     interaccionesT.interaccionCastillo();                  
@@ -45,6 +48,12 @@ public class Hilo extends Thread {
                 } else if (interaccionesT.verificaDueloCastillo() == 3 || interaccionesT.verificaDueloCastillo() == 4) {
 
                     interaccionesT.interaccionCastillo();
+=======
+                if (interaccionesT.verificaDueloCastillo() == 1 || interaccionesT.verificaDueloCastillo() == 2
+                        || interaccionesT.verificaDueloCastillo() == 3 || interaccionesT.verificaDueloCastillo() == 4) {
+
+                    frmJuego.interCastillo();
+>>>>>>> Stashed changes
                 }
 
                 sleep(10); //El tiempo en que se va a dormir el hilo en milisegundos
@@ -56,6 +65,5 @@ public class Hilo extends Thread {
         }
 
     }
-    
 
 }

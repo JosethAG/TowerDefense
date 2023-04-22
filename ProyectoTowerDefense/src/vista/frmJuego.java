@@ -1,7 +1,13 @@
 package vista;
 
 import controlador.Hilo;
+<<<<<<< Updated upstream
 import vista.frmPreparacion;
+=======
+import controlador.InteraccionUI;
+import controlador.PreparacionJuego;
+import javax.swing.JOptionPane;
+>>>>>>> Stashed changes
 
 /**
  *
@@ -12,7 +18,13 @@ public class frmJuego extends javax.swing.JFrame {
     /**
      * Creates new form frmJuego
      */
+<<<<<<< Updated upstream
     frmPreparacion frmPreparacion;
+=======
+    PreparacionJuego prepjuego = new PreparacionJuego();
+    InteraccionUI interUI = new InteraccionUI();
+    Hilo hilo = new Hilo(this);
+>>>>>>> Stashed changes
 
     public frmJuego() {
         //Preparacion.lblNumRondaP.setText(lblNumRonda.getText());
@@ -20,6 +32,7 @@ public class frmJuego extends javax.swing.JFrame {
         setSize(1920, 1080); //Tamaño del frame
         setResizable(false); //Para no poder extender al frame
         setLocationRelativeTo(null); //Para que se muestre centrado
+<<<<<<< Updated upstream
         //Hilo hilo = new Hilo(this); //Se hace la instancia con la clase hilo y se le pasa un this
         //hilo.start(); //Es un metodo que pertenece a la clase Thread de la cual hilo esta heredando y se usa para llamar al metodo ejecutar de la clase hilo e iniciar el hilo
 
@@ -33,6 +46,12 @@ public class frmJuego extends javax.swing.JFrame {
 
         lblTropa2CPU.setLocation(lblTropa2CPU.getX() + 5, lblTropa2CPU.getY());
         //lblTropaPlayer2.setLocation(lblTropaPlayer2.getX() - 2, lblTropaPlayer2.getY());
+=======
+        btnOcultarTropas.setVisible(false);
+         lblCantidadTropas.setText(String.valueOf(Integer.parseInt(lblNumRonda.getText()) + 4));
+        prepjuego.RandomCPU(1);
+        btnIniciar.setEnabled(false);
+>>>>>>> Stashed changes
 
     }
 
@@ -127,20 +146,40 @@ public class frmJuego extends javax.swing.JFrame {
         lblNRonda.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblNRonda.setText("N° Ronda");
         getContentPane().add(lblNRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 4, 170, 30));
+<<<<<<< Updated upstream
+=======
+        getContentPane().add(lblTropaPlayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 570, -1, -1));
+>>>>>>> Stashed changes
 
         lblNumRonda.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblNumRonda.setText("1");
         getContentPane().add(lblNumRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(172, 0, 40, 40));
+<<<<<<< Updated upstream
+=======
+        getContentPane().add(lblTropaPlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 460, -1, -1));
+>>>>>>> Stashed changes
 
         lblCastilloCPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Castillo-rojo-x307.png"))); // NOI18N
         getContentPane().add(lblCastilloCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
 
         lblCastilloPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Castillo-verde-x307.png"))); // NOI18N
+<<<<<<< Updated upstream
         getContentPane().add(lblCastilloPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(1560, 360, -1, -1));
         getContentPane().add(lblTropa1CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, -1, -1));
         getContentPane().add(lblTropa2CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 560, -1, -1));
         getContentPane().add(lblTropaPlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 440, -1, -1));
         getContentPane().add(lblTropaPlayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 570, -1, -1));
+=======
+        getContentPane().add(lblCastilloPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 360, -1, -1));
+        getContentPane().add(lblTropa1CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, -1, -1));
+
+        lblTropa2CPU.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblTropa2CPUPropertyChange(evt);
+            }
+        });
+        getContentPane().add(lblTropa2CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 570, -1, -1));
+>>>>>>> Stashed changes
 
         lblVidasCpu.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblVidasCpu.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,6 +204,114 @@ public class frmJuego extends javax.swing.JFrame {
         lblCorazonPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Corazon.png"))); // NOI18N
         getContentPane().add(lblCorazonPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(1674, 300, -1, -1));
 
+<<<<<<< Updated upstream
+=======
+        cmbCamino.setBackground(new java.awt.Color(61, 29, 16));
+        cmbCamino.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        cmbCamino.setForeground(new java.awt.Color(255, 255, 255));
+        cmbCamino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
+        cmbCamino.setToolTipText("");
+        cmbCamino.setBorder(null);
+        getContentPane().add(cmbCamino, new org.netbeans.lib.awtextra.AbsoluteConstraints(1790, 70, 40, 30));
+
+        btnIniciar.setBackground(new java.awt.Color(109, 160, 79));
+        btnIniciar.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
+        btnIniciar.setText("INICIAR");
+        btnIniciar.setBorder(null);
+        btnIniciar.setBorderPainted(false);
+        btnIniciar.setContentAreaFilled(false);
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1642, 940, 190, 50));
+
+        btnMostrarTropas.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        btnMostrarTropas.setForeground(new java.awt.Color(255, 255, 255));
+        btnMostrarTropas.setText("VER TROPAS");
+        btnMostrarTropas.setBorder(null);
+        btnMostrarTropas.setBorderPainted(false);
+        btnMostrarTropas.setContentAreaFilled(false);
+        btnMostrarTropas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarTropasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMostrarTropas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1642, 863, 190, 50));
+
+        btnOcultarTropas.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        btnOcultarTropas.setForeground(new java.awt.Color(255, 255, 255));
+        btnOcultarTropas.setText("Ocultar");
+        btnOcultarTropas.setBorder(null);
+        btnOcultarTropas.setBorderPainted(false);
+        btnOcultarTropas.setContentAreaFilled(false);
+        btnOcultarTropas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOcultarTropasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnOcultarTropas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1642, 863, 190, 50));
+
+        lblTextTropasRestantes1.setBackground(new java.awt.Color(255, 255, 255));
+        lblTextTropasRestantes1.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblTextTropasRestantes1.setForeground(new java.awt.Color(255, 255, 255));
+        lblTextTropasRestantes1.setText("TROPAS ENEMIGAS");
+        getContentPane().add(lblTextTropasRestantes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1670, 712, -1, -1));
+
+        lblMagoUI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Mago-Verde-UI.png"))); // NOI18N
+        lblMagoUI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMagoUIMouseClicked(evt);
+            }
+        });
+        getContentPane().add(lblMagoUI, new org.netbeans.lib.awtextra.AbsoluteConstraints(1670, 130, -1, -1));
+
+        lblArqueraUI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Arquera-Verde-UI.png"))); // NOI18N
+        lblArqueraUI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblArqueraUIMouseClicked(evt);
+            }
+        });
+        getContentPane().add(lblArqueraUI, new org.netbeans.lib.awtextra.AbsoluteConstraints(1670, 320, -1, -1));
+        getContentPane().add(lblCPU1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1640, 765, -1, -1));
+
+        lblCaballero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/caballero-Verde-UI.png"))); // NOI18N
+        lblCaballero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCaballeroMouseClicked(evt);
+            }
+        });
+        getContentPane().add(lblCaballero, new org.netbeans.lib.awtextra.AbsoluteConstraints(1650, 520, -1, -1));
+
+        lblTextTropasRestantes.setBackground(new java.awt.Color(255, 255, 255));
+        lblTextTropasRestantes.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblTextTropasRestantes.setForeground(new java.awt.Color(255, 255, 255));
+        lblTextTropasRestantes.setText("TROPAS RESTANTES:");
+        getContentPane().add(lblTextTropasRestantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1655, 26, -1, -1));
+
+        lblCantidadTropas.setBackground(new java.awt.Color(255, 255, 255));
+        lblCantidadTropas.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        lblCantidadTropas.setForeground(new java.awt.Color(255, 255, 255));
+        lblCantidadTropas.setText("1");
+        lblCantidadTropas.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblCantidadTropasPropertyChange(evt);
+            }
+        });
+        getContentPane().add(lblCantidadTropas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1805, 23, 20, -1));
+        getContentPane().add(lblCPU2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1710, 765, -1, -1));
+        getContentPane().add(lblCPU3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1780, 765, -1, -1));
+
+        lblTextCamino.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        lblTextCamino.setForeground(new java.awt.Color(255, 255, 255));
+        lblTextCamino.setText("Seleccione el Camino");
+        getContentPane().add(lblTextCamino, new org.netbeans.lib.awtextra.AbsoluteConstraints(1645, 80, -1, -1));
+
+        lblMapa.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        lblMapa.setForeground(new java.awt.Color(255, 255, 255));
+>>>>>>> Stashed changes
         lblMapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/TowerDefence.jpg"))); // NOI18N
         getContentPane().add(lblMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -176,6 +323,103 @@ public class frmJuego extends javax.swing.JFrame {
 
     }//GEN-LAST:event_lblVidasCpuPropertyChange
 
+<<<<<<< Updated upstream
+=======
+    private void lblMagoUIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMagoUIMouseClicked
+        if (!lblCantidadTropas.getText().equals("0")) {
+            prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
+                    Integer.valueOf(lblNumRonda.getText()),
+                    String.valueOf(cmbCamino.getSelectedItem()), 1, 1.5, "/img/Mago-Verde-x54.png");
+        } else {
+            JOptionPane.showMessageDialog(null, "Ha alcanzado el máximo de tropas por ronda", "ALERTA", JOptionPane.WARNING_MESSAGE);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_lblMagoUIMouseClicked
+
+    private void lblArqueraUIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblArqueraUIMouseClicked
+        // TODO add your handling code here:
+        if (!lblCantidadTropas.getText().equals("0")) {
+            prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
+                    Integer.valueOf(lblNumRonda.getText()),
+                    String.valueOf(cmbCamino.getSelectedItem()), 2, 1.0, "/img/Arquera-Verde-x59.png");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Ha alcanzado el máximo de tropas por ronda", "ALERTA", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_lblArqueraUIMouseClicked
+
+    private void lblCaballeroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCaballeroMouseClicked
+        // TODO add your handling code here:
+        if (!lblCantidadTropas.getText().equals("0"))
+            prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
+                    Integer.valueOf(lblNumRonda.getText()),
+                    String.valueOf(cmbCamino.getSelectedItem()), 3, 2.0, "/img/caballero-Verde-85x90.png");
+        else {
+            JOptionPane.showMessageDialog(null, "Ha alcanzado el máximo de tropas por ronda", "ALERTA", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_lblCaballeroMouseClicked
+
+    private void btnMostrarTropasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTropasActionPerformed
+        // TODO add your handling code here:
+        prepjuego.MostrarTropasCPU();
+        //   prepjuego.lista();
+        btnMostrarTropas.setVisible(false);
+        btnOcultarTropas.setVisible(true);
+        lblCPU1.setVisible(true);
+        lblCPU2.setVisible(true);
+        lblCPU3.setVisible(true);
+    }//GEN-LAST:event_btnMostrarTropasActionPerformed
+
+    private void btnOcultarTropasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOcultarTropasActionPerformed
+        // TODO add your handling code here:
+        btnOcultarTropas.setVisible(false);
+        lblCPU1.setVisible(false);
+        lblCPU2.setVisible(false);
+        lblCPU3.setVisible(false);
+        btnMostrarTropas.setVisible(true);
+    }//GEN-LAST:event_btnOcultarTropasActionPerformed
+
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        // TODO add your handling code here:
+        prepjuego.ActualizarIconoCam();
+        hilo.start();
+    }//GEN-LAST:event_btnIniciarActionPerformed
+
+    private void lblCantidadTropasPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblCantidadTropasPropertyChange
+        // TODO add your handling code here:
+        if (lblCantidadTropas.getText().equals("0")) {
+            btnIniciar.setEnabled(true);
+        }
+    }//GEN-LAST:event_lblCantidadTropasPropertyChange
+
+    private void lblTropa2CPUPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblTropa2CPUPropertyChange
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_lblTropa2CPUPropertyChange
+
+    
+    public void interCastillo(){
+        if(prepjuego.verificaDueloCastillo() == 1){
+                prepjuego.getCastilloPlayer().setVida(prepjuego.getCastilloPlayer().getVida() - prepjuego.test(1));
+                interUI.ActualizaVidaCastillos(1, prepjuego.getCastilloPlayer().getVida());
+                prepjuego.reiniciaPosiciones();
+        }
+        if(prepjuego.verificaDueloCastillo() == 2){
+                prepjuego.getCastilloCPU().setVida(prepjuego.getCastilloCPU().getVida() - prepjuego.test(2));
+                interUI.ActualizaVidaCastillos(2, prepjuego.getCastilloCPU().getVida());
+                prepjuego.reiniciaPosiciones();
+        }
+        if(prepjuego.verificaDueloCastillo() == 3){
+                prepjuego.getCastilloPlayer().setVida(prepjuego.getCastilloPlayer().getVida() - prepjuego.test(3));
+                interUI.ActualizaVidaCastillos(1, prepjuego.getCastilloPlayer().getVida());
+                prepjuego.reiniciaPosiciones();
+        }
+        if(prepjuego.verificaDueloCastillo() == 4){
+                prepjuego.getCastilloCPU().setVida(prepjuego.getCastilloCPU().getVida() - prepjuego.test(4));
+                interUI.ActualizaVidaCastillos(2, prepjuego.getCastilloCPU().getVida());
+                prepjuego.reiniciaPosiciones();
+        }
+    }
+>>>>>>> Stashed changes
     /**
      * @param args the command line arguments
      */
@@ -208,7 +452,7 @@ public class frmJuego extends javax.swing.JFrame {
             public void run() {
                 new frmJuego().setVisible(true);
 
-            }
+            } 
         });
     }
 

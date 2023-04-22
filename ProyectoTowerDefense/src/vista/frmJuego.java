@@ -1,5 +1,7 @@
 package vista;
 
+import controlador.Hilo;
+import controlador.InteraccionUI;
 import controlador.PreparacionJuego;
 import javax.swing.JOptionPane;
 
@@ -13,6 +15,8 @@ public class frmJuego extends javax.swing.JFrame {
      * Creates new form frmJuego
      */
     PreparacionJuego prepjuego = new PreparacionJuego();
+    InteraccionUI interUI = new InteraccionUI();
+    Hilo hilo = new Hilo(this);
 
     public frmJuego() {
         //Preparacion.lblNumRondaP.setText(lblNumRonda.getText());
@@ -133,6 +137,11 @@ public class frmJuego extends javax.swing.JFrame {
         btnIniciar.setBorder(null);
         btnIniciar.setBorderPainted(false);
         btnIniciar.setContentAreaFilled(false);
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1642, 940, 190, 50));
 
         btnMostrarTropas.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
@@ -277,6 +286,35 @@ public class frmJuego extends javax.swing.JFrame {
         btnMostrarTropas.setVisible(true);
     }//GEN-LAST:event_btnOcultarTropasActionPerformed
 
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        // TODO add your handling code here:
+        prepjuego.ActualizarIconoCam();
+        hilo.start();
+    }//GEN-LAST:event_btnIniciarActionPerformed
+
+    
+    public void interCastillo(){
+        if(prepjuego.verificaDueloCastillo() == 1){
+                prepjuego.getCastilloPlayer().setVida(prepjuego.getCastilloPlayer().getVida() - prepjuego.DevolverDanio(1));
+                interUI.ActualizaVidaCastillos(1, prepjuego.getCastilloPlayer().getVida());
+                prepjuego.reiniciaPosiciones();
+        }
+        if(prepjuego.verificaDueloCastillo() == 2){
+                prepjuego.getCastilloCPU().setVida(prepjuego.getCastilloCPU().getVida() - prepjuego.DevolverDanio(2));
+                interUI.ActualizaVidaCastillos(2, prepjuego.getCastilloCPU().getVida());
+                prepjuego.reiniciaPosiciones();
+        }
+        if(prepjuego.verificaDueloCastillo() == 3){
+                prepjuego.getCastilloPlayer().setVida(prepjuego.getCastilloPlayer().getVida() - prepjuego.DevolverDanio(3));
+                interUI.ActualizaVidaCastillos(1, prepjuego.getCastilloPlayer().getVida());
+                prepjuego.reiniciaPosiciones();
+        }
+        if(prepjuego.verificaDueloCastillo() == 4){
+                prepjuego.getCastilloCPU().setVida(prepjuego.getCastilloCPU().getVida() - prepjuego.DevolverDanio(4));
+                interUI.ActualizaVidaCastillos(2, prepjuego.getCastilloCPU().getVida());
+                prepjuego.reiniciaPosiciones();
+        }
+    }
     /**
      * @param args the command line arguments
      */

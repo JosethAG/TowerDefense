@@ -15,6 +15,8 @@ public class frmJuego extends javax.swing.JFrame {
      * Creates new form frmJuego
      */
     PreparacionJuego prepjuego = new PreparacionJuego();
+    frmGanador frmGanador;
+    frmPerdedor frmPerdedor;
     InteraccionUI interUI = new InteraccionUI();
     Hilo hilo = new Hilo(this);
 
@@ -101,6 +103,11 @@ public class frmJuego extends javax.swing.JFrame {
         lblVidasPlayer.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblVidasPlayer.setForeground(new java.awt.Color(255, 255, 255));
         lblVidasPlayer.setText("10");
+        lblVidasPlayer.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblVidasPlayerPropertyChange(evt);
+            }
+        });
         getContentPane().add(lblVidasPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(1415, 314, -1, -1));
 
         lblCorazonCpu.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -215,8 +222,9 @@ public class frmJuego extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblVidasCpuPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblVidasCpuPropertyChange
-        // TODO add your handling code here:
-
+         if(lblVidasCpu.getText().equals("0.0")){
+            frmGanador.setVisible(true);
+         }
     }//GEN-LAST:event_lblVidasCpuPropertyChange
 
     private void lblMagoUIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMagoUIMouseClicked
@@ -285,6 +293,12 @@ public class frmJuego extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblCantidadTropasPropertyChange
 
+    private void lblVidasPlayerPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblVidasPlayerPropertyChange
+         if(lblVidasPlayer.getText().equals("0.0")){
+           frmPerdedor.setVisible(true);
+         }
+    }//GEN-LAST:event_lblVidasPlayerPropertyChange
+
     public void interCastillo() {
         if (prepjuego.verificaDueloCastillo() == 1) {
             prepjuego.getCastilloPlayer().setVida(prepjuego.getCastilloPlayer().getVida() - prepjuego.DevolverDanio(1));
@@ -311,7 +325,7 @@ public class frmJuego extends javax.swing.JFrame {
             if(prepjuego.CambioRonda()){
                 prepjuego.RandomCPU(Integer.parseInt(lblNumRonda.getText()));
                 hilo.detieneHilo();
-                JOptionPane.showMessageDialog(null, "PREPÁRECE PARA LA SIGUIENTE RONDA \n ELIGE BIEN TUS TROPAS");
+                JOptionPane.showMessageDialog(null, "PREPÁRESE PARA LA SIGUIENTE RONDA \n ELIGE BIEN TUS TROPAS");
             }
 
         }

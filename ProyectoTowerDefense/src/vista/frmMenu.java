@@ -4,6 +4,7 @@
  */
 package vista;
 
+import java.applet.AudioClip;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -27,6 +28,9 @@ public class frmMenu extends javax.swing.JFrame {
         this.setTitle(" INICIO");
         initComponents();
         this.setLocationRelativeTo(null);
+        AudioClip Sound;
+        Sound = java.applet.Applet.newAudioClip(getClass().getResource("/musica/cacion3.wav"));
+        Sound.play(); 
 
     }
 

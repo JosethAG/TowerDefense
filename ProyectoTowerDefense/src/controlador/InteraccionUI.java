@@ -4,7 +4,9 @@
  */
 package controlador;
 
+import vista.frmGanador;
 import vista.frmJuego;
+import vista.frmPerdedor;
 
 
 /**
@@ -15,6 +17,9 @@ public class InteraccionUI {
 
  
     frmJuego frmJuego;
+     frmGanador frmGanador;
+    frmPerdedor frmPerdedor;
+    InteraccionesTropa interaccionesTropa;
     PreparacionJuego prepJuego;
 
     public void ActualizarCantidadUI(String cantidadActual) {
@@ -42,5 +47,12 @@ public class InteraccionUI {
             frmJuego.lblNumRonda.setText(String.valueOf(ronda + 1));
         }
     }
+public void mensajeGanador(){
+        if (interaccionesTropa.vidaCastilloPlayer <= 0) {
+            frmPerdedor.lblMensajePerder.setText("PERDISTE");
 
+        } else if (interaccionesTropa.vidaCastilloCPU <= 0) {
+//             frmGanador.lblMensajeGanar.setText("GANASTE");
+    }
+}
 }

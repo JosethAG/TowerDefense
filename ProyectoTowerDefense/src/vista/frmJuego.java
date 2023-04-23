@@ -1,6 +1,7 @@
 package vista;
 
 import controlador.Hilo;
+import controlador.Hilo2;
 import controlador.InteraccionUI;
 import controlador.PreparacionJuego;
 import javax.swing.JOptionPane;
@@ -17,6 +18,7 @@ public class frmJuego extends javax.swing.JFrame {
     PreparacionJuego prepjuego = new PreparacionJuego();
     InteraccionUI interUI = new InteraccionUI();
     Hilo hilo = new Hilo(this);
+    Hilo2 hilo2 = new Hilo2(this);
 
     public frmJuego() {
         //Preparacion.lblNumRondaP.setText(lblNumRonda.getText());
@@ -289,6 +291,7 @@ public class frmJuego extends javax.swing.JFrame {
         // TODO add your handling code here:
         prepjuego.ActualizarIconoCam();
         hilo.start();
+        hilo2.start();
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void lblCantidadTropasPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblCantidadTropasPropertyChange
@@ -304,21 +307,21 @@ public class frmJuego extends javax.swing.JFrame {
             interUI.ActualizaVidaCastillos(1, prepjuego.getCastilloPlayer().getVida());
             prepjuego.EliminarTropaCastillo(1);
             prepjuego.ReiniciaPosicionesCam1();
-          //  prepjuego.ActualizarIconoCam1P();
+            //  prepjuego.ActualizarIconoCam1P();
         }
         if (prepjuego.verificaDueloCastillo() == 2) {
             prepjuego.getCastilloCPU().setVida(prepjuego.getCastilloCPU().getVida() - prepjuego.DevolverDanio(2));
             interUI.ActualizaVidaCastillos(2, prepjuego.getCastilloCPU().getVida());
             prepjuego.EliminarTropaCastillo(2);
             prepjuego.ReiniciaPosicionesCam1();
-           // prepjuego.ActualizarIconoCam1C();
+            // prepjuego.ActualizarIconoCam1C();
         }
         if (prepjuego.verificaDueloCastillo() == 3) {
             prepjuego.getCastilloPlayer().setVida(prepjuego.getCastilloPlayer().getVida() - prepjuego.DevolverDanio(3));
             interUI.ActualizaVidaCastillos(1, prepjuego.getCastilloPlayer().getVida());
             prepjuego.EliminarTropaCastillo(3);
             prepjuego.ReiniciaPosicionesCam2();
-           // prepjuego.ActualizarIconoCam2P();
+            // prepjuego.ActualizarIconoCam2P();
 
         }
         if (prepjuego.verificaDueloCastillo() == 4) {
@@ -326,7 +329,7 @@ public class frmJuego extends javax.swing.JFrame {
             interUI.ActualizaVidaCastillos(2, prepjuego.getCastilloCPU().getVida());
             prepjuego.EliminarTropaCastillo(4);
             prepjuego.ReiniciaPosicionesCam2();
-       //     prepjuego.ActualizarIconoCam2C();
+            //     prepjuego.ActualizarIconoCam2C();
 
         }
     }

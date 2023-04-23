@@ -19,7 +19,15 @@ public class InteraccionesTropa {
     frmPreparacion frmPreparacion;
     InteraccionUI InteraccionUI = new InteraccionUI();
 
-    public void moverTropas() {
+    public void moverTropasCamino1() {
+        //Lo que me permite es que cada vez que se llame en el hilo toma las posiciones de las tropas y las mueve
+
+        frmJuego.lblTropa2CPU.setLocation(frmJuego.lblTropa2CPU.getX() + 3, frmJuego.lblTropa2CPU.getY());
+        frmJuego.lblTropaPlayer2.setLocation(frmJuego.lblTropaPlayer2.getX() - 3, frmJuego.lblTropaPlayer2.getY());
+
+    }
+    
+    public void moverTropasCamino2() {
         //Lo que me permite es que cada vez que se llame en el hilo toma las posiciones de las tropas y las mueve
         frmJuego.lblTropa1CPU.setLocation(frmJuego.lblTropa1CPU.getX() + 5, frmJuego.lblTropa1CPU.getY());
         frmJuego.lblTropaPlayer1.setLocation(frmJuego.lblTropaPlayer1.getX() - 5, frmJuego.lblTropaPlayer1.getY());

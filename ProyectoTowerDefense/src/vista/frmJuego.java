@@ -2,6 +2,7 @@ package vista;
 
 import controlador.Hilo;
 import controlador.InteraccionUI;
+import controlador.InteraccionesTropa;
 import controlador.PreparacionJuego;
 import javax.swing.JOptionPane;
 
@@ -25,8 +26,9 @@ public class frmJuego extends javax.swing.JFrame {
         setResizable(false); //Para no poder extender al frame
         setLocationRelativeTo(null); //Para que se muestre centrado
         btnOcultarTropas.setVisible(false);
-         lblCantidadTropas.setText(String.valueOf(Integer.parseInt(lblNumRonda.getText()) + 4));
+        lblCantidadTropas.setText(String.valueOf(Integer.parseInt(lblNumRonda.getText()) + 4));
         prepjuego.RandomCPU(1);
+        btnIniciar.setEnabled(lblCantidadTropas.getText().equals("0")); //Para que el boton de iniciar se muestre deshablitdo
 
     }
 
@@ -43,10 +45,10 @@ public class frmJuego extends javax.swing.JFrame {
         lblTropaPlayer2 = new javax.swing.JLabel();
         lblNumRonda = new javax.swing.JLabel();
         lblTropaPlayer1 = new javax.swing.JLabel();
-        lblCastilloCPU = new javax.swing.JLabel();
-        lblCastilloPlayer = new javax.swing.JLabel();
         lblTropa1CPU = new javax.swing.JLabel();
         lblTropa2CPU = new javax.swing.JLabel();
+        lblCastilloCPU = new javax.swing.JLabel();
+        lblCastilloPlayer = new javax.swing.JLabel();
         lblVidasCpu = new javax.swing.JLabel();
         lblVidasPlayer = new javax.swing.JLabel();
         lblCorazonCpu = new javax.swing.JLabel();
@@ -76,28 +78,20 @@ public class frmJuego extends javax.swing.JFrame {
         lblNRonda.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblNRonda.setText("N° Ronda");
         getContentPane().add(lblNRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 4, 170, 30));
-
-        lblTropaPlayer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Arquera-Verde-x59.png"))); // NOI18N
         getContentPane().add(lblTropaPlayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 570, -1, -1));
 
         lblNumRonda.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblNumRonda.setText("1");
         getContentPane().add(lblNumRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(172, 0, 40, 40));
-
-        lblTropaPlayer1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Arquera-Verde-x59.png"))); // NOI18N
         getContentPane().add(lblTropaPlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 460, -1, -1));
+        getContentPane().add(lblTropa1CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, -1, -1));
+        getContentPane().add(lblTropa2CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 570, -1, -1));
 
         lblCastilloCPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Castillo-rojo-x307.png"))); // NOI18N
         getContentPane().add(lblCastilloCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, -1, -1));
 
         lblCastilloPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Castillo-verde-x307.png"))); // NOI18N
         getContentPane().add(lblCastilloPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 360, -1, -1));
-
-        lblTropa1CPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Arquera-Roja-x59.png"))); // NOI18N
-        getContentPane().add(lblTropa1CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, -1, -1));
-
-        lblTropa2CPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Arquera-Roja-x59.png"))); // NOI18N
-        getContentPane().add(lblTropa2CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 570, -1, -1));
 
         lblVidasCpu.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblVidasCpu.setForeground(new java.awt.Color(255, 255, 255));
@@ -211,6 +205,11 @@ public class frmJuego extends javax.swing.JFrame {
         lblCantidadTropas.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblCantidadTropas.setForeground(new java.awt.Color(255, 255, 255));
         lblCantidadTropas.setText("1");
+        lblCantidadTropas.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblCantidadTropasPropertyChange(evt);
+            }
+        });
         getContentPane().add(lblCantidadTropas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1805, 23, 20, -1));
         getContentPane().add(lblCPU2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1710, 765, -1, -1));
         getContentPane().add(lblCPU3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1780, 765, -1, -1));
@@ -292,29 +291,49 @@ public class frmJuego extends javax.swing.JFrame {
         hilo.start();
     }//GEN-LAST:event_btnIniciarActionPerformed
 
-    
-    public void interCastillo(){
-        if(prepjuego.verificaDueloCastillo() == 1){
-                prepjuego.getCastilloPlayer().setVida(prepjuego.getCastilloPlayer().getVida() - prepjuego.DevolverDanio(1));
-                interUI.ActualizaVidaCastillos(1, prepjuego.getCastilloPlayer().getVida());
-                prepjuego.reiniciaPosiciones();
+    private void lblCantidadTropasPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblCantidadTropasPropertyChange
+        // TODO add your handling code here:
+        if (lblCantidadTropas.getText().equals("0")) {
+            btnIniciar.setEnabled(true);
         }
-        if(prepjuego.verificaDueloCastillo() == 2){
-                prepjuego.getCastilloCPU().setVida(prepjuego.getCastilloCPU().getVida() - prepjuego.DevolverDanio(2));
-                interUI.ActualizaVidaCastillos(2, prepjuego.getCastilloCPU().getVida());
-                prepjuego.reiniciaPosiciones();
+    }//GEN-LAST:event_lblCantidadTropasPropertyChange
+
+    public void interCastillo() {
+        if (prepjuego.verificaDueloCastillo() == 1) {
+            prepjuego.getCastilloPlayer().setVida(prepjuego.getCastilloPlayer().getVida() - prepjuego.DevolverDanio(1));
+            interUI.ActualizaVidaCastillos(1, prepjuego.getCastilloPlayer().getVida());
+            prepjuego.reiniciaPosiciones();
         }
-        if(prepjuego.verificaDueloCastillo() == 3){
-                prepjuego.getCastilloPlayer().setVida(prepjuego.getCastilloPlayer().getVida() - prepjuego.DevolverDanio(3));
-                interUI.ActualizaVidaCastillos(1, prepjuego.getCastilloPlayer().getVida());
-                prepjuego.reiniciaPosiciones();
+        if (prepjuego.verificaDueloCastillo() == 2) {
+            prepjuego.getCastilloCPU().setVida(prepjuego.getCastilloCPU().getVida() - prepjuego.DevolverDanio(2));
+            interUI.ActualizaVidaCastillos(2, prepjuego.getCastilloCPU().getVida());
+            prepjuego.reiniciaPosiciones();
         }
-        if(prepjuego.verificaDueloCastillo() == 4){
-                prepjuego.getCastilloCPU().setVida(prepjuego.getCastilloCPU().getVida() - prepjuego.DevolverDanio(4));
-                interUI.ActualizaVidaCastillos(2, prepjuego.getCastilloCPU().getVida());
-                prepjuego.reiniciaPosiciones();
+        if (prepjuego.verificaDueloCastillo() == 3) {
+            prepjuego.getCastilloPlayer().setVida(prepjuego.getCastilloPlayer().getVida() - prepjuego.DevolverDanio(3));
+            interUI.ActualizaVidaCastillos(1, prepjuego.getCastilloPlayer().getVida());
+            prepjuego.reiniciaPosiciones();
+        }
+        if (prepjuego.verificaDueloCastillo() == 4) {
+            prepjuego.getCastilloCPU().setVida(prepjuego.getCastilloCPU().getVida() - prepjuego.DevolverDanio(4));
+            interUI.ActualizaVidaCastillos(2, prepjuego.getCastilloCPU().getVida());
+            prepjuego.reiniciaPosiciones();
         }
     }
+
+    public void interTropas() {
+
+        if (prepjuego.verificaDueloTropas() == 1) {
+            prepjuego.Combate(1);
+        }
+        if (prepjuego.verificaDueloTropas() == 2) {
+            prepjuego.Combate(2);
+        }
+        prepjuego.reiniciaPosiciones();
+        prepjuego.ActualizarIconoCam();
+       
+    }
+
     /**
      * @param args the command line arguments
      */

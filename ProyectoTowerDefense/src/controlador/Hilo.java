@@ -19,8 +19,9 @@ public class Hilo extends Thread {
     public Hilo(frmJuego frmJuego) { //Metodo constructor que recibe la referencia que se le envia por parametro en el frmJuego
         this.frmJuego = frmJuego;
     }
-    public void detieneHilo(){
-     ejecutar = false;
+
+    public void detieneHilo() {
+        ejecutar = false;
     }
 
     public void run()//Metodo que nos va a permitir que el hilo inicie cuando le demos la instruccion    
@@ -32,20 +33,21 @@ public class Hilo extends Thread {
             {
 
                 interaccionesT.moverTropas();
-//
-//                if (interaccionesT.verificaDueloTropas() == 1 ||  interaccionesT.verificaDueloTropas() == 2)
-//                {
-//                  sleep(100);
-//                  interaccionesT.combate();
-//                }
-                if (interaccionesT.verificaDueloCastillo() == 1 || interaccionesT.verificaDueloCastillo() == 2 || 
-                        interaccionesT.verificaDueloCastillo() == 3 || interaccionesT.verificaDueloCastillo() == 4) {
 
-                    frmJuego.interCastillo();                
-            }
+                if (interaccionesT.verificaDueloTropas() == 1 || interaccionesT.verificaDueloTropas() == 2) {
+                    sleep(100);
+                    frmJuego.interTropas();
+                    // interaccionesT.reiniciaPosiciones();
 
-                sleep(10); //El tiempo en que se va a dormir el hilo en milisegundos
+                }
+                if (interaccionesT.verificaDueloCastillo() == 1 || interaccionesT.verificaDueloCastillo() == 2
+                        || interaccionesT.verificaDueloCastillo() == 3 || interaccionesT.verificaDueloCastillo() == 4) {
+                  
+                    frmJuego.interCastillo();
+                      sleep(9000);
+                }
 
+                sleep(30); //El tiempo en que se va a dormir el hilo en milisegundos
 
             }
 
@@ -54,6 +56,5 @@ public class Hilo extends Thread {
         }
 
     }
-    
 
 }

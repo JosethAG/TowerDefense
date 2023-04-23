@@ -4,7 +4,7 @@
  */
 package vista;
 
-import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  */
 public class frmGanador extends javax.swing.JFrame {
     frmPreparacion frmPreparacion = new frmPreparacion();
-    interaccionesTropas interaccionesTropas = new interaccionesTropas();
+    //interaccionesTropas interaccionesTropas = new interaccionesTropas();
 
     public frmGanador() {
         initComponents();
@@ -139,15 +139,15 @@ public class frmGanador extends javax.swing.JFrame {
             }
         });
     }
-       public void mensajeGanador() {
-        if (interaccionesTropas.vidaCastilloPlayer <= 0) {
-            txtMensaje.setText("GANADOR CPU");
-
-        } else if (interaccionesTropas.vidaCastilloCPU <= 0) {
-            txtMensaje.setText("GANADOR PLAYER");
-
-        }
-    }
+//       public void mensajeGanador() {
+//        if (interaccionesTropas.vidaCastilloPlayer <= 0) {
+//            txtMensaje.setText("GANADOR CPU");
+//
+//        } else if (interaccionesTropas.vidaCastilloCPU <= 0) {
+//            txtMensaje.setText("GANADOR PLAYER");
+//
+//        }
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

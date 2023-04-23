@@ -44,7 +44,7 @@ public class Hilo extends Thread {
                         || interaccionesT.verificaDueloCastillo() == 3 || interaccionesT.verificaDueloCastillo() == 4) {
                   
                     frmJuego.interCastillo();
-                      sleep(9000);
+                      sleep(1000);
                 }
 
                 sleep(30); //El tiempo en que se va a dormir el hilo en milisegundos

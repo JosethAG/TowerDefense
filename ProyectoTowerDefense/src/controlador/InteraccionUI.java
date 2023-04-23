@@ -38,8 +38,7 @@ public class InteraccionUI {
     }
 
     public void ActualizarRonda(int ronda) {
-        if (prepJuego.caminoCpu1.Vacia() && prepJuego.caminoCpu2.Vacia()
-                && prepJuego.caminoPlayer1.Vacia() && prepJuego.caminoPlayer2.Vacia()) {
+        if (prepJuego.caminoCpu1.Vacia() && prepJuego.caminoPlayer1.Vacia()) {
             frmJuego.lblNumRonda.setText(String.valueOf(ronda + 1));
         }
     }

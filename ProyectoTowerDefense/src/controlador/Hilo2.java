@@ -10,13 +10,13 @@ import vista.frmJuego;
  *
  * @author Angelo
  */
-public class Hilo extends Thread {
+public class Hilo2 extends Thread {
 
     frmJuego frmJuego; //Se crea la referncia global 
     InteraccionesTropa interaccionesT = new InteraccionesTropa();
     boolean ejecutar = true;
 
-    public Hilo(frmJuego frmJuego) { //Metodo constructor que recibe la referencia que se le envia por parametro en el frmJuego
+    public Hilo2(frmJuego frmJuego) { //Metodo constructor que recibe la referencia que se le envia por parametro en el frmJuego
         this.frmJuego = frmJuego;
     }
 
@@ -32,16 +32,15 @@ public class Hilo extends Thread {
             while (ejecutar) //Se crea un ciclo infinito porque el proceso siempre va a estar corriendo
             {
 
-                interaccionesT.moverTropasCamino1();
+                interaccionesT.moverTropasCamino2();
 
-                if (interaccionesT.verificaDueloTropas() == 1 || interaccionesT.verificaDueloTropas() == 2) {
+                if (interaccionesT.verificaDueloTropas() == 2) {
                     sleep(100);
                     frmJuego.interTropas();
                     // interaccionesT.reiniciaPosiciones();
 
                 }
-                if (interaccionesT.verificaDueloCastillo() == 1 || interaccionesT.verificaDueloCastillo() == 2
-                        || interaccionesT.verificaDueloCastillo() == 3 || interaccionesT.verificaDueloCastillo() == 4) {
+                if ( interaccionesT.verificaDueloCastillo() == 3 || interaccionesT.verificaDueloCastillo() == 4) {
                   
                     frmJuego.interCastillo();
                       sleep(1000);

@@ -123,15 +123,133 @@ public class PreparacionJuego {
             iconoPlayer2 = new ImageIcon(getClass().getResource(
                     caminoPlayer2.getCima().getValor().getUrl()));
             frmJuego.lblTropaPlayer2.setIcon(iconoPlayer2);
+
         }
         if (caminoCpu2.Vacia() != true) {
             Icon iconoCPU2;
             iconoCPU2 = new ImageIcon(getClass().getResource(
                     caminoCpu2.getCima().getValor().getUrl()));
             frmJuego.lblTropa2CPU.setIcon(iconoCPU2);
+
+        }
+        if (caminoCpu2.Vacia()) {
+            frmJuego.lblTropa2CPU.setLocation(-10000, 570);
+            frmJuego.lblTropa2CPU.setVisible(false);
+
+        }
+        if (caminoPlayer2.Vacia()) {
+            frmJuego.lblTropaPlayer2.setLocation(10000, 570);
+            frmJuego.lblTropaPlayer2.setVisible(false);
+        }
+        if (caminoCpu1.Vacia()) {
+            frmJuego.lblTropa1CPU.setLocation(-10000, 4600);
+            frmJuego.lblTropa1CPU.setVisible(false);
+
+        }
+        if (caminoPlayer1.Vacia()) {
+            frmJuego.lblTropaPlayer1.setLocation(10000, 460);
+            frmJuego.lblTropaPlayer1.setVisible(false);
+        }
+    }
+
+    public void ActualizarIconoCam1P() {
+
+        if (caminoCpu1.Vacia() != true) {
+            Icon iconoCPU1;
+            iconoCPU1 = new ImageIcon(getClass().getResource(caminoCpu1.getCima().getValor().getUrl()));
+            frmJuego.lblTropa1CPU.setIcon(iconoCPU1);
+        }
+        if (caminoCpu1.Vacia()) {
+            frmJuego.lblTropa1CPU.setLocation(-10000, 460);
+            frmJuego.lblTropa1CPU.setVisible(false);
+
         }
 
-        //frmJuego.repaint();
+    }
+
+    public void ActualizarIconoCam1C() {
+
+        if (caminoPlayer1.Vacia() != true) {
+            Icon iconoPlayer1;
+            iconoPlayer1 = new ImageIcon(getClass().getResource(caminoPlayer1.getCima().getValor().getUrl()));
+            frmJuego.lblTropaPlayer1.setIcon(iconoPlayer1);
+        }
+
+        if (caminoPlayer1.Vacia()) {
+            frmJuego.lblTropaPlayer1.setLocation(10000, 460);
+            frmJuego.lblTropaPlayer1.setVisible(false);
+        }
+    }
+
+    public void ActualizarIconoCam2P() {
+
+        if (caminoCpu2.Vacia() != true) {
+            Icon iconoCPU2;
+            iconoCPU2 = new ImageIcon(getClass().getResource(
+                    caminoCpu2.getCima().getValor().getUrl()));
+            frmJuego.lblTropa2CPU.setIcon(iconoCPU2);
+
+        }
+        if (caminoCpu2.Vacia()) {
+            frmJuego.lblTropa2CPU.setLocation(-10000, 570);
+            frmJuego.lblTropa2CPU.setVisible(false);
+
+        }
+
+    }
+
+    public void ActualizarIconoCam2C() {
+
+        if (caminoPlayer2.Vacia() != true) {
+            Icon iconoPlayer2;
+            iconoPlayer2 = new ImageIcon(getClass().getResource(
+                    caminoPlayer2.getCima().getValor().getUrl()));
+            frmJuego.lblTropaPlayer2.setIcon(iconoPlayer2);
+
+        }
+
+        if (caminoPlayer2.Vacia()) {
+            frmJuego.lblTropaPlayer2.setLocation(10000, 570);
+            frmJuego.lblTropaPlayer2.setVisible(false);
+        }
+    }
+    
+       public void ActualizarIconoCam1() {
+
+        if (caminoPlayer1.Vacia() != true) {
+            Icon iconoPlayer1;
+            iconoPlayer1 = new ImageIcon(getClass().getResource(caminoPlayer1.getCima().getValor().getUrl()));
+            frmJuego.lblTropaPlayer1.setIcon(iconoPlayer1);
+        }
+        if (caminoCpu1.Vacia() != true) {
+            Icon iconoCPU1;
+            iconoCPU1 = new ImageIcon(getClass().getResource(caminoCpu1.getCima().getValor().getUrl()));
+            frmJuego.lblTropa1CPU.setIcon(iconoCPU1);
+        }
+
+        if (caminoPlayer1.Vacia()) {
+            frmJuego.lblTropaPlayer1.setLocation(10000, 460);
+            frmJuego.lblTropaPlayer1.setVisible(false);
+        }
+    }
+    
+      public void ActualizarIconoCam2() {
+
+        if (caminoPlayer1.Vacia() != true) {
+            Icon iconoPlayer1;
+            iconoPlayer1 = new ImageIcon(getClass().getResource(caminoPlayer1.getCima().getValor().getUrl()));
+            frmJuego.lblTropaPlayer1.setIcon(iconoPlayer1);
+        }
+        if (caminoCpu1.Vacia() != true) {
+            Icon iconoCPU1;
+            iconoCPU1 = new ImageIcon(getClass().getResource(caminoCpu1.getCima().getValor().getUrl()));
+            frmJuego.lblTropa1CPU.setIcon(iconoCPU1);
+        }
+
+        if (caminoPlayer1.Vacia()) {
+            frmJuego.lblTropaPlayer1.setLocation(10000, 460);
+            frmJuego.lblTropaPlayer1.setVisible(false);
+        }
     }
 
     public void MostrarTropasCPU() {
@@ -191,10 +309,10 @@ public class PreparacionJuego {
 
     public int verificaDueloTropas() { //Se valida en cuál camino es el duelo
         //Choque entre camino 1
-        if (frmJuego.lblTropaPlayer1.getX() <= (frmJuego.lblTropa1CPU.getX() + 134)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
+        if (frmJuego.lblTropaPlayer1.getX() <= (frmJuego.lblTropa1CPU.getX() + 61)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
         {
 //            Combate(caminoCpu1, caminoPlayer1);
-            System.out.println("Hola 1");
+
             return 1;
 
         }
@@ -203,7 +321,7 @@ public class PreparacionJuego {
         if (frmJuego.lblTropaPlayer2.getX() <= (frmJuego.lblTropa2CPU.getX() + 61)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
         {
 //            Combate();
-            System.out.println("Hola 2");
+
             return 2;
 
         }
@@ -244,14 +362,6 @@ public class PreparacionJuego {
                     caminoPlayer1.pop();
                 }
             }
-            if (caminoCpu1.Vacia() != true) {
-
-                frmJuego.lblTropa1CPU.setVisible(false);
-                frmJuego.lblTropa1CPU.setEnabled(false);
-            } else if ((caminoPlayer1.Vacia() != true)) {
-                frmJuego.lblTropaPlayer1.setVisible(false);
-                frmJuego.lblTropaPlayer1.setEnabled(false);
-            }
 
         } else if (camino == 2) {
 
@@ -283,33 +393,6 @@ public class PreparacionJuego {
                     caminoPlayer2.pop();
                 }
             }
-//            if (caminoCpu1.Vacia() != true) {
-//
-//                //   frmJuego.lblTropa2CPU.setVisible(false);
-//                //  frmJuego.lblTropa2CPU.setEnabled(false);
-//                // frmJuego.lblTropa1CPU.setLocation(160, 560);
-//            } else if (caminoPlayer2.Vacia() != true) {
-//                //  frmJuego.lblTropaPlayer2.setVisible(false);
-//                //   frmJuego.lblTropaPlayer2.setEnabled(false);
-//                //frmJuego.lblTropaPlayer2.setLocation(1410, 570);
-//            }
-//        }
-
-//        if (caminoPlayer1.Vacia()) {
-//            caminoCpu1.pop();
-//        
-////        } else {
-////            caminoPlayer1.pop();
-////        }
-//            if (caminoPlayer2.Vacia()) {
-//                caminoCpu2.pop();
-////                frmJuego.lblTropaPlayer2.setVisible(false);
-////                frmJuego.lblTropaPlayer2.setEnabled(false);
-//            } else if (caminoCpu2.Vacia()) {
-//                caminoPlayer2.pop();
-////                frmJuego.lblTropa2CPU.setVisible(false);
-////                frmJuego.lblTropa2CPU.setEnabled(false);
-//            }
         }
     }
 
@@ -416,9 +499,70 @@ public class PreparacionJuego {
 //        }
 //        verificaCastilloDestruido();
 //
+////    }
+//    public void reiniciaPosiciones() { //Reinicia la posiciones en caso que se de un enfrentamiento en el camino 1 o 2
+//
+//        if (verificaDueloTropas() == 1) {
+//            if (caminoCpu1.Vacia() != true && caminoPlayer1.Vacia() != true) {
+//                frmJuego.lblTropa1CPU.setLocation(360, 460);
+//                frmJuego.lblTropaPlayer1.setLocation(1210, 460);
+//
+//            } else if (caminoPlayer1.Vacia()) {
+//                frmJuego.lblTropaPlayer1.setLocation(10000, 460);
+//
+//            } else {
+//                frmJuego.lblTropa1CPU.setLocation(-3000, 460);
+//            }
+//
+//        } else if (verificaDueloTropas() == 2) {
+//
+//            if (caminoCpu2.Vacia() != true && caminoPlayer2.Vacia() != true) {
+//                frmJuego.lblTropa2CPU.setLocation(360, 570);
+//                frmJuego.lblTropaPlayer2.setLocation(1210, 570);
+//
+//            } else if (caminoPlayer2.Vacia()) {
+//                frmJuego.lblTropaPlayer2.setLocation(10000, 570);
+//                // frmJuego.lblTropaPlayer2.setVisible(false);
+//
+//            } else {
+//                frmJuego.lblTropa2CPU.setLocation(-3000, 570);
+//                //frmJuego.lblTropa2CPU.setVisible(false);
+//            }
+//
+//        }
+//
+//        if (verificaDueloCastillo() == 1 || verificaDueloCastillo() == 2) {
+//            if (caminoCpu1.Vacia() != true && caminoPlayer1.Vacia() != true) {
+//                frmJuego.lblTropa1CPU.setLocation(-10000, 460);
+//                frmJuego.lblTropaPlayer1.setLocation(10000, 460);
+//            } else if (caminoPlayer1.Vacia()) {
+//                frmJuego.lblTropa1CPU.setLocation(360, 460);
+//                frmJuego.lblTropaPlayer1.setLocation(10000, 460);
+//
+//            } else {
+//                frmJuego.lblTropa1CPU.setLocation(-10000, 460);
+//                frmJuego.lblTropaPlayer1.setLocation(1210, 460);
+//            }
+//
+//        } else if (verificaDueloCastillo() == 3 || verificaDueloCastillo() == 4) {
+//            if (caminoCpu2.Vacia() != true && caminoPlayer2.Vacia() != true) {
+//                frmJuego.lblTropa2CPU.setLocation(-10000, 570);
+//                frmJuego.lblTropaPlayer2.setLocation(10000, 570);
+//
+//            } else if (caminoPlayer2.Vacia()) {
+//                frmJuego.lblTropa2CPU.setLocation(360, 570);
+//                frmJuego.lblTropaPlayer2.setLocation(10000, 570);
+//
+//            } else {
+//                frmJuego.lblTropa2CPU.setLocation(-10000, 570);
+//                frmJuego.lblTropaPlayer2.setLocation(1210, 570);
+//
+//            }
+//
+//        }
+//
 //    }
-    public void reiniciaPosiciones() { //Reinicia la posiciones en caso que se de un enfrentamiento en el camino 1 o 2
-
+    public void ReiniciaPosicionesCam1() {
         if (verificaDueloTropas() == 1) {
             if (caminoCpu1.Vacia() != true && caminoPlayer1.Vacia() != true) {
                 frmJuego.lblTropa1CPU.setLocation(360, 460);
@@ -430,8 +574,25 @@ public class PreparacionJuego {
             } else {
                 frmJuego.lblTropa1CPU.setLocation(-3000, 460);
             }
+            if (verificaDueloCastillo() == 1 || verificaDueloCastillo() == 2) {
+                if (caminoCpu1.Vacia() != true && caminoPlayer1.Vacia() != true) {
+                    frmJuego.lblTropa1CPU.setLocation(-10000, 460);
+                    frmJuego.lblTropaPlayer1.setLocation(10000, 460);
+                } else if (caminoPlayer1.Vacia()) {
+                    frmJuego.lblTropa1CPU.setLocation(360, 460);
+                    frmJuego.lblTropaPlayer1.setLocation(10000, 460);
 
-        } else if (verificaDueloTropas() == 2) {
+                } else {
+                    frmJuego.lblTropa1CPU.setLocation(-10000, 460);
+                    frmJuego.lblTropaPlayer1.setLocation(1210, 460);
+                }
+
+            }
+        }
+    }
+
+    public void ReiniciaPosicionesCam2() {
+        if (verificaDueloTropas() == 2) {
 
             if (caminoCpu2.Vacia() != true && caminoPlayer2.Vacia() != true) {
                 frmJuego.lblTropa2CPU.setLocation(360, 570);
@@ -448,16 +609,22 @@ public class PreparacionJuego {
 
         }
 
-        if (verificaDueloCastillo() == 1 || verificaDueloCastillo() == 2) {
-            frmJuego.lblTropa1CPU.setLocation(360, 460);
-            frmJuego.lblTropaPlayer1.setLocation(1210, 460);
+        if (verificaDueloCastillo() == 3 || verificaDueloCastillo() == 4) {
+            if (caminoCpu2.Vacia() != true && caminoPlayer2.Vacia() != true) {
+                frmJuego.lblTropa2CPU.setLocation(-10000, 570);
+                frmJuego.lblTropaPlayer2.setLocation(10000, 570);
 
-        } else if (verificaDueloCastillo() == 3 || verificaDueloCastillo() == 4) {
-            frmJuego.lblTropa2CPU.setLocation(360, 570);
-            frmJuego.lblTropaPlayer2.setLocation(1210, 570);
+            } else if (caminoPlayer2.Vacia()) {
+                frmJuego.lblTropa2CPU.setLocation(360, 570);
+                frmJuego.lblTropaPlayer2.setLocation(10000, 570);
+
+            } else {
+                frmJuego.lblTropa2CPU.setLocation(-10000, 570);
+                frmJuego.lblTropaPlayer2.setLocation(1210, 570);
+
+            }
 
         }
-
     }
 
     public double DevolverDanio(int danio) {
@@ -472,6 +639,39 @@ public class PreparacionJuego {
                 return Double.valueOf(caminoPlayer2.getCima().getValor().getDanho());
             default:
                 return 0;
+        }
+    }
+
+    public void EliminarTropaCastillo(int camino) {
+        switch (camino) {
+            case 1:
+                caminoCpu1.pop();
+//                if (caminoCpu1.getCima().getSiguiente() == null) {
+//                    frmJuego.lblTropa1CPU.setLocation(-10000, 460);
+//                }
+                break;
+            case 2:
+                caminoPlayer1.pop();
+//                if (caminoPlayer1.getCima().getSiguiente() == null) {
+//                    frmJuego.lblTropaPlayer1.setLocation(10000, 460);
+//                }
+                break;
+            case 3:
+                caminoCpu2.listar();
+                caminoCpu2.pop();
+                caminoCpu2.listar();
+//                if (caminoCpu2.getCima().getSiguiente() == null) {
+//                    frmJuego.lblTropa2CPU.setLocation(-10000, 570);
+//                }
+                break;
+            case 4:
+                caminoPlayer2.listar();
+                caminoPlayer2.pop();
+                caminoPlayer2.listar();
+//                if (caminoPlayer2.getCima().getSiguiente() == null) {
+//                    frmJuego.lblTropaPlayer2.setLocation(10000, 570);
+//                }
+                break;
         }
     }
 

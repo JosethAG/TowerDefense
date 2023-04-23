@@ -2,7 +2,6 @@ package vista;
 
 import controlador.Hilo;
 import controlador.InteraccionUI;
-import controlador.InteraccionesTropa;
 import controlador.PreparacionJuego;
 import javax.swing.JOptionPane;
 
@@ -29,6 +28,7 @@ public class frmJuego extends javax.swing.JFrame {
         lblCantidadTropas.setText(String.valueOf(Integer.parseInt(lblNumRonda.getText()) + 4));
         prepjuego.RandomCPU(1);
         btnIniciar.setEnabled(lblCantidadTropas.getText().equals("0")); //Para que el boton de iniciar se muestre deshablitdo
+        prepjuego.lista();
 
     }
 
@@ -302,22 +302,32 @@ public class frmJuego extends javax.swing.JFrame {
         if (prepjuego.verificaDueloCastillo() == 1) {
             prepjuego.getCastilloPlayer().setVida(prepjuego.getCastilloPlayer().getVida() - prepjuego.DevolverDanio(1));
             interUI.ActualizaVidaCastillos(1, prepjuego.getCastilloPlayer().getVida());
-            prepjuego.reiniciaPosiciones();
+            prepjuego.EliminarTropaCastillo(1);
+            prepjuego.ReiniciaPosicionesCam1();
+          //  prepjuego.ActualizarIconoCam1P();
         }
         if (prepjuego.verificaDueloCastillo() == 2) {
             prepjuego.getCastilloCPU().setVida(prepjuego.getCastilloCPU().getVida() - prepjuego.DevolverDanio(2));
             interUI.ActualizaVidaCastillos(2, prepjuego.getCastilloCPU().getVida());
-            prepjuego.reiniciaPosiciones();
+            prepjuego.EliminarTropaCastillo(2);
+            prepjuego.ReiniciaPosicionesCam1();
+           // prepjuego.ActualizarIconoCam1C();
         }
         if (prepjuego.verificaDueloCastillo() == 3) {
             prepjuego.getCastilloPlayer().setVida(prepjuego.getCastilloPlayer().getVida() - prepjuego.DevolverDanio(3));
             interUI.ActualizaVidaCastillos(1, prepjuego.getCastilloPlayer().getVida());
-            prepjuego.reiniciaPosiciones();
+            prepjuego.EliminarTropaCastillo(3);
+            prepjuego.ReiniciaPosicionesCam2();
+           // prepjuego.ActualizarIconoCam2P();
+
         }
         if (prepjuego.verificaDueloCastillo() == 4) {
             prepjuego.getCastilloCPU().setVida(prepjuego.getCastilloCPU().getVida() - prepjuego.DevolverDanio(4));
             interUI.ActualizaVidaCastillos(2, prepjuego.getCastilloCPU().getVida());
-            prepjuego.reiniciaPosiciones();
+            prepjuego.EliminarTropaCastillo(4);
+            prepjuego.ReiniciaPosicionesCam2();
+       //     prepjuego.ActualizarIconoCam2C();
+
         }
     }
 
@@ -325,13 +335,17 @@ public class frmJuego extends javax.swing.JFrame {
 
         if (prepjuego.verificaDueloTropas() == 1) {
             prepjuego.Combate(1);
+            prepjuego.ReiniciaPosicionesCam1();
+            prepjuego.ActualizarIconoCam1();
         }
         if (prepjuego.verificaDueloTropas() == 2) {
             prepjuego.Combate(2);
+            prepjuego.ReiniciaPosicionesCam2();
+            prepjuego.ActualizarIconoCam2();
         }
-        prepjuego.reiniciaPosiciones();
-        prepjuego.ActualizarIconoCam();
-       
+        //   prepjuego.reiniciaPosiciones();
+        //prepjuego.ActualizarIconoCam();
+
     }
 
     /**

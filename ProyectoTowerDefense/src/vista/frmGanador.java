@@ -32,15 +32,16 @@ public class frmGanador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setMaximumSize(new java.awt.Dimension(596, 444));
-        setMinimumSize(new java.awt.Dimension(596, 444));
-        setPreferredSize(new java.awt.Dimension(596, 444));
+        setMaximumSize(new java.awt.Dimension(596, 440));
+        setMinimumSize(new java.awt.Dimension(596, 440));
+        setPreferredSize(new java.awt.Dimension(596, 440));
         setResizable(false);
-        setSize(new java.awt.Dimension(596, 444));
+        setSize(new java.awt.Dimension(596, 440));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
         jButton1.setText("VOLVER A JUGAR");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -50,6 +51,7 @@ public class frmGanador extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
         jButton2.setText("SALIR DEL JUEGO");
+        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -59,7 +61,7 @@ public class frmGanador extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Victoria.png"))); // NOI18N
         jLabel1.setText(".");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 595, 404));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 404));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

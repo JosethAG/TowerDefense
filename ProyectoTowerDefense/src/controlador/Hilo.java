@@ -1,31 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controlador;
 
 import vista.frmJuego;
 
 /**
- *
- * @author Angelo
+ * @author Grupo 4
  */
 public class Hilo extends Thread {
 
     frmJuego frmJuego; //Se crea la referncia global 
-    InteraccionesTropa interaccionesT = new InteraccionesTropa();
-    boolean ejecutar = true;
+    InteraccionesTropa interaccionesT = new InteraccionesTropa(); //Referencia de InteraccionesTropa
+    boolean ejecutar = true; //Variable de apollo para iniciar y pausar el hilo
 
     public Hilo(frmJuego frmJuego) { //Metodo constructor que recibe la referencia que se le envia por parametro en el frmJuego
-        this.frmJuego = frmJuego;
+        this.frmJuego = frmJuego; //Seteamos la informacion del frame principal
     }
 
-    public void detieneHilo() {
-        ejecutar = false;
+    public void detieneHilo() { //Detiene el hilo
+        ejecutar = false; //Cambiamos el estado para detener el while
     }
 
-    public void iniciar() {
-        ejecutar = true;
+    public void iniciar() { //Inicia el hilo
+        ejecutar = true; //Cambiamos el estado para iniciar el while
     }
 
     public void run()//Metodo que nos va a permitir que el hilo inicie cuando le demos la instruccion    
@@ -33,23 +28,21 @@ public class Hilo extends Thread {
         try //Try catch para capturar el error en caso de que se caiga 
         {
 
-           while (!isInterrupted()) //Se crea un ciclo infinito porque el proceso siempre va a estar corriendo
-               //    while (ejecutar) //Se crea un ciclo infinito porque el proceso siempre va a estar corriendo
+            while (!isInterrupted()) //Se crea un ciclo infinito porque el proceso siempre va a estar corriendo
+            
             {
 
-                interaccionesT.moverTropasCamino1();
+                interaccionesT.moverTropasCamino1(); //Realizamos el movimientos de las tropas
 
-                if (interaccionesT.verificaDueloTropas() == 1 || interaccionesT.verificaDueloTropas() == 2) {
-                    sleep(10);
-                    frmJuego.interTropas();
-                    // interaccionesT.reiniciaPosiciones();
+                if (interaccionesT.verificaDueloTropas() == 1 || interaccionesT.verificaDueloTropas() == 2) { //Verifica donde se da la interaccion con la tropa
+                    sleep(10); //Detiene brevemente la ejecución
+                    frmJuego.interTropas(); //Ejecuta metodo para validar las interacciones
 
                 }
-                if (interaccionesT.verificaDueloCastillo() == 1 || interaccionesT.verificaDueloCastillo() == 2
-                        || interaccionesT.verificaDueloCastillo() == 3 || interaccionesT.verificaDueloCastillo() == 4) {
+                if (interaccionesT.verificaDueloCastillo() == 1 || interaccionesT.verificaDueloCastillo() == 2) {  ///Verifica donde se da la interaccion con el castillo
 
-                    frmJuego.interCastillo();
-                    sleep(10);
+                    frmJuego.interCastillo();// Ejecuta la validaciones para los casos de los castillos
+                    sleep(10); //Detiene momentaneamente el hilo
                 }
 
                 sleep(10); //El tiempo en que se va a dormir el hilo en milisegundos

@@ -13,36 +13,39 @@ import modelo.Tropa;
 import vista.frmJuego;
 
 /**
- *
- * @author araya
+ * @author Grupo 4
  */
 public class PreparacionJuego {
 
+    //Variables de apollo para cantidades de tropas
     private int cantidadActual;
     private int cantidadMax;
+    //Iniciamos referencias
     Pila caminoCpu1 = new Pila();
     Pila caminoPlayer1 = new Pila();
     Castillo castilloCPU = new Castillo(1, 10, 1);
     Castillo castilloPlayer = new Castillo(2, 10, 2);
     InteraccionUI introUI = new InteraccionUI();
-    frmJuego frmJuego; //Se crea la referencia global 
+    frmJuego frmJuego;
+    //Creamos objetos de Icon para las tropas
     Icon iconoPlayer1;
     Icon iconoCPU1;
 
-    public void AgregarTropaUI(int cantTropaUI, int ronda, String camino, int tropa, double danho, String url) {
-        cantidadActual = cantTropaUI;
-        cantidadMax = ronda + 4;
+    public void AgregarTropaUI(int cantTropaUI, int ronda, String camino,
+            int tropa, double danho, String url) { //Metodo para insetar Tropas para el PLAYER
+        cantidadActual = cantTropaUI; //Obtenemos la cantidad de tropas desde el frame como parámetro
+        cantidadMax = ronda + 4; //Calculámos la cantidad de tropas por usar cada ronda
 
-        if (cantidadActual > cantidadMax) {
-            return;
+        if (cantidadActual > cantidadMax) { //Verificamos si se pueden agregar tropas o llegamos al tope
+            return; //Cancelamos cualquier metodo de agregar
         }
 
-        if (camino.equals("1")) {
-            caminoPlayer1.push(new Tropa(tropa, danho, url));
+        if (camino.equals("1")) { //Validación en caso de existir otro camino
+            caminoPlayer1.push(new Tropa(tropa, danho, url)); //Se realiza el push de la tropa según parámetros
         }
-        cantidadActual--;
-        introUI.ActualizarCantidadUI(String.valueOf(cantidadActual));
-        introUI.ActualizarCantidadUI(ronda);
+        cantidadActual--; //Disminuimos la cantidad de tropas utilizables
+        introUI.ActualizarCantidadUI(String.valueOf(cantidadActual)); //Actualizamos en el frame la cantidad de tropas utilizables
+        introUI.ActualizarCantidadUI(ronda); //Actualizamos ronda
     }
 
     public void RandomCPU(int ronda) {//Genera las pilas del CPU
@@ -56,17 +59,20 @@ public class PreparacionJuego {
 
             switch (tropa) {
                 case 1:
-                    caminoCpu1.push(new Tropa(tropa, 1.5, "/img/Mago-rojo-x54.png")); //push a la pila
+                    caminoCpu1.push(new Tropa(tropa, 1.5,
+                            "/img/Mago-rojo-x54.png")); //push a la pila
                     cantCamino1++; // incrementamos las tropas agregadas
                     numPush++; //Incrementamos la cantidad de push hechos
                     break;
                 case 2:
-                    caminoCpu1.push(new Tropa(tropa, 1, "/img/Arquera-Roja-x59.png"));
+                    caminoCpu1.push(new Tropa(tropa, 1,
+                            "/img/Arquera-Roja-x59.png"));
                     cantCamino1++; // incrementamos las tropas agregadas
                     numPush++; //Incrementamos la cantidad de push hechos
                     break;
                 case 3:
-                    caminoCpu1.push(new Tropa(tropa, 2, "/img/caballero-Rojo-x59.png"));
+                    caminoCpu1.push(new Tropa(tropa, 2,
+                            "/img/caballero-Rojo-x59.png"));
                     cantCamino1++; // incrementamos las tropas agregadas
                     numPush++; //Incrementamos la cantidad de push hechos
                     break;
@@ -75,78 +81,78 @@ public class PreparacionJuego {
         }
     }
 
-    public void ActualizarIconoCam() {
+    public void ActualizarIconoCam() { //Actualiza los Iconos de los caminos
 
-        if (caminoPlayer1.Vacia() != true) {
-            iconoPlayer1 = new ImageIcon(getClass().getResource(caminoPlayer1.getCima().getValor().getUrl()));
-            frmJuego.lblTropaPlayer1.setIcon(iconoPlayer1);
+        if (caminoPlayer1.Vacia() != true) { //Verificamos pilas
+            iconoPlayer1 = new ImageIcon(getClass().getResource(
+                    caminoPlayer1.getCima().getValor().getUrl())); //Creamos el icono con la url de la img de la tropa correspondiente
+            frmJuego.lblTropaPlayer1.setIcon(iconoPlayer1); // Colocamos el icono en el lbl
         }
-        if (caminoCpu1.Vacia() != true) {
-            iconoCPU1 = new ImageIcon(getClass().getResource(caminoCpu1.getCima().getValor().getUrl()));
-            frmJuego.lblTropa1CPU.setIcon(iconoCPU1);
-        }
-
-        if (caminoPlayer1.Vacia()) {
-            frmJuego.lblTropaPlayer1.setLocation(10000, 515);
-            frmJuego.lblTropaPlayer1.setVisible(false);
+        if (caminoCpu1.Vacia() != true) { //Verificamos pilas
+            iconoCPU1 = new ImageIcon(getClass().getResource(
+                    caminoCpu1.getCima().getValor().getUrl())); //Creamos el icono con la url de la img de la tropa correspondiente
+            frmJuego.lblTropa1CPU.setIcon(iconoCPU1); // Colocamos el icono en el lbl
         }
 
-        if (caminoCpu1.Vacia()) {
-            frmJuego.lblTropa1CPU.setLocation(-10000, 515);
-            frmJuego.lblTropa1CPU.setVisible(false);
+        if (caminoPlayer1.Vacia()) { //Verifica que la pila esté vacia
+            frmJuego.lblTropaPlayer1.setLocation(10000, 515); //Colocamos el lbl fuera de rango para evitar interacciones 
+            frmJuego.lblTropaPlayer1.setVisible(false); //Colocalos el lbl como invisible
+        }
+
+        if (caminoCpu1.Vacia()) { //Verifica que la pila esté vacia
+            frmJuego.lblTropa1CPU.setLocation(-10000, 515); //Colocamos el lbl fuera de rango para evitar interacciones 
+            frmJuego.lblTropa1CPU.setVisible(false); //Colocalos el lbl como invisible
 
         }
     }
 
-    public void ActualizarIconoIncial() {
+    public void ActualizarIconoIncial() { //Actualiza los Iconos de los caminos al inicio
 
-        iconoPlayer1 = new ImageIcon(getClass().getResource(caminoPlayer1.getCima().getValor().getUrl()));
-        frmJuego.lblTropaPlayer1.setIcon(iconoPlayer1);
-        frmJuego.lblTropaPlayer1.setVisible(true);
+        iconoPlayer1 = new ImageIcon(getClass().getResource(
+                caminoPlayer1.getCima().getValor().getUrl())); //Creamos el icono con la url de la img de la tropa correspondiente
+        frmJuego.lblTropaPlayer1.setIcon(iconoPlayer1); //Colocamos el icon en el lbl
+        frmJuego.lblTropaPlayer1.setVisible(true); //Colocalos el lbl como visible
 
-        iconoCPU1 = new ImageIcon(getClass().getResource(caminoCpu1.getCima().getValor().getUrl()));
-        frmJuego.lblTropa1CPU.setIcon(iconoCPU1);
-        frmJuego.lblTropa1CPU.setVisible(true);
-        frmJuego.lblTropa1CPU.setLocation(360, 515);
-        frmJuego.lblTropaPlayer1.setLocation(1210, 515);
+        iconoCPU1 = new ImageIcon(getClass().getResource(
+                caminoCpu1.getCima().getValor().getUrl())); //Creamos el icono con la url de la img de la tropa correspondiente
+        frmJuego.lblTropa1CPU.setIcon(iconoCPU1); //Colocamos el icon en el lbl
+        frmJuego.lblTropa1CPU.setVisible(true); //Colocalos el lbl como visible
+
+        frmJuego.lblTropa1CPU.setLocation(360, 515); //Colocamos en la ubicaciones predeterminadas CPU
+        frmJuego.lblTropaPlayer1.setLocation(1210, 515); //Colocamos en la ubicaciones predeterminadas PLAYER
 
     }
 
-    public void MostrarTropasCPU() {
-        Icon iconoCPU;
+    public void MostrarTropasCPU() { //Musetra las primeras 3 tropas enemigas
+        Icon iconoCPU; //Creamos objeto de Icon
+
         iconoCPU = new ImageIcon(getClass().getResource(
-                caminoCpu1.getCima().getValor().getUrl()));
-        frmJuego.lblCPU1.setIcon(iconoCPU);
+                caminoCpu1.getCima().getValor().getUrl())); //Creamos el icono con la url de la img de la tropa 1
+        frmJuego.lblCPU1.setIcon(iconoCPU); //Colocamos el icono en el lbl
 
-        if (caminoCpu1.tamanio() >= 3) {
-            iconoCPU = new ImageIcon(getClass().getResource(
-                    caminoCpu1.getCima().getValor().getUrl()));
-            frmJuego.lblCPU1.setIcon(iconoCPU);
+        iconoCPU = new ImageIcon(getClass().getResource(
+                caminoCpu1.getCima().getSiguiente().getValor().getUrl())); //Creamos el icono con la url de la img de la tropa 2
+        frmJuego.lblCPU2.setIcon(iconoCPU); //Colocamos el icono en el lbl
 
-            iconoCPU = new ImageIcon(getClass().getResource(
-                    caminoCpu1.getCima().getSiguiente().getValor().getUrl()));
-            frmJuego.lblCPU2.setIcon(iconoCPU);
-
-            iconoCPU = new ImageIcon(getClass().getResource(
-                    caminoCpu1.getCima().getSiguiente().getSiguiente().getValor().getUrl()));
-            frmJuego.lblCPU3.setIcon(iconoCPU);
-        }
+        iconoCPU = new ImageIcon(getClass().getResource(
+                caminoCpu1.getCima().getSiguiente().getSiguiente().getValor().getUrl())); //Creamos el icono con la url de la img de la tropa 3
+        frmJuego.lblCPU3.setIcon(iconoCPU); //Colocamos el icono en el lbl
     }
 
-    public void IniciaJuego() {
+    public void IniciaJuego() { //Inicia el hilo del juego
         Hilo hilo = new Hilo(frmJuego); //Se hace la instancia con la clase hilo y se le pasa un this
         hilo.start(); //Es un metodo que pertenece a la clase Thread de la cual hilo esta heredando y se usa para llamar al metodo ejecutar de la clase hilo e iniciar el hilo
 
     }
 
-    public void lista() {
+    public void lista() { //Lista de pila CPU
         caminoCpu1.listar();
 
     }
 
     public int verificaDueloTropas() { //Se valida en cuál camino es el duelo
         //Choque entre camino 1
-        if (frmJuego.lblTropaPlayer1.getX() <= (frmJuego.lblTropa1CPU.getX() + 61)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
+        if (frmJuego.lblTropaPlayer1.getX() <= (frmJuego.lblTropa1CPU.getX() + 61)) // Verifica el duelo entro tropa PLAYER y CPU
         {
 
             return 1;
@@ -156,12 +162,15 @@ public class PreparacionJuego {
 
     }
 
-    public void Combate(int camino) {
+    public void Combate(int camino) { //Cambate de tropas parametro de camino en caso de existir más
+        //Variables auxiliares para reconocer qué tipo de tropa es
         int tropaCPU = 0;
         int tropaPlayer = 0;
-        if (camino == 1) {
 
-            if (caminoCpu1.Vacia() != true && caminoPlayer1.Vacia() != true) {
+        if (camino == 1) { //Validamos camino 
+
+            if (caminoCpu1.Vacia() != true && caminoPlayer1.Vacia() != true) { //Se valida que no estén vacias
+                //Se guarda el dato del tipo de tropa para CPU y PLAYER
                 tropaCPU = caminoCpu1.getCima().getValor().getTipo();
                 tropaPlayer = caminoPlayer1.getCima().getValor().getTipo();
 
@@ -195,12 +204,12 @@ public class PreparacionJuego {
 
     public int verificaDueloCastillo() { //Validacion para verificar si hubo algun enfrentamiento contra el castillo
         //Choque castillo Player en camino 1 
-        if (frmJuego.lblTropa1CPU.getX() >= frmJuego.lblCastilloPlayer.getX() - 40) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
+        if (frmJuego.lblTropa1CPU.getX() >= frmJuego.lblCastilloPlayer.getX() - 40) // Verifica el duelo contra el castillo del PLayer
         {
 
             return 1; //Retorna 1 si hubo un choque en el castillo del Player en el camino 1
         } // Choque entre camino 1 castillo CPU
-        else if (frmJuego.lblTropaPlayer1.getX() <= (frmJuego.lblCastilloCPU.getX() + 307)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
+        else if (frmJuego.lblTropaPlayer1.getX() <= (frmJuego.lblCastilloCPU.getX() + 307)) // Verifica el duelo contra el castillo del PLayer
         {
 
             return 2; //Retorna 2 si hubo un choque en el castillo del CPU en el camino 1
@@ -210,84 +219,72 @@ public class PreparacionJuego {
 
     }
 
-    public void verificaCastilloDestruido() {
-        if (castilloPlayer.getVida() <= 0) {
-            introUI.ActualizaVidaCastillos(1, 0);
-//            frmPreparacion.apagaHilo();
+    public void ReiniciaPosicionesCam() { //Relocalización de tropas
+        if (caminoCpu1.Vacia() != true && caminoPlayer1.Vacia() != true) { //Si no están vacias colocamos correctamente
+            frmJuego.lblTropa1CPU.setLocation(360, 515); //Ubicación predeterminada
+            frmJuego.lblTropaPlayer1.setLocation(1210, 515); //Ubicación predeterminada
 
-        } else if (castilloCPU.getVida() <= 0) {
-            introUI.ActualizaVidaCastillos(2, 0);
-//            frmPreparacion.apagaHilo();
+        } else if (caminoCpu1.Vacia() && caminoPlayer1.Vacia()) { //Si están vacias colocamos fuera del mapa
+            frmJuego.lblTropa1CPU.setLocation(-100000, 515); //Ubicación fuera de mapa
+            frmJuego.lblTropaPlayer1.setLocation(100000, 515); //Ubicación fuera de mapa
 
-        }
-    }
+        } else if (caminoPlayer1.Vacia()) { //Si player está vacia se coloca fuera de mapa evitando interacciones
+            frmJuego.lblTropaPlayer1.setLocation(100000, 515); //Ubicación fuera de mapa
 
-    public void ReiniciaPosicionesCam() {
-        if (caminoCpu1.Vacia() != true && caminoPlayer1.Vacia() != true) {
-            frmJuego.lblTropa1CPU.setLocation(360, 515);
-            frmJuego.lblTropaPlayer1.setLocation(1210, 515);
-
-        } else if (caminoCpu1.Vacia() && caminoPlayer1.Vacia()) {
-            frmJuego.lblTropa1CPU.setLocation(-100000, 515);
-            frmJuego.lblTropaPlayer1.setLocation(100000, 515);
-
-        } else if (caminoPlayer1.Vacia()) {
-            frmJuego.lblTropaPlayer1.setLocation(100000, 515);
-
-        } else {
-            frmJuego.lblTropa1CPU.setLocation(-3000, 515);
+        } else { //Si CPU está vacia se coloca fuera de mapa evitando interacciones
+            frmJuego.lblTropa1CPU.setLocation(-3000, 515); //Ubicación fuera de mapa
         }
 
-        if (verificaDueloCastillo() == 1 || verificaDueloCastillo() == 2) {
-            if (!caminoCpu1.Vacia() && !caminoPlayer1.Vacia()) {
-                frmJuego.lblTropa1CPU.setLocation(360, 515);
-                frmJuego.lblTropaPlayer1.setLocation(1210, 515);
+        if (verificaDueloCastillo() == 1 || verificaDueloCastillo() == 2) { //Se obtiene donde se realizó la interacción
+            if (!caminoCpu1.Vacia() && !caminoPlayer1.Vacia()) { //Si no están vacias colocamos correctamente
+                frmJuego.lblTropa1CPU.setLocation(360, 515); //Ubicación predeterminada
+                frmJuego.lblTropaPlayer1.setLocation(1210, 515); //Ubicación predeterminada
 
-            } else if (caminoCpu1.Vacia() && caminoPlayer1.Vacia()) {
-                frmJuego.lblTropa1CPU.setLocation(-100000, 515);
-                frmJuego.lblTropaPlayer1.setLocation(100000, 515);
+            } else if (caminoCpu1.Vacia() && caminoPlayer1.Vacia()) { //Si están vacias colocamos fuera del mapa
+                frmJuego.lblTropa1CPU.setLocation(-100000, 515); //Ubicación fuera de mapa
+                frmJuego.lblTropaPlayer1.setLocation(100000, 515); //Ubicación fuera de mapa
 
-            } else if (caminoPlayer1.Vacia()) {
-                frmJuego.lblTropa1CPU.setLocation(360, 515);
-                frmJuego.lblTropaPlayer1.setLocation(100000, 515);
+            } else if (caminoPlayer1.Vacia()) { //Si player está vacia se coloca fuera de mapa evitando interacciones
+                frmJuego.lblTropa1CPU.setLocation(360, 515); //Ubicación predeterminada
+                frmJuego.lblTropaPlayer1.setLocation(100000, 515); //Ubicación fuera de mapa
 
-            } else {
-                frmJuego.lblTropa1CPU.setLocation(-100000, 515);
-                frmJuego.lblTropaPlayer1.setLocation(1210, 515);
+            } else { //Si CPU está vacia se coloca fuera de mapa evitando interacciones
+                frmJuego.lblTropa1CPU.setLocation(-100000, 515); //Ubicación fuera de mapa
+                frmJuego.lblTropaPlayer1.setLocation(1210, 515); //Ubicación predeterminada
             }
 
         }
     }
 
-    public double DevolverDanio(int danio) {
+    public double DevolverDanio(int danio) { //Enviar daño de tropa correspondiente (parametro de tropa CPU o PLAYER)
         switch (danio) {
             case 1:
-                return Double.valueOf(caminoCpu1.getCima().getValor().getDanho());
+                return Double.valueOf(caminoCpu1.getCima().getValor().getDanho()); //Devuelve el daño de la tropa CPU
             case 2:
-                return Double.valueOf(caminoPlayer1.getCima().getValor().getDanho());
+                return Double.valueOf(caminoPlayer1.getCima().getValor().getDanho()); //Devuelve el daño de la tropa PLAYER
             default:
                 return 0;
         }
     }
 
-    public void EliminarTropaCastillo(int camino) {
+    public void EliminarTropaCastillo(int camino) { //Elimina la tropa que choca con el castillo
         switch (camino) {
             case 1:
-                caminoCpu1.pop();
+                caminoCpu1.pop(); //Elimina si CPU llegó
                 break;
             case 2:
-                caminoPlayer1.pop();
+                caminoPlayer1.pop(); //Elimina si PLAYER llegó
                 break;
         }
     }
 
-    public boolean CambioRonda() {
-        if (caminoPlayer1.Vacia() && caminoCpu1.Vacia()) {
-            int numR = Integer.parseInt(frmJuego.lblNumRonda.getText()) + 1;
-            frmJuego.lblNumRonda.setText(String.valueOf(numR));
-            frmJuego.lblCantidadTropas.setText(String.valueOf(numR + 4));
-            frmJuego.lblTropa1CPU.setLocation(360, 515);
-            frmJuego.lblTropaPlayer1.setLocation(1210, 515);
+    public boolean CambioRonda() { //Cambia la ronda
+        if (caminoPlayer1.Vacia() && caminoCpu1.Vacia()) { //Verifica que las pilas estén vacias para cambiar de ronda
+            int numR = Integer.parseInt(frmJuego.lblNumRonda.getText()) + 1; //Obtenemos la ronda + 1 para conseguir el valor de la siguiente ronda
+            frmJuego.lblNumRonda.setText(String.valueOf(numR)); //Colocamos en el frame principal la nueva ronda
+            frmJuego.lblCantidadTropas.setText(String.valueOf(numR + 4)); //Colocamos en el frame principal las tropas utilizables 
+            frmJuego.lblTropa1CPU.setLocation(360, 515); //Ubicación predeterminada
+            frmJuego.lblTropaPlayer1.setLocation(1210, 515); //Ubicación predeterminada
             return true;
         }
         return false;

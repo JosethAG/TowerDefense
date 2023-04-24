@@ -1,12 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo;
 
 /**
- *
- * @author Usuario
+ * @author Grupo 4
  */
 public class Lista {
     private NodoCastillo cabeza;

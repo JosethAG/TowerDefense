@@ -1,16 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo;
 
 /**
- *
- * @author Angelo
+ * @author Grupo 4
  */
 
 public class Castillo {
-    
+        //Propiedades del castillo
         private int id;
         private double vida;
         private int tipo;

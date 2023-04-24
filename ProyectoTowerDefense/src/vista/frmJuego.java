@@ -17,6 +17,7 @@ public class frmJuego extends javax.swing.JFrame {
     PreparacionJuego prepjuego = new PreparacionJuego();
     InteraccionUI interUI = new InteraccionUI();
     Hilo hilo = new Hilo(this);
+    public boolean test = true;
 
     public frmJuego() {
         //Preparacion.lblNumRondaP.setText(lblNumRonda.getText());
@@ -24,6 +25,7 @@ public class frmJuego extends javax.swing.JFrame {
         //  setSize(1876, 1060); //Tamaño del frame
         setResizable(false); //Para no poder extender al frame
         setLocationRelativeTo(null); //Para que se muestre centrado
+        lblNumRonda.setText("1");
         btnOcultarTropas.setVisible(false);
         lblCantidadTropas.setText(String.valueOf(Integer.parseInt(lblNumRonda.getText()) + 4));
         prepjuego.RandomCPU(1);
@@ -220,10 +222,11 @@ public class frmJuego extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblVidasCpuPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblVidasCpuPropertyChange
-         if(Double.parseDouble(lblVidasCpu.getText()) <= 0.0){
+        if (Double.parseDouble(lblVidasCpu.getText()) <= 0.0) {
             new frmGanador().setVisible(true);
             this.dispose();
-         }
+            hilo.interrupt();
+        }
     }//GEN-LAST:event_lblVidasCpuPropertyChange
 
     private void lblMagoUIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMagoUIMouseClicked
@@ -282,7 +285,22 @@ public class frmJuego extends javax.swing.JFrame {
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         // TODO add your handling code here:
         prepjuego.ActualizarIconoCam();
-        hilo.start();
+
+        if (test) {
+            hilo.start();
+            test = false;
+
+        } else {
+
+            hilo.iniciar();
+            prepjuego.ActualizarIconoIncial();
+        }
+        lblTropa1CPU.setVisible(true);
+        lblTropaPlayer1.setVisible(true);
+        btnIniciar.setEnabled(false);
+        btnMostrarTropas.setEnabled(false);
+        btnOcultarTropas.setEnabled(false);
+
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void lblCantidadTropasPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblCantidadTropasPropertyChange
@@ -293,10 +311,11 @@ public class frmJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_lblCantidadTropasPropertyChange
 
     private void lblVidasPlayerPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblVidasPlayerPropertyChange
-         if(Double.parseDouble(lblVidasPlayer.getText()) <= 0.0){
-           new frmPerdedor().setVisible(true);
-           this.dispose();
-         }
+        if (Double.parseDouble(lblVidasPlayer.getText()) <= 0.0) {
+            new frmPerdedor().setVisible(true);
+            this.dispose();
+            hilo.interrupt();
+        }
     }//GEN-LAST:event_lblVidasPlayerPropertyChange
 
     public void interCastillo() {
@@ -322,10 +341,13 @@ public class frmJuego extends javax.swing.JFrame {
             prepjuego.Combate(1);
             prepjuego.ActualizarIconoCam();
             prepjuego.ReiniciaPosicionesCam();
-            if(prepjuego.CambioRonda()){
+            if (prepjuego.CambioRonda()) {
                 prepjuego.RandomCPU(Integer.parseInt(lblNumRonda.getText()));
                 hilo.detieneHilo();
                 JOptionPane.showMessageDialog(null, "PREPÁRESE PARA LA SIGUIENTE RONDA \n ELIGE BIEN TUS TROPAS");
+                btnMostrarTropas.setEnabled(true);
+                btnOcultarTropas.setEnabled(true);
+
             }
 
         }

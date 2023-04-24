@@ -24,30 +24,35 @@ public class Hilo extends Thread {
         ejecutar = false;
     }
 
+    public void iniciar() {
+        ejecutar = true;
+    }
+
     public void run()//Metodo que nos va a permitir que el hilo inicie cuando le demos la instruccion    
     {
         try //Try catch para capturar el error en caso de que se caiga 
         {
 
-            while (ejecutar) //Se crea un ciclo infinito porque el proceso siempre va a estar corriendo
+           while (!isInterrupted()) //Se crea un ciclo infinito porque el proceso siempre va a estar corriendo
+               //    while (ejecutar) //Se crea un ciclo infinito porque el proceso siempre va a estar corriendo
             {
 
                 interaccionesT.moverTropasCamino1();
 
                 if (interaccionesT.verificaDueloTropas() == 1 || interaccionesT.verificaDueloTropas() == 2) {
-                    sleep(100);
+                    sleep(10);
                     frmJuego.interTropas();
                     // interaccionesT.reiniciaPosiciones();
 
                 }
                 if (interaccionesT.verificaDueloCastillo() == 1 || interaccionesT.verificaDueloCastillo() == 2
                         || interaccionesT.verificaDueloCastillo() == 3 || interaccionesT.verificaDueloCastillo() == 4) {
-                  
+
                     frmJuego.interCastillo();
-                      sleep(1000);
+                    sleep(10);
                 }
 
-                sleep(30); //El tiempo en que se va a dormir el hilo en milisegundos
+                sleep(10); //El tiempo en que se va a dormir el hilo en milisegundos
 
             }
 

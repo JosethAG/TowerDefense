@@ -51,7 +51,7 @@ public class PreparacionJuego {
         int numPush = 0; //cantidad de push posibles
         int cantCamino1 = 0; //Cantidad de tropas colocadas camino 1
 
-        while (cantidadMax >= numPush) { // Ciclo para validar si tenemos push disponibles
+        while (cantidadMax >numPush) { // Ciclo para validar si tenemos push disponibles
             int tropa = (azar.nextInt(3) + 1); // generamos el numero de tropa
 
             switch (tropa) {
@@ -66,7 +66,7 @@ public class PreparacionJuego {
                     numPush++; //Incrementamos la cantidad de push hechos
                     break;
                 case 3:
-                    caminoCpu1.push(new Tropa(tropa, 10, "/img/caballero-Rojo-x59.png"));
+                    caminoCpu1.push(new Tropa(tropa, 2, "/img/caballero-Rojo-x59.png"));
                     cantCamino1++; // incrementamos las tropas agregadas
                     numPush++; //Incrementamos la cantidad de push hechos
                     break;
@@ -98,6 +98,20 @@ public class PreparacionJuego {
         }
     }
 
+    public void ActualizarIconoIncial() {
+
+        iconoPlayer1 = new ImageIcon(getClass().getResource(caminoPlayer1.getCima().getValor().getUrl()));
+        frmJuego.lblTropaPlayer1.setIcon(iconoPlayer1);
+        frmJuego.lblTropaPlayer1.setVisible(true);
+
+        iconoCPU1 = new ImageIcon(getClass().getResource(caminoCpu1.getCima().getValor().getUrl()));
+        frmJuego.lblTropa1CPU.setIcon(iconoCPU1);
+        frmJuego.lblTropa1CPU.setVisible(true);
+        frmJuego.lblTropa1CPU.setLocation(360, 515);
+        frmJuego.lblTropaPlayer1.setLocation(1210, 515);
+
+    }
+
     public void MostrarTropasCPU() {
         Icon iconoCPU;
         iconoCPU = new ImageIcon(getClass().getResource(
@@ -127,7 +141,7 @@ public class PreparacionJuego {
 
     public void lista() {
         caminoCpu1.listar();
-        System.out.println("------------------------");
+       
     }
 
     public int verificaDueloTropas() { //Se valida en cuál camino es el duelo
@@ -216,7 +230,7 @@ public class PreparacionJuego {
         } else if (caminoCpu1.Vacia() && caminoPlayer1.Vacia()) {
             frmJuego.lblTropa1CPU.setLocation(-10000, 515);
             frmJuego.lblTropaPlayer1.setLocation(10000, 515);
-            
+
         } else if (caminoPlayer1.Vacia()) {
             frmJuego.lblTropaPlayer1.setLocation(10000, 515);
 
@@ -266,8 +280,8 @@ public class PreparacionJuego {
                 break;
         }
     }
-    
-    public boolean CambioRonda(){
+
+    public boolean CambioRonda() {
         if (caminoPlayer1.Vacia() && caminoCpu1.Vacia()) {
             int numR = Integer.parseInt(frmJuego.lblNumRonda.getText()) + 1;
             frmJuego.lblNumRonda.setText(String.valueOf(numR));
@@ -278,8 +292,6 @@ public class PreparacionJuego {
         }
         return false;
     }
-    
-    
 
     public Castillo getCastilloCPU() {
         return castilloCPU;

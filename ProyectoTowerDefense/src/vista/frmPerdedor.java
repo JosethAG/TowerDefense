@@ -16,6 +16,7 @@ public class frmPerdedor extends javax.swing.JFrame {
      */
     public frmPerdedor() {
         initComponents();
+            this.setLocationRelativeTo(null);
     }
 
     /**
@@ -33,7 +34,6 @@ public class frmPerdedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(590, 404));
-        setPreferredSize(new java.awt.Dimension(590, 404));
         setResizable(false);
         setSize(new java.awt.Dimension(590, 404));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -45,7 +45,7 @@ public class frmPerdedor extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 190, -1));
 
         jButton2.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
         jButton2.setText("SALIR DEL JUEGO");
@@ -54,7 +54,7 @@ public class frmPerdedor extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 190, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Derrota.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -63,7 +63,7 @@ public class frmPerdedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
+      System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

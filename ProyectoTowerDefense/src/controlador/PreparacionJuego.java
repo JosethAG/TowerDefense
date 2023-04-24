@@ -51,7 +51,7 @@ public class PreparacionJuego {
         int numPush = 0; //cantidad de push posibles
         int cantCamino1 = 0; //Cantidad de tropas colocadas camino 1
 
-        while (cantidadMax >numPush) { // Ciclo para validar si tenemos push disponibles
+        while (cantidadMax > numPush) { // Ciclo para validar si tenemos push disponibles
             int tropa = (azar.nextInt(3) + 1); // generamos el numero de tropa
 
             switch (tropa) {
@@ -141,7 +141,7 @@ public class PreparacionJuego {
 
     public void lista() {
         caminoCpu1.listar();
-       
+
     }
 
     public int verificaDueloTropas() { //Se valida en cuál camino es el duelo
@@ -197,12 +197,12 @@ public class PreparacionJuego {
         //Choque castillo Player en camino 1 
         if (frmJuego.lblTropa1CPU.getX() >= frmJuego.lblCastilloPlayer.getX() - 40) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
         {
-            System.out.println("Choco Castillo Player Camino 1");
+
             return 1; //Retorna 1 si hubo un choque en el castillo del Player en el camino 1
         } // Choque entre camino 1 castillo CPU
         else if (frmJuego.lblTropaPlayer1.getX() <= (frmJuego.lblCastilloCPU.getX() + 307)) // && (lblTropaPlayer1.getX() + 188) > lblTropa1CPU.getX())
         {
-            System.out.println("Choco Castillo CPU Camino 1");
+
             return 2; //Retorna 2 si hubo un choque en el castillo del CPU en el camino 1
         }
 
@@ -228,11 +228,11 @@ public class PreparacionJuego {
             frmJuego.lblTropaPlayer1.setLocation(1210, 515);
 
         } else if (caminoCpu1.Vacia() && caminoPlayer1.Vacia()) {
-            frmJuego.lblTropa1CPU.setLocation(-10000, 515);
-            frmJuego.lblTropaPlayer1.setLocation(10000, 515);
+            frmJuego.lblTropa1CPU.setLocation(-100000, 515);
+            frmJuego.lblTropaPlayer1.setLocation(100000, 515);
 
         } else if (caminoPlayer1.Vacia()) {
-            frmJuego.lblTropaPlayer1.setLocation(10000, 515);
+            frmJuego.lblTropaPlayer1.setLocation(100000, 515);
 
         } else {
             frmJuego.lblTropa1CPU.setLocation(-3000, 515);
@@ -244,15 +244,15 @@ public class PreparacionJuego {
                 frmJuego.lblTropaPlayer1.setLocation(1210, 515);
 
             } else if (caminoCpu1.Vacia() && caminoPlayer1.Vacia()) {
-                frmJuego.lblTropa1CPU.setLocation(-10000, 515);
-                frmJuego.lblTropaPlayer1.setLocation(10000, 515);
+                frmJuego.lblTropa1CPU.setLocation(-100000, 515);
+                frmJuego.lblTropaPlayer1.setLocation(100000, 515);
 
             } else if (caminoPlayer1.Vacia()) {
                 frmJuego.lblTropa1CPU.setLocation(360, 515);
-                frmJuego.lblTropaPlayer1.setLocation(10000, 515);
+                frmJuego.lblTropaPlayer1.setLocation(100000, 515);
 
             } else {
-                frmJuego.lblTropa1CPU.setLocation(-10000, 515);
+                frmJuego.lblTropa1CPU.setLocation(-100000, 515);
                 frmJuego.lblTropaPlayer1.setLocation(1210, 515);
             }
 

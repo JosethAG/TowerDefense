@@ -291,8 +291,8 @@ public class frmJuego extends javax.swing.JFrame {
             test = false;
 
         } else {
-
-            hilo.iniciar();
+            hilo = new Hilo(this);
+            hilo.start();
             prepjuego.ActualizarIconoIncial();
         }
         lblTropa1CPU.setVisible(true);
@@ -343,10 +343,12 @@ public class frmJuego extends javax.swing.JFrame {
             prepjuego.ReiniciaPosicionesCam();
             if (prepjuego.CambioRonda()) {
                 prepjuego.RandomCPU(Integer.parseInt(lblNumRonda.getText()));
-                hilo.detieneHilo();
+
                 JOptionPane.showMessageDialog(null, "PREPÁRESE PARA LA SIGUIENTE RONDA \n ELIGE BIEN TUS TROPAS");
                 btnMostrarTropas.setEnabled(true);
                 btnOcultarTropas.setEnabled(true);
+                hilo.interrupt();
+   
 
             }
 

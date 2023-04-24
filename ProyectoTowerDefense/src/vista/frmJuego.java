@@ -15,8 +15,6 @@ public class frmJuego extends javax.swing.JFrame {
      * Creates new form frmJuego
      */
     PreparacionJuego prepjuego = new PreparacionJuego();
-    frmGanador frmGanador;
-    frmPerdedor frmPerdedor;
     InteraccionUI interUI = new InteraccionUI();
     Hilo hilo = new Hilo(this);
 
@@ -222,8 +220,9 @@ public class frmJuego extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblVidasCpuPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblVidasCpuPropertyChange
-         if(lblVidasCpu.getText().equals("0.0")){
-            frmGanador.setVisible(true);
+         if(Double.parseDouble(lblVidasCpu.getText()) <= 0.0){
+            new frmGanador().setVisible(true);
+            this.dispose();
          }
     }//GEN-LAST:event_lblVidasCpuPropertyChange
 
@@ -294,8 +293,9 @@ public class frmJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_lblCantidadTropasPropertyChange
 
     private void lblVidasPlayerPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblVidasPlayerPropertyChange
-         if(lblVidasPlayer.getText().equals("0.0")){
-           frmPerdedor.setVisible(true);
+         if(Double.parseDouble(lblVidasPlayer.getText()) <= 0.0){
+           new frmPerdedor().setVisible(true);
+           this.dispose();
          }
     }//GEN-LAST:event_lblVidasPlayerPropertyChange
 

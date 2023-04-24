@@ -18,7 +18,7 @@ public class frmMenu extends javax.swing.JFrame {
 
     FondoPanel fondo = new frmMenu.FondoPanel();
     frmJuego frmJuego = new frmJuego();
-
+    AudioClip Sound;
 
     public frmMenu() {
 
@@ -28,10 +28,9 @@ public class frmMenu extends javax.swing.JFrame {
         this.setTitle(" INICIO");
         initComponents();
         this.setLocationRelativeTo(null);
-        AudioClip Sound;
         Sound = java.applet.Applet.newAudioClip(getClass().getResource("/musica/cacion3.wav"));
         Sound.stop();
-        Sound.play(); 
+        Sound.play();
 
     }
 
@@ -85,12 +84,16 @@ public class frmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      frmJuego.setVisible(true);
+        frmJuego.setVisible(true);
         this.dispose();
+        frmJuego.lblNumRonda.setText("1");
+        frmJuego.lblTropa1CPU.setVisible(false);
+        frmJuego.lblTropaPlayer1.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
+
+   System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {

@@ -46,7 +46,7 @@ public class frmGanador extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 166, 35));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 190, 35));
 
         jButton2.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
         jButton2.setText("SALIR DEL JUEGO");
@@ -55,7 +55,7 @@ public class frmGanador extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, 35));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 190, 35));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Victoria.png"))); // NOI18N
         jLabel1.setText(".");
@@ -65,7 +65,7 @@ public class frmGanador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
+         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

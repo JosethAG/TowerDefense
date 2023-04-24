@@ -30,6 +30,7 @@ public class frmMenu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         AudioClip Sound;
         Sound = java.applet.Applet.newAudioClip(getClass().getResource("/musica/cacion3.wav"));
+        Sound.stop();
         Sound.play(); 
 
     }
@@ -45,6 +46,11 @@ public class frmMenu extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
         jButton2.setText("EXIT");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
         jButton1.setText("START");

@@ -66,7 +66,7 @@ public class PreparacionJuego {
                     numPush++; //Incrementamos la cantidad de push hechos
                     break;
                 case 3:
-                    caminoCpu1.push(new Tropa(tropa, 2, "/img/caballero-Rojo-x59.png"));
+                    caminoCpu1.push(new Tropa(tropa, 10, "/img/caballero-Rojo-x59.png"));
                     cantCamino1++; // incrementamos las tropas agregadas
                     numPush++; //Incrementamos la cantidad de push hechos
                     break;

@@ -9,7 +9,7 @@ public class InteraccionUI {
 
     //Se crean referencias de los Frames necesarios para las interacciones
     frmJuego frmJuego;
-    PreparacionJuego prepJuego;
+    Juego prepJuego;
 
     public void ActualizarCantidadUI(String cantidadActual) { //Método que actualiza la cantidad de tropas disponibles y requiere el dato como parámetro
         frmJuego.lblCantidadTropas.setText(cantidadActual); //Coloca el texto según el parametro colocado

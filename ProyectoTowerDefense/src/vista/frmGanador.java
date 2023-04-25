@@ -32,11 +32,11 @@ public class frmGanador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setMaximumSize(new java.awt.Dimension(596, 440));
-        setMinimumSize(new java.awt.Dimension(596, 440));
-        setPreferredSize(new java.awt.Dimension(596, 440));
+        setMaximumSize(new java.awt.Dimension(590, 430));
+        setMinimumSize(new java.awt.Dimension(590, 430));
+        setPreferredSize(new java.awt.Dimension(590, 420));
         setResizable(false);
-        setSize(new java.awt.Dimension(596, 440));
+        setSize(new java.awt.Dimension(590, 430));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
@@ -47,7 +47,7 @@ public class frmGanador extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 190, 35));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 190, 35));
 
         jButton2.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
         jButton2.setText("SALIR DEL JUEGO");
@@ -57,11 +57,14 @@ public class frmGanador extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 190, 35));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 190, 35));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Victoria.png"))); // NOI18N
         jLabel1.setText(".");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 404));
+        jLabel1.setMaximumSize(new java.awt.Dimension(590, 404));
+        jLabel1.setMinimumSize(new java.awt.Dimension(590, 404));
+        jLabel1.setPreferredSize(new java.awt.Dimension(590, 404));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

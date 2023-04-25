@@ -15,7 +15,7 @@ import vista.frmJuego;
 /**
  * @author Grupo 4
  */
-public class PreparacionJuego {
+public class Juego {
 
     //Variables de apollo para cantidades de tropas
     private int cantidadActual;
@@ -139,13 +139,9 @@ public class PreparacionJuego {
         frmJuego.lblCPU3.setIcon(iconoCPU); //Colocamos el icono en el lbl
     }
 
-    public void IniciaJuego() { //Inicia el hilo del juego
-        Hilo hilo = new Hilo(frmJuego); //Se hace la instancia con la clase hilo y se le pasa un this
-        hilo.start(); //Es un metodo que pertenece a la clase Thread de la cual hilo esta heredando y se usa para llamar al metodo ejecutar de la clase hilo e iniciar el hilo
-
-    }
-
+ 
     public void lista() { //Lista de pila CPU
+        System.out.println("---------------------------\nTropas Enemigas de la Ronda\n---------------------------");
         caminoCpu1.listar();
 
     }
@@ -256,8 +252,8 @@ public class PreparacionJuego {
         }
     }
 
-    public double DevolverDanio(int danio) { //Enviar daño de tropa correspondiente (parametro de tropa CPU o PLAYER)
-        switch (danio) {
+    public double DevolverDanio(int castillo) { //Enviar daño de tropa correspondiente (parametro de tropa CPU o PLAYER)
+        switch (castillo) {
             case 1:
                 return Double.valueOf(caminoCpu1.getCima().getValor().getDanho()); //Devuelve el daño de la tropa CPU
             case 2:

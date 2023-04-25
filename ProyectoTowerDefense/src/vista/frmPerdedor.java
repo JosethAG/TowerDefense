@@ -28,9 +28,10 @@ public class frmPerdedor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(590, 404));
+        setMaximumSize(new java.awt.Dimension(587, 400));
+        setMinimumSize(new java.awt.Dimension(587, 400));
         setResizable(false);
-        setSize(new java.awt.Dimension(590, 404));
+        setSize(new java.awt.Dimension(587, 400));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N

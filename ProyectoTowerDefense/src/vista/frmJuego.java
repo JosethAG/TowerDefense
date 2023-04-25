@@ -2,7 +2,7 @@ package vista;
 
 import controlador.Hilo;
 import controlador.InteraccionUI;
-import controlador.PreparacionJuego;
+import controlador.Juego;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 public class frmJuego extends javax.swing.JFrame {
 
     //Creamos referencias
-    PreparacionJuego prepjuego = new PreparacionJuego();
+    Juego juego = new Juego();
     InteraccionUI interUI = new InteraccionUI();
     Hilo hilo = new Hilo(this);
     //Variables de apoyo
@@ -27,9 +27,9 @@ public class frmJuego extends javax.swing.JFrame {
         lblNumRonda.setText("1"); //Colocamos en número de ronda
         btnOcultarTropas.setVisible(false); //Colocamos invisible el botón de ocultar tropas
         lblCantidadTropas.setText(String.valueOf(Integer.parseInt(lblNumRonda.getText()) + 4)); //Colocamos la cantidad de tropas usables
-        prepjuego.RandomCPU(1);//Creamos la pila del CPU
+        juego.RandomCPU(1);//Creamos la pila del CPU
         btnIniciar.setEnabled(lblCantidadTropas.getText().equals("0")); //Para que el boton de iniciar se muestre deshablitdo
-        prepjuego.lista(); //Listamos la pila del CPU
+        juego.lista(); //Listamos la pila del CPU
 
     }
 
@@ -58,10 +58,10 @@ public class frmJuego extends javax.swing.JFrame {
         lblTextTropasRestantes1 = new javax.swing.JLabel();
         lblMagoUI = new javax.swing.JLabel();
         lblArqueraUI = new javax.swing.JLabel();
-        lblCPU1 = new javax.swing.JLabel();
         lblCaballero = new javax.swing.JLabel();
         lblTextTropasRestantes = new javax.swing.JLabel();
         lblCantidadTropas = new javax.swing.JLabel();
+        lblCPU1 = new javax.swing.JLabel();
         lblCPU2 = new javax.swing.JLabel();
         lblCPU3 = new javax.swing.JLabel();
         lblTextCamino = new javax.swing.JLabel();
@@ -74,12 +74,14 @@ public class frmJuego extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNRonda.setFont(new java.awt.Font("Impact", 1, 36)); // NOI18N
+        lblNRonda.setForeground(new java.awt.Color(255, 255, 255));
         lblNRonda.setText("N° Ronda:");
         getContentPane().add(lblNRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 170, 30));
 
         lblNumRonda.setFont(new java.awt.Font("Impact", 1, 36)); // NOI18N
+        lblNumRonda.setForeground(new java.awt.Color(255, 255, 255));
         lblNumRonda.setText("1");
-        getContentPane().add(lblNumRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 50, 40));
+        getContentPane().add(lblNumRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 16, 50, 40));
         getContentPane().add(lblTropaPlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 515, -1, -1));
         getContentPane().add(lblTropa1CPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 515, -1, -1));
 
@@ -178,7 +180,6 @@ public class frmJuego extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblArqueraUI, new org.netbeans.lib.awtextra.AbsoluteConstraints(1670, 320, -1, -1));
-        getContentPane().add(lblCPU1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1640, 765, -1, -1));
 
         lblCaballero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/caballero-Verde-UI.png"))); // NOI18N
         lblCaballero.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -204,8 +205,9 @@ public class frmJuego extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblCantidadTropas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1805, 23, 20, -1));
+        getContentPane().add(lblCPU1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1780, 765, -1, -1));
         getContentPane().add(lblCPU2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1710, 765, -1, -1));
-        getContentPane().add(lblCPU3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1780, 765, -1, -1));
+        getContentPane().add(lblCPU3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1640, 765, -1, -1));
 
         lblTextCamino.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblTextCamino.setForeground(new java.awt.Color(255, 255, 255));
@@ -230,44 +232,44 @@ public class frmJuego extends javax.swing.JFrame {
 
     private void lblMagoUIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMagoUIMouseClicked
         if (!lblCantidadTropas.getText().equals("0")) { //Verificamos si podemos colocar tropas
-            prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
+            juego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
                     Integer.valueOf(lblNumRonda.getText()),
                     "1", 1, 1.5, "/img/Mago-Verde-x54.png"); //Agregamos Mago con los parametros
         } else {
-            JOptionPane.showMessageDialog(null, 
-                    "Ha alcanzado el máximo de tropas por ronda", 
+            JOptionPane.showMessageDialog(null,
+                    "Ha alcanzado el máximo de tropas por ronda",
                     "ALERTA", JOptionPane.WARNING_MESSAGE); //Mensaje de alerta debido a que no se pueden colocar tropas
-        }        
+        }
     }//GEN-LAST:event_lblMagoUIMouseClicked
 
     private void lblArqueraUIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblArqueraUIMouseClicked
         if (!lblCantidadTropas.getText().equals("0")) {
-            prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
+            juego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
                     Integer.valueOf(lblNumRonda.getText()),
                     "1", 2, 1.0, "/img/Arquera-Verde-x59.png"); //Agregamos Arquera con los parametros
 
         } else {
-            JOptionPane.showMessageDialog(null, 
-                    "Ha alcanzado el máximo de tropas por ronda", 
+            JOptionPane.showMessageDialog(null,
+                    "Ha alcanzado el máximo de tropas por ronda",
                     "ALERTA", JOptionPane.WARNING_MESSAGE); //Mensaje de alerta debido a que no se pueden colocar tropas
         }
     }//GEN-LAST:event_lblArqueraUIMouseClicked
 
     private void lblCaballeroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCaballeroMouseClicked
         if (!lblCantidadTropas.getText().equals("0"))
-            prepjuego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
+            juego.AgregarTropaUI(Integer.valueOf(lblCantidadTropas.getText()),
                     Integer.valueOf(lblNumRonda.getText()),
                     "1", 3, 2.0, "/img/caballero-Verde-85x90.png"); //Agregamos Caballero con los parametros
         else {
-            JOptionPane.showMessageDialog(null, 
-                    "Ha alcanzado el máximo de tropas por ronda", 
+            JOptionPane.showMessageDialog(null,
+                    "Ha alcanzado el máximo de tropas por ronda",
                     "ALERTA", JOptionPane.WARNING_MESSAGE);//Mensaje de alerta debido a que no se pueden colocar tropas
         }
     }//GEN-LAST:event_lblCaballeroMouseClicked
 
     private void btnMostrarTropasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTropasActionPerformed
-        prepjuego.MostrarTropasCPU(); //Muestra las tropas del CPU
-        //   prepjuego.lista();
+        juego.MostrarTropasCPU(); //Muestra las tropas del CPU
+        //   juego.lista();
         btnMostrarTropas.setVisible(false); //Oculta el botón de ver tropas
         btnOcultarTropas.setVisible(true); //Coloca visible el botón de Ocultar
         //Coloca los lbl Visibles
@@ -286,16 +288,16 @@ public class frmJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOcultarTropasActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        prepjuego.ActualizarIconoCam(); //Actualiza los iconos
+        juego.ActualizarIconoCam(); //Actualiza los iconos
 
         if (test) { //Valida si podemos iniciar el hilo por primera vez
             hilo.start(); //Inicia el hilo
             test = false; //Cambia el estado para evitar iniciarlo varias veces
 
         } else {
-            hilo = new Hilo(this); //Cre un nuevo hilo
+            hilo = new Hilo(this); //Crea un nuevo hilo
             hilo.start(); //Incia el hilo
-            prepjuego.ActualizarIconoIncial(); //Actualiza los iconos al inicio
+            juego.ActualizarIconoIncial(); //Actualiza los iconos al inicio
         }
         //Coloca Visible las tropas
         lblTropa1CPU.setVisible(true);
@@ -322,40 +324,46 @@ public class frmJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_lblVidasPlayerPropertyChange
 
     public void interCastillo() {
-        if (prepjuego.verificaDueloCastillo() == 1) { //Verifia el castillo donde sucede
-            prepjuego.getCastilloPlayer().setVida(
-                    prepjuego.getCastilloPlayer().getVida() - prepjuego.DevolverDanio(1)); //Reduce la vida del castillo
+        if (juego.verificaDueloCastillo() == 1) { //Verifia el castillo donde sucede
+            juego.getCastilloPlayer().setVida(
+                    juego.getCastilloPlayer().getVida() - juego.DevolverDanio(1)); //Reduce la vida del castillo
             interUI.ActualizaVidaCastillos(
-                    1, prepjuego.getCastilloPlayer().getVida()); //Actualiza la vida del castillo
-            prepjuego.EliminarTropaCastillo(1); 
-            prepjuego.ReiniciaPosicionesCam();
-            prepjuego.ActualizarIconoCam();
+                    1, juego.getCastilloPlayer().getVida()); //Actualiza la vida del castillo
+            juego.EliminarTropaCastillo(1);
+            juego.ReiniciaPosicionesCam();
+            juego.ActualizarIconoCam();
         }
-        if (prepjuego.verificaDueloCastillo() == 2) {
-            prepjuego.getCastilloCPU().setVida(
-                    prepjuego.getCastilloCPU().getVida() - prepjuego.DevolverDanio(2)); //Reduce la vida del castillo
+        if (juego.verificaDueloCastillo() == 2) {
+            juego.getCastilloCPU().setVida(
+                    juego.getCastilloCPU().getVida() - juego.DevolverDanio(2)); //Reduce la vida del castillo
             interUI.ActualizaVidaCastillos(
-                    2, prepjuego.getCastilloCPU().getVida()); //Actualiza la vida del castillo
-            prepjuego.EliminarTropaCastillo(2);
-            prepjuego.ReiniciaPosicionesCam();
-            prepjuego.ActualizarIconoCam();
+                    2, juego.getCastilloCPU().getVida()); //Actualiza la vida del castillo
+            juego.EliminarTropaCastillo(2);
+            juego.ReiniciaPosicionesCam();
+            juego.ActualizarIconoCam();
+            
         }
     }
 
     public void interTropas() {
 
-        if (prepjuego.verificaDueloTropas() == 1) {
-            prepjuego.Combate(1);
-            prepjuego.ActualizarIconoCam();
-            prepjuego.ReiniciaPosicionesCam();
-            if (prepjuego.CambioRonda()) {
-                prepjuego.RandomCPU(Integer.parseInt(lblNumRonda.getText()));
+        if (juego.verificaDueloTropas() == 1) {
+            juego.Combate(1);
+            juego.ActualizarIconoCam();
+            juego.ReiniciaPosicionesCam();
+            if (juego.CambioRonda()) {
+                juego.RandomCPU(Integer.parseInt(lblNumRonda.getText()));
 
                 JOptionPane.showMessageDialog(null, "PREPÁRESE PARA LA SIGUIENTE RONDA \n ELIGE BIEN TUS TROPAS");
                 btnMostrarTropas.setEnabled(true);
                 btnOcultarTropas.setEnabled(true);
+                btnOcultarTropas.setVisible(false); //Oculta las tropas del CPU
+                btnMostrarTropas.setVisible(true); //Oculta las tropas del CPU
+                //Coloca los lbl invisibles
+                lblCPU1.setVisible(false);
+                lblCPU2.setVisible(false);
+                lblCPU3.setVisible(false);
                 hilo.interrupt();
-   
 
             }
 

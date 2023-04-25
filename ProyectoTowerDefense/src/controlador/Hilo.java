@@ -9,18 +9,9 @@ public class Hilo extends Thread {
 
     frmJuego frmJuego; //Se crea la referncia global 
     InteraccionesTropa interaccionesT = new InteraccionesTropa(); //Referencia de InteraccionesTropa
-    boolean ejecutar = true; //Variable de apollo para iniciar y pausar el hilo
-
+   
     public Hilo(frmJuego frmJuego) { //Metodo constructor que recibe la referencia que se le envia por parametro en el frmJuego
         this.frmJuego = frmJuego; //Seteamos la informacion del frame principal
-    }
-
-    public void detieneHilo() { //Detiene el hilo
-        ejecutar = false; //Cambiamos el estado para detener el while
-    }
-
-    public void iniciar() { //Inicia el hilo
-        ejecutar = true; //Cambiamos el estado para iniciar el while
     }
 
     public void run()//Metodo que nos va a permitir que el hilo inicie cuando le demos la instruccion    
